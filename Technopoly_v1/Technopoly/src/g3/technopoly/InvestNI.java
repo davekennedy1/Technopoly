@@ -10,7 +10,6 @@ public class InvestNI extends Space {
 
 	//constants
 	private static final String name = "InvestNI";
-	private static final int defaultSpace = 0;
 	private static final double investmentAmount = 20000;
 
 	// constructors
@@ -18,7 +17,7 @@ public class InvestNI extends Space {
 	 * Default Constructor
 	 */
 	public InvestNI() {
-		super(name, defaultSpace);
+		super(name);
 	}
 
 	/**
@@ -26,8 +25,8 @@ public class InvestNI extends Space {
 	 * @param name (String)
 	 * @param spaceNumber (int)
 	 */
-	public InvestNI(String name, int spaceNumber) {
-		super(name, spaceNumber);
+	public InvestNI(String name) {
+		super(name);
 	}
 
 	// methods

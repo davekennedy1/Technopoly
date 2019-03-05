@@ -11,8 +11,6 @@ public class Runway extends Space {
 
 	//constants
 	private static final String name = "Runway";
-	private static final int defaultSpace = 6;
-	
 	
 	//constructors
 	/**
@@ -20,7 +18,7 @@ public class Runway extends Space {
 	 * Names the space Runway and gives the default space number
 	 */
 	public Runway() {
-		super(name, defaultSpace);
+		super(name);
 	}
 
 	/**
@@ -29,7 +27,7 @@ public class Runway extends Space {
 	 * @param spaceNumber (int)
 	 */
 	public Runway(String name, int spaceNumber) {
-		super(name, spaceNumber);
+		super(name);
 	}
 	
 	

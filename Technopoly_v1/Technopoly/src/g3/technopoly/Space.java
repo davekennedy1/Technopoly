@@ -9,7 +9,6 @@ public abstract class Space {
 
 	//instance vars
 	private String name;
-	private int spaceNumber;
 	
 	//constructors
 	/**
@@ -21,12 +20,10 @@ public abstract class Space {
 	/**
 	 * Constructor with args
 	 * @param name (String)
-	 * @param squareNumber (int)
-	 * @param field (String)
 	 */
-	public Space(String name, int spaceNumber) {
+	public Space(String name) {
 		this.setName(name);
-		this.setSpaceNumber(spaceNumber);
+		
 	}
 
 	//getters & setters
@@ -50,28 +47,6 @@ public abstract class Space {
 			throw new IllegalArgumentException("Invalid or null String provided for name");
 		}
 	}
-
-	/**
-	 * Get the space number
-	 * @return the spaceNumber (int)
-	 */
-	public int getSpaceNumber() {
-		return spaceNumber;
-	}
-
-	/**
-	 * Set the space number
-	 * Validation: space number cannot be below 0.
-	 * @param the spaceNumber to set (int)
-	 */
-	public void setSpaceNumber(int spaceNumber) {
-		if(spaceNumber >= 0) {
-			this.spaceNumber = spaceNumber;
-		}else {
-			throw new IllegalArgumentException("Invalid space number provided");
-		}
-	}
-
 	
 }
 

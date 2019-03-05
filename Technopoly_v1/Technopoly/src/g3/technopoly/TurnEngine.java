@@ -70,6 +70,10 @@ public class TurnEngine {
 		this.lastSpace = lastSpace;
 	}
 	
+	public void rollDice() {
+		
+	}
+	
 	
 
 

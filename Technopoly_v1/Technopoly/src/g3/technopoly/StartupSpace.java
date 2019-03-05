@@ -33,8 +33,7 @@ public class StartupSpace extends Space {
 	/**
 	 * Default Constructor
 	 */
-	public StartupSpace() {
-	}
+	
 
 	/**
 	 * Constructor to be used when starting the default game where no
@@ -47,9 +46,9 @@ public class StartupSpace extends Space {
 	 * @param rent
 	 * @param staff
 	 */
-	public StartupSpace(String name, int spaceNumber, boolean canBeDeveloped, 
+	public StartupSpace(String name, boolean canBeDeveloped, 
 			boolean isOwned, double price, double rent, int staff) {
-		super(name, spaceNumber);
+		super(name);
 		this.setCanBeDeveloped(canBeDeveloped);
 		this.setOwned(isOwned);
 		this.setPrice(price);
@@ -58,6 +57,13 @@ public class StartupSpace extends Space {
 		this.setStaff(staff);
 	}
 	
+	/**
+	 * @param name
+	 */
+	public StartupSpace(String name) {
+		super(name);
+	}
+
 	/**
 	 * Constructor to be used when starting a quick game where Startups 
 	 * may be assigned to players.
@@ -70,9 +76,9 @@ public class StartupSpace extends Space {
 	 * @param rent
 	 * @param staff
 	 */
-	public StartupSpace(String name, int playerOwner, int spaceNumber, boolean canBeDeveloped, 
+	public StartupSpace(String name, int playerOwner, boolean canBeDeveloped, 
 			boolean isOwned, double price, double rent, int staff) {
-		super(name, spaceNumber);
+		super(name);
 		this.setCanBeDeveloped(canBeDeveloped);
 		this.setOwned(isOwned);
 		this.setPrice(price);
