@@ -2,10 +2,12 @@ package g3.technopoly;
 
 public class TurnEngine {
 	
+	//instance vars
 	private boolean gameInPlay =true;
 	protected int playerTurn = 0; 
 	private int lastPlayer, lastSpace;
 	
+	//getters and setters
 	/**
 	 * Get the status of the game, in play or not
 	 * @return the gameInPlay (boolean)
