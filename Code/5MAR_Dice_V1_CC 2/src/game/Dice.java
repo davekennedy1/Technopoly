@@ -1,4 +1,4 @@
-package g3.technopoly;
+package game;
 
 import java.security.SecureRandom;
 
