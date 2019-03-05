@@ -37,9 +37,38 @@ public class StartupSpace extends Space {
 	}
 
 	/**
-	 * Constructor with args
+	 * Constructor to be used when starting the default game where no
+	 * Startup is owned by a player.
 	 * @param name
-	 * @param squareNumber
+	 * @param spaceNumber
+	 * @param canBeDeveloped
+	 * @param isOwned
+	 * @param price
+	 * @param rent
+	 * @param staff
+	 */
+	public StartupSpace(String name, int spaceNumber, boolean canBeDeveloped, 
+			boolean isOwned, double price, double rent, int staff) {
+		super(name, spaceNumber);
+		this.setCanBeDeveloped(canBeDeveloped);
+		this.setOwned(isOwned);
+		this.setPrice(price);
+		this.setRent(rent);
+		this.playerOwner = BANK_OWNER;
+		this.setStaff(staff);
+	}
+	
+	/**
+	 * Constructor to be used when starting a quick game where Startups 
+	 * may be assigned to players.
+	 * @param name
+	 * @param playerOwner
+	 * @param spaceNumber
+	 * @param canBeDeveloped
+	 * @param isOwned
+	 * @param price
+	 * @param rent
+	 * @param staff
 	 */
 	public StartupSpace(String name, int playerOwner, int spaceNumber, boolean canBeDeveloped, 
 			boolean isOwned, double price, double rent, int staff) {
