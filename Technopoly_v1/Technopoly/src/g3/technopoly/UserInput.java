@@ -1,10 +1,5 @@
 package g3.technopoly;
 
-/**
- * 
- */
-
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,13 +9,16 @@ import java.util.Scanner;
  *  @author T.Lewis 
  *  Date: 4/3/19
  */
-//notes
-//remove static from methods and make all lower case first word. 
+
 public class UserInput {
 	
 	//constants
 	 private static final String YES = "Y";
 	 private static final String NO = "N";
+	 private static final int LOWER_PLAYER = 2;
+	 private static final int HIGHER_PLAYER = 4;
+	 private static final String EMPTY_STRING = "";
+	 private static final int MENU_LOWER = 1;
 	
 	// open scanner
 	static Scanner sc1 = new Scanner(System.in);
@@ -38,7 +36,7 @@ public class UserInput {
 	 * Business rule: The number of players must be between 2 and 4. 
 	 * @param input
 	 */
-	public static int userInputPlayers() {
+	public int userInputPlayers() {
 		boolean valid = false;
 		int players = 0;
 		do {
@@ -62,9 +60,9 @@ public class UserInput {
 	 * @param userInput
 	 * @return
 	 */
-	protected static boolean validateUserPlayers(int userInput) {
+	protected boolean validateUserPlayers(int userInput) {
 		
-		if (userInput>1 && userInput<5) {
+		if ((userInput>=LOWER_PLAYER) && (userInput<=HIGHER_PLAYER)) {
 			return true;
 		} else {
 			return false;
@@ -77,9 +75,9 @@ public class UserInput {
 	 * Validation: Names cannot be empty strings or null values.
 	 * @param input
 	 */
-	public static String userInputNames() {
+	public String userInputNames() {
 		boolean valid = false;
-		String userName = "";
+		String userName = EMPTY_STRING;
 		
 		do {
 			try {
@@ -101,11 +99,13 @@ public class UserInput {
 		 * @param userInput
 		 * @return
 		 */
-	protected static boolean validateUserNames(String userInput) {
+	protected boolean validateUserNames(String userInput) {
 		
-	if ((userInput.trim().equals("")) || (userInput.trim().equals(null))) {
+	if ((userInput.trim().equals(EMPTY_STRING)) || (userInput.trim().equals(null))) {
 			return false;
-		}else {
+		}
+	
+	else {
 			return true;
 		}
 	}
@@ -115,9 +115,9 @@ public class UserInput {
 	 * Validation: Input cannot be empty strings or null values.
 	 * @param input
 	 */
-	public static String userInputValidation() {
+	public String userInputValidation() {
 		boolean valid = false;
-		String userInput = "";
+		String userInput = EMPTY_STRING;
 		
 		do {
 			try {
@@ -140,7 +140,7 @@ public class UserInput {
 	 * Validation: Input cannot be empty strings or null values.
 	 * @return
 	 */
-	protected static boolean validateUserValidation(String userInput) {
+	protected boolean validateUserValidation(String userInput) {
 		
 		if((userInput.trim().equalsIgnoreCase(YES)) || (userInput.trim().equalsIgnoreCase(NO))) {
 			return true;
@@ -159,60 +159,39 @@ public class UserInput {
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	public int userInputMenu(int numberOfChoices) throws IllegalArgumentException {
-
+	public int userInputMenu(int numberOfChoices){
+		boolean valid = false;
 		int userInput = 0;
-
-		switch (numberOfChoices) {
-
-		case 3:
-			while ((userInput < 1) || (userInput > 3)) {
-				try {
-					System.out.println("Please choose one of the following options using the numbers provided");
-					userInput = sc1.nextInt();
-
-				} catch (InputMismatchException e) {
-
-					sc1.next();
-				}
+		
+		do {
+			try {
+				System.out.println("Hint: Choose one of the following options using the numbers provided");
+				userInput = sc1.nextInt();
+				
+			} catch (InputMismatchException e) {
+						sc1.next();
 			}
-			break;
-
-		case 4:
-			while ((userInput < 1) || (userInput > 4)) {
-				try {
-					System.out.println("Please choose one of the following options using the numbers provided");
-					userInput = sc1.nextInt();
-
-				} catch (InputMismatchException e) {
-
-					sc1.next();
-				}
-			}
-			break;
-
-		case 5:
-			while ((userInput < 1) || (userInput > 5)) {
-				try {
-					System.out.println("Please choose one of the following options using the numbers provided");
-					userInput = sc1.nextInt();
-
-				} catch (InputMismatchException e) {
-
-					sc1.next();
-				}
-			}
-			break;
-
-		default:
-			throw new InputMismatchException("Menu options not valid");
-		}
-
+			valid = validateUserMenu(userInput, numberOfChoices);
+		
+		}while(!valid);
 		return userInput;
 
 	}
 	
-	
-	
+	/**
+	 *  method to check the validation rules of the userInputMenu method. 
+	 *  Validation: User must input a number between 1 and the number of choices passed in to the method. 
+	 * @param userInput
+	 * @param numberOfChoices
+	 * @return
+	 */
+	protected boolean validateUserMenu(int userInput, int numberOfChoices) {
+		
+		if((userInput > MENU_LOWER) && (userInput <= numberOfChoices)){
+			return true;
+		}else {
+			return false;
 
+		}
 	}
+}
