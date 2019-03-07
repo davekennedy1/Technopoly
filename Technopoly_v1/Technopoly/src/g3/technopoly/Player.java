@@ -129,7 +129,7 @@ public class Player {
 	 * @param positionInBoard validation must be int greater than or = 1 and less
 	 *                        than or = to 12
 	 */
-	public void setPositionInBoard(int positionInBoard) {
+	public void setPositionInBoard(int positionInBoard) throws IllegalArgumentException {
 
 		if ((positionInBoard >= minBoardPosition) && (positionInBoard <= maxBoardPosition)) {
 			this.positionInBoard = positionInBoard;

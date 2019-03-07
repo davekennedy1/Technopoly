@@ -163,6 +163,30 @@ public class TurnEngine {
 			}
 		}
 	}
+    //***********IN PROGRESS by BM************
+	/**
+	 * @author bmurtland method - Tells you what space you landed on (name) checks
+	 *         if startup is owned? if true - calls pay licence fee Else if not
+	 *         owned calls menu to give option to buy
+	 */
+
+	public void landedStartupSpace() {
+		// Tells player the NAME of the space -IS THIS NEEDED
+		System.out.println("You landed on " + GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName());
+
+		if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
+			System.out.println("Player "
+					+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
+					+ " owns this space");
+			// call pay licence fee here
+		} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
+			System.out.println(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName()
+					+ "is not owned. It costs "
+					+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+		}
+		// call menu here
+
+	}
 
 	/**
 	 * @author bmurtland
