@@ -271,5 +271,88 @@ public class TurnEngine {
 		}
 		return false;
 	}
+	
+/////////////////////////hires staff methods//////////////////////////////////////////////////
+//constants for the staff pricing 
+	private final int FIELD_ONE_STAFF_PRICE = 5000;
+	private final int FIELD_TWO_STAFF_PRICE = 10000;
+	private final int FIELD_THREE_STAFF_PRICE = 15000;
+	private final int FIELD_FOUR_STAFF_PRICE = 20000;
+
+	/**
+	 * method to assign the cost of each staff member to the field
+	 * 
+	 * @param field
+	 * @return
+	 */
+	public int fieldCostStaffSpecification(int field) {
+
+		int fieldCost = 0;
+
+		switch (field) {
+
+		case 1:
+			fieldCost = FIELD_ONE_STAFF_PRICE;
+			break;
+		case 2:
+			fieldCost = FIELD_TWO_STAFF_PRICE;
+			break;
+		case 3:
+			fieldCost = FIELD_THREE_STAFF_PRICE;
+			break;
+		case 4:
+			fieldCost = FIELD_FOUR_STAFF_PRICE;
+			break;
+		}
+		return fieldCost;
+	}
+
+	/**
+	 * method to check if staff can be hired in a space Business rules: Staff must
+	 * be hired uniformly across start-ups in a field
+	 * 
+	 */
+	public void hiresStaff(int startUpPosition, int playerNumber, int fieldCost) {
+
+//this one line needs to be completed.
+//int staffOnSpace = (StartupSpace)GameAdmin.board.getSpaces().
+
+		switch (staffOnSpace) {
+
+		case 0:
+			staffOnSpace++;
+			System.out.println("You have hired a Software Developer. You now have one member of staff.");
+//priceOfStaffSubtract(playerNumber);
+			Bank.subtract(playerNumber, fieldCost);
+			System.out.println("£" + fieldCost + " has been deducted from your account");
+			break;
+		case 1:
+			staffOnSpace++;
+			System.out.println("You have hired a Software Developer. You now have two members of staff.");
+//	priceOfStaffSubtract(playerNumber);
+			Bank.subtract(playerNumber, fieldCost);
+			System.out.println("£" + fieldCost + " has been deducted from your account");
+			break;
+		case 2:
+			staffOnSpace++;
+			System.out.println("You have hired a Software Developer. You now have three members of staff.");
+//	priceOfStaffSubtract(playerNumber);
+			Bank.subtract(playerNumber, fieldCost);
+			System.out.println("£" + fieldCost + " has been deducted from your account");
+			break;
+		case 3:
+			staffOnSpace++;
+			System.out.println("You have hired a CTO. You now have the maximum number of staff.");
+//priceOfStaffSubtract(playerNumber);
+			Bank.subtract(playerNumber, fieldCost);
+			System.out.println("£" + fieldCost + " has been deducted from your account");
+			break;
+
+		default:
+			System.out.println("You already have the maximum number of staff");
+
+		}
+
+}
 
 }
