@@ -32,7 +32,7 @@ public class GameAdmin {
 	
 	public static UserInput userInput = new UserInput();
 	
-	public static InvestNI investNI = new InvestNI();
+	
 	
 	
 	
