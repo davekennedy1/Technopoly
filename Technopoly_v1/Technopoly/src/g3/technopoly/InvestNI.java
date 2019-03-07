@@ -9,24 +9,27 @@ package g3.technopoly;
 public class InvestNI extends Space {
 
 	//constants
-	private static final String name = "InvestNI";
-	private static final double investmentAmount = 20000;
+	private static final String NAME = "InvestNI";
+	private static final double INVESTMENTAMOUNT = 20000;
 
 	// constructors
 	/**
 	 * Default Constructor
 	 */
 	public InvestNI() {
-		super(name);
+		super(NAME);
 	}
 
 	/**
 	 * Constructor with args
 	 * @param name (String)
-	 * @param spaceNumber (int)
 	 */
 	public InvestNI(String name) {
 		super(name);
+	}
+	
+	public static double getInvestmentAmount() {
+		return INVESTMENTAMOUNT;
 	}
 
 	// methods
@@ -37,7 +40,7 @@ public class InvestNI extends Space {
 	 * @param playerNumber
 	 */
 	public void addInvestment(int playerNumber) {
-		Bank.add(playerNumber, investmentAmount);
+		Bank.add(playerNumber, INVESTMENTAMOUNT);
 	}
 
 }
