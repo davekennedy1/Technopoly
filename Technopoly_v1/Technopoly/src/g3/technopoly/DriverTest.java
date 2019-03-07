@@ -16,7 +16,14 @@ public class DriverTest {
 		Can you do me a favour can you push something now?
 				
 				man in the mirror
+				
+			
 
+	}
+	
+	public void ismaelMethod() {
+		
+		System.out.println("My method is ok, but Dave's will be even better.");
 	}
 
 }
