@@ -170,7 +170,9 @@ public class TurnEngine {
 	}
 
 	/**
-	 * 
+	 * This method lists all spaces owned which can be developed.
+	 * @author Ismael Florit
+	 * @studentno 40009944
 	 */
 	public void listOwnedAndCanDevelop() {
 
