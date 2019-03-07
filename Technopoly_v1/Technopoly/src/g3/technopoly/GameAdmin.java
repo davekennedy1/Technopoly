@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 /**
  * Class to oversee the admin of the Technopoly game
  * @author colettecasey
@@ -18,85 +19,60 @@ import java.util.Collections;
  */
 public class GameAdmin {
 	
-	/**
-	 * Flags if a game is in session
-	 */
-	private boolean gameInPlay = false;
 	
-	/**
-	 * ArrayList of the players
-	 */
-	protected static ArrayList<Player> players = new ArrayList<Player>(); 
+	//private boolean gameInPlay = false;
 	
-	/**
-	 * ArrayList of the spaces passed to the Board
-	 */
+	public static ArrayList<Player> players = new ArrayList<Player>(); 
+	
 	protected static ArrayList<Space> spaces = new ArrayList<Space>(); 
 	
-	/**
-	 * Creates the board Object 
-	 */
 	protected static Board board = new Board(spaces);
 	
-	/**
-	 * Sets up GameEngine
-	 */
 	public static GameEngine game;
 	
+	public static UserInput userInput = new UserInput();
 	
-
-	//**************************   Constructors   **************************
+	public static InvestNI investNI = new InvestNI();
+	
+	
 	
 	/**
-	 * Default Constructor
+	 * Setup Entire game - prompt player number and player names
+	 * @param args
 	 */
-	public GameAdmin() {
+	public static void Main(String[] args) throws Exception {
 		
-	}
-
-
-//**************************   Getters and Setters   **************************
-	
-
-
-	
-	
-
-	//**************************   Methods   **************************
-
-	
-	
-	public static void Main(String[] args) {
+		board.populateBoard();
 		
+		promptNamesOfPlayers(userInput.userInputPlayers());
 		
+		startGame();
 		
-		
-		
+			
 	}
 	
 
-	/**
-	 * Method to setup a new game by changing gameInPlay = true and creating a new board object
-	 */
-	public void setupGame() {
-		
-		//Checks if there is a game in session.  If not, sets new game in session 
-		if (gameInPlay == true) {
-
-			System.out.println("An existing game is already in session - please terminate it before starting a new game.");
-
-		} else {
-			
-			//Changes flag to set new game in session
-			gameInPlay = true;
-			
-			
-			//populates board with spaces
-			board.populateBoard();
-
-		}		
-	}
-	
+//	/**
+//	 * Method to setup a new game by changing gameInPlay = true and creating a new board object
+//	 */
+//	public void setupGame() {
+//		
+//		//Checks if there is a game in session.  If not, sets new game in session 
+//		if (gameInPlay == true) {
+//
+//			System.out.println("An existing game is already in session - please terminate it before starting a new game.");
+//
+//		} else {
+//			
+//			//Changes flag to set new game in session
+//			gameInPlay = true;
+//			
+//			
+//			//populates board with spaces
+//			board.populateBoard();
+//
+//		}		
+//	}
 	
 
 	/**
@@ -113,60 +89,34 @@ public class GameAdmin {
 	
 	
 	/**
-	 * Prompts for the number of players playing in this game
-	 */
-	public void promptNumberOfPlayers() {
-		
-		//Variable to hold number of players
-		
-		promptNamesOfPlayers(UserInput.userInputPlayers());
-	}
-	
-	/**
 	 * Method to prompt for name of Players 
 	 */
-	public void promptNamesOfPlayers(int numberOfPlayers) {
-		//Variables to hold name and number of players
-		
-	
-		String nameOfPlayers;
-		int playerNumbers = numberOfPlayers;
-		
-		nameOfPlayers = UserInput.userInputNames(); //???Again static ?
-		createPlayer(nameOfPlayers, playerNumbers);
+	public static void promptNamesOfPlayers(int numberOfPlayers) {
 		
 		
-	}
-	
-	
-	/**
-	 * Method to create the player objects
-	 */
-	public void createPlayer(String name, int playerNumber) {
-		
-		int pNumber = playerNumber;
-		String playerName = name;
-		int positionInBoard = 0; 
-		double balanceAmount = 150000.00;
-		
-		/*ArrayList<String> nameOfPlayers = new ArrayList<String>();
-		nameOfPlayers.add(playerName); *///?????Do we check if names are the same.  Is it too late here?
-		
-		for(int counter = 0; counter < pNumber; counter++) {  
-			// String name = userinputname
-			// if(duplicate player arraylist) {
-			 // NAME ALREADY TAKEN
-			//call userinput
-				} else {
-					// add player
+		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
+			
+			String playerName;
+			
+			playerName = userInput.userInputNames();
+			
+			for(int loop = 0; loop < players.size(); loop++) {
+				
+				if(players.get(loop).getName().equals(playerName)) {
+					System.out.println("That name already exists, please pick another one...");
+					playerName = userInput.userInputNames();
+					
+				}else {
+					
+					players.add(new Player(counter, playerName, 0, 150000));
 				}
-			//
-			//
-			//
-			players.add(new Player(counter, playerName, positionInBoard, balanceAmount));
+			}	
 			
 		}
+		
 	}
+	
+	
 
 	/**
 	 * Method to assign the player a turn position 
@@ -174,11 +124,9 @@ public class GameAdmin {
 	 */
 	public void shufflePlayers(){
 		
-		//Shuffle the player position
+		//Shuffle the position of the players
 		Collections.shuffle(players);
 		
-		System.out.println("The player positions after shuffle are: ");
-        players.forEach(System.out::println);
 	}
 	
 	
@@ -190,7 +138,7 @@ public class GameAdmin {
 		String gameRules;
 
 		// create a file object
-		File file = new File("Technopoly_Guide.txt");  // @Tim -  can't locate content??????
+		File file = new File("Technopoly_Guide.txt");
 
 		try {
 			FileReader fileReader = new FileReader(file.getName());
