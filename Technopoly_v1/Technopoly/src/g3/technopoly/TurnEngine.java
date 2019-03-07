@@ -1,5 +1,13 @@
 package g3.technopoly;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import mypersonaltechnopoly.GameAdmin;
+import mypersonaltechnopoly.Space;
+import mypersonaltechnopoly.StartupSpace;
+
 public class TurnEngine {
 
 	// Instance vars
@@ -157,6 +165,78 @@ public class TurnEngine {
 				System.out.printf("New Balance: £%,.0f\n\n", Driver.players.get(currentPlayer).getBalanceAmount());
 			}
 		}
+	}
+	
+	
+	/**
+	 * Method that checks whether a player can develop any properties.
+	 * If the player can, the Space's canBeDeveloped is set to true.
+	 * Otherwise it remains as false.
+	 * 
+	 * @param playerOwner
+	 * @return
+	 * @author Ismael Florit
+	 * @studentName 40009944
+	 */
+	public boolean checkIfPlayerCanDevelop(int playerOwner) {
+		// To avoid casting around, make a copy of array
+
+		ArrayList<StartupSpace> checkStartups = new ArrayList<StartupSpace>();
+
+		for (Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				checkStartups.add(new StartupSpace(s.getSpaceName(), s.getSquareNumber(), s.getSpaceField(),
+						((StartupSpace) s).isCanBeDeveloped(), ((StartupSpace) s).getPrice(),
+						((StartupSpace) s).getRent(), ((StartupSpace) s).isOwned(), ((StartupSpace) s).getPlayerOwner(),
+						((StartupSpace) s).getStaff(), ((StartupSpace) s).getSetRequired()));
+			}
+		}
+
+		// Populate Map (can't be duplicate, nice!) with available fields.
+		Map<String, Integer> uniqueFields = new HashMap<>();
+
+		for (StartupSpace s : checkStartups) {
+			uniqueFields.put(s.getSpaceField(), s.getSetRequired());
+		}
+
+		// Keep track of how many of a particular set are owned
+		int requiredCounter = 0;
+
+		// Loop through every unique field entry
+		for (Map.Entry<String, Integer> entry : uniqueFields.entrySet()) {
+
+			// loop through StartupSpaces that match a field
+			for (StartupSpace s : checkStartups) {
+				if ((s.getSpaceField().equals(entry.getKey())) && s.getPlayerOwner() == playerOwner) { // if they are
+																										// owned by the
+																										// same player
+					requiredCounter++; // add 1 to counter.
+				}
+			}
+
+			// if the counter found the same amount of owned properties as is needed
+			if (requiredCounter == entry.getValue()) {
+				for (Space s : GameAdmin.spaces) {
+					if (s.getSpaceField().equals(entry.getKey())) {
+						((StartupSpace) s).setCanBeDeveloped(true);
+					}
+				}
+				return true; // Yes! He can!
+			} else {
+				for (Space s : GameAdmin.spaces) {
+					if (s.getSpaceField().equals(entry.getKey())) {
+						((StartupSpace) s).setCanBeDeveloped(false);
+					}
+				}
+
+			}
+
+			requiredCounter = 0;
+		}
+		for(Space s : GameAdmin.spaces) {
+			System.out.println(s);
+		}
+		return false;
 	}
 
 }
