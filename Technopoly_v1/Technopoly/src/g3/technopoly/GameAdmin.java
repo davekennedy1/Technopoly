@@ -1,5 +1,5 @@
 /**
- * Colette casey
+ * 
  */
 package g3.technopoly;
 
@@ -26,12 +26,12 @@ public class GameAdmin {
 	/**
 	 * ArrayList of the players
 	 */
-	public static ArrayList<Player> players = new ArrayList<Player>(); 
+	protected static ArrayList<Player> players = new ArrayList<Player>(); 
 	
 	/**
 	 * ArrayList of the spaces passed to the Board
 	 */
-	private static ArrayList<Space> spaces = new ArrayList<Space>(); 
+	protected static ArrayList<Space> spaces = new ArrayList<Space>(); 
 	
 	/**
 	 * Creates the board Object 
@@ -53,48 +53,11 @@ public class GameAdmin {
 	public GameAdmin() {
 		
 	}
-	
-	/**
-	 * Constructor with arguments
-	 * @param gameInPlay
-	 * @param player
-	 * @param spaces
-	 * 
-	 */
-	public GameAdmin(boolean gameInPlay, ArrayList<Player> player, ArrayList<Space> spaces) {
-		
-		this.gameInPlay = gameInPlay; 
-		this.player = player;
-		this.spaces = spaces;
-		
-	}
 
 
 //**************************   Getters and Setters   **************************
 	
-	/**
-	 * Returns the player
-	 * @return 
-	 */
-	public ArrayList<Player> getPlayer() {
-		return player;
-	}
 
-	/**
-	 * Sets the players
-	 * @param player 
-	 */
-	public void setPlayer(ArrayList<Player> player) {
-		this.player = player;
-	}
-	
-	/**
-	 * Returns the spaces
-	 * @return spaces
-	 */
-	/*public ArrayList<Space> getSpaces() {
-		return spaces;
-	}*/
 
 	
 	
@@ -110,10 +73,6 @@ public class GameAdmin {
 		
 		
 	}
-	
-	
-	
-	
 	
 
 	/**
@@ -139,10 +98,15 @@ public class GameAdmin {
 	}
 	
 	
-	
 
+	/**
+	 * Method startGame() to initialise the GameEngine object
+	 * @throws Exception
+	 */
 	public static void startGame()throws Exception {
+		//Create new GameEngine Object
 		game = new GameEngine(spaces.size(), players.size());
+		
 		game.gameManager();
 	}
 	
@@ -199,7 +163,7 @@ public class GameAdmin {
 			//
 			//
 			//
-			player.add(new Player(counter, playerName, positionInBoard, balanceAmount));
+			players.add(new Player(counter, playerName, positionInBoard, balanceAmount));
 			
 		}
 	}
@@ -211,10 +175,10 @@ public class GameAdmin {
 	public void shufflePlayers(){
 		
 		//Shuffle the player position
-		Collections.shuffle(player);
+		Collections.shuffle(players);
 		
 		System.out.println("The player positions after shuffle are: ");
-        player.forEach(System.out::println);
+        players.forEach(System.out::println);
 	}
 	
 	
