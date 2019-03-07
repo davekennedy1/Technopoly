@@ -35,7 +35,7 @@ public class Board {
 
 		for (StartupSpaceValues space : StartupSpaceValues.values()) {
 
-			spaces.add(new StartupSpace(space.getSpaceName(), false, false, space.getPrice(), space.getRent(), 0));
+			spaces.add(new StartupSpace(space.getSpaceName(), false, false, space.getPrice(), space.getSite_price(), 0, space.getSpaceField(), space.getSetRequired()));
 		}
 
 		spaces.add(0, new InvestNI());
