@@ -173,9 +173,9 @@ public class TurnEngine {
 
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
-				if (((StartupSpace) s).getPlayerOwner() == getPlayerTurn() && ((StartupSpace) s).isCanBeDeveloped()) {
+				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()==true) {
 					
-					System.out.println("You own and can develop: "+ s.getSpaceName());
+					System.out.println("You own and can develop: "+ s.getName());
 					//Below would use a formatter.
 //					Messenger.printStartup(s.getSpaceName(), ((StartupSpace) s).getRent(),
 //							((StartupSpace) s).getStaff());
