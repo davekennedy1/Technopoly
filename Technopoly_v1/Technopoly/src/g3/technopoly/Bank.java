@@ -6,23 +6,23 @@ public class Bank {
 	
 	public static void add(int playerNumber, double amount) {
 		
-		currentBalance = gameAdmin.players.get(playerNumber).getBalanceAmount();
+		currentBalance = Driver.players.get(playerNumber).getBalanceAmount();
 		newBalance = currentBalance + amount;
 		
-		gameAdmin.players.get(playerNumber).setBalanceAmount(newBalance);
+		Driver.players.get(playerNumber).setBalanceAmount(newBalance);
 	}
 	
 	public static void subtract(int playerNumber, double amount) {
 		
-		currentBalance = gameAdmin.players.get(playerNumber).getBalanceAmount();
+		currentBalance = Driver.players.get(playerNumber).getBalanceAmount();
 		newBalance = currentBalance - amount;
 		
-		gameAdmin.players.get(playerNumber).setBalanceAmount(newBalance);
+		Driver.players.get(playerNumber).setBalanceAmount(newBalance);
 	}
 	
 	public static boolean checkFunds(int playerNumber, double amount) {
 		boolean hasFunds;
-		if(gameAdmin.players.get(playerNumber).getBalanceAmount()<amount) {
+		if(Driver.players.get(playerNumber).getBalanceAmount()>amount) {
 			hasFunds = true;
 		}else {
 			hasFunds=false;
