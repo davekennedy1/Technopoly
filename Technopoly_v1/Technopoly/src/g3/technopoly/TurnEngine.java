@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import mypersonaltechnopoly.GameAdmin;
-import mypersonaltechnopoly.Messenger;
-import mypersonaltechnopoly.Space;
-import mypersonaltechnopoly.StartupSpace;
-
 public class TurnEngine {
 
 	// Instance vars
