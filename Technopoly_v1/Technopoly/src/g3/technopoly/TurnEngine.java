@@ -163,30 +163,30 @@ public class TurnEngine {
 			}
 		}
 	}
-	
+
 	/**
 	 * @author bmurtland
 	 * 
-	 * method will provide a list of owned startups for the player whose turn it is and 
-	 * print this to screen when called
-	 * For later iterations can use a formatter class
+	 *         method will provide a list of owned startups for the player whose
+	 *         turn it is and print this to screen when called For later iterations
+	 *         can use a formatter class
 	 */
-	
+
 	public void listOwned() {
 
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
-					
-					System.out.println("You own: "+ s.getName());	
+
+					System.out.println("You own: " + s.getName());
 				}
 			}
 		}
 	}
 
-
 	/**
 	 * This method lists all spaces owned which can be developed.
+	 * 
 	 * @author Ismael Florit
 	 * @studentno 40009944
 	 */
@@ -194,10 +194,11 @@ public class TurnEngine {
 
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
-				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()==true) {
-					
-					System.out.println("You own and can develop: "+ s.getName());
-					//Below would use a formatter.
+				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
+						&& ((StartupSpace) s).getCanBeDeveloped() == true) {
+
+					System.out.println("You own and can develop: " + s.getName());
+					// Below would use a formatter.
 //					Messenger.printStartup(s.getSpaceName(), ((StartupSpace) s).getRent(),
 //							((StartupSpace) s).getStaff());
 				}
@@ -216,24 +217,14 @@ public class TurnEngine {
 	 * @studentName 40009944
 	 */
 	public boolean checkIfPlayerCanDevelop(int playerOwner) {
-		// To avoid casting around, make a copy of array
 
-		ArrayList<StartupSpace> checkStartups = new ArrayList<StartupSpace>();
+		// Populate Map with fields (can't be duplicate, nice!) with available fields.
+		Map<String, Integer> uniqueFields = new HashMap<>();
 
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
-				checkStartups.add(new StartupSpace(s.getSpaceName(), s.getSquareNumber(), s.getSpaceField(),
-						((StartupSpace) s).isCanBeDeveloped(), ((StartupSpace) s).getPrice(),
-						((StartupSpace) s).getRent(), ((StartupSpace) s).isOwned(), ((StartupSpace) s).getPlayerOwner(),
-						((StartupSpace) s).getStaff(), ((StartupSpace) s).getSetRequired()));
+				uniqueFields.put(((StartupSpace) s).getSpaceField(), ((StartupSpace) s).getFieldSetRequired());
 			}
-		}
-
-		// Populate Map (can't be duplicate, nice!) with available fields.
-		Map<String, Integer> uniqueFields = new HashMap<>();
-
-		for (StartupSpace s : checkStartups) {
-			uniqueFields.put(s.getSpaceField(), s.getSetRequired());
 		}
 
 		// Keep track of how many of a particular set are owned
@@ -243,31 +234,36 @@ public class TurnEngine {
 		for (Map.Entry<String, Integer> entry : uniqueFields.entrySet()) {
 
 			// loop through StartupSpaces that match a field
-			for (StartupSpace s : checkStartups) {
-				if ((s.getSpaceField().equals(entry.getKey())) && s.getPlayerOwner() == playerOwner) { // if they are
-																										// owned by the
-																										// same player
-					requiredCounter++; // add 1 to counter.
+			for (Space s : GameAdmin.spaces) {
+				if (s instanceof StartupSpace) {
+					// if they are owned by the same player
+					if ((((StartupSpace) s).getSpaceField().equals(entry.getKey()))
+							&& (((StartupSpace) s).getPlayerOwner() == playerOwner)) {
+						requiredCounter++; // add 1 to counter.
+					}
 				}
 			}
 
 			// if the counter found the same amount of owned properties as is needed
 			if (requiredCounter == entry.getValue()) {
 				for (Space s : GameAdmin.spaces) {
-					if (s.getSpaceField().equals(entry.getKey())) {
-						((StartupSpace) s).setCanBeDeveloped(true);
+					if (s instanceof StartupSpace) {
+						if (((StartupSpace) s).getSpaceField().equals(entry.getKey())) {
+							((StartupSpace) s).setCanBeDeveloped(true);
+						}
 					}
+
 				}
 				return true; // Yes! He can!
 			} else {
 				for (Space s : GameAdmin.spaces) {
-					if (s.getSpaceField().equals(entry.getKey())) {
-						((StartupSpace) s).setCanBeDeveloped(false);
+					if (s instanceof StartupSpace) {
+						if (((StartupSpace) s).getSpaceField().equals(entry.getKey())) {
+							((StartupSpace) s).setCanBeDeveloped(false);
+						}
 					}
 				}
-
 			}
-
 			requiredCounter = 0;
 		}
 		for (Space s : GameAdmin.spaces) {
