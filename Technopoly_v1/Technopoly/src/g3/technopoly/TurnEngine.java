@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import mypersonaltechnopoly.GameAdmin;
-import mypersonaltechnopoly.Messenger;
-import mypersonaltechnopoly.Space;
-import mypersonaltechnopoly.StartupSpace;
-
 public class TurnEngine {
 
 	// Instance vars
@@ -191,15 +186,17 @@ public class TurnEngine {
 
 
 	/**
-	 * 
+	 * This method lists all spaces owned which can be developed.
+	 * @author Ismael Florit
+	 * @studentno 40009944
 	 */
 	public void listOwnedAndCanDevelop() {
 
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
-				if (((StartupSpace) s).getPlayerOwner() == getPlayerTurn() && ((StartupSpace) s).isCanBeDeveloped()) {
+				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()==true) {
 					
-					System.out.println("You own and can develop: "+ s.getSpaceName());
+					System.out.println("You own and can develop: "+ s.getName());
 					//Below would use a formatter.
 //					Messenger.printStartup(s.getSpaceName(), ((StartupSpace) s).getRent(),
 //							((StartupSpace) s).getStaff());

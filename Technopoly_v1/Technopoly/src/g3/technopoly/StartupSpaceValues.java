@@ -13,22 +13,33 @@ package g3.technopoly;
  * @studentNo 40009944
  */
 public enum StartupSpaceValues {
-
+	
 	// Properties for each Value.
 
-	WEBDEV1("Artisan Web", "WebDev", 2, 12000, 800), WEBDEV2("Reflex Studios", "WebDev", 2, 12000, 800),
-	FINTECH1("Deloitte", "FinTech", 3, 1800, 1400), FINTECH2("PWC", "FinTech", 3, 18000, 1400),
-	FINTECH3("Pearson", "FinTech", 3, 20000, 1600), CLOUD1("Rapid7", "Cloud", 3, 26000, 2200),
-	CLOUD2("Liberty IT", "Cloud", 3, 26000, 2200), CLOUD3("Cloud Migration 365", "Cloud", 3, 28000, 2400),
-	AI1("HAL Robotics", "AI", 2, 32000, 2800), AI2("IC Resources", "AI", 2, 35000, 3500);
+	WEBDEV1("Artisan Web", "WebDev", 2, 12000, 800),
+	WEBDEV2("Reflex Studios", "WebDev", 2, 12000, 800),
+	FINTECH1("Deloitte", "FinTech", 3, 1800, 1400),
+	FINTECH2("PWC", "FinTech", 3, 18000, 1400),
+	FINTECH3("Pearson", "FinTech", 3, 20000, 1600),
+	CLOUD1("Rapid7", "Cloud", 3, 26000, 2200),
+	CLOUD2("Liberty IT", "Cloud", 3, 26000, 2200),
+	CLOUD3("Cloud Migration 365", "Cloud", 3, 28000, 2400),
+	AI1("HAL Robotics", "AI", 2, 32000, 2800),
+	AI2("IC Resources", "AI", 2, 35000, 3500);
 
 	private final String spaceName;
 	private final String spaceField;
 	private final int setRequired;
 	private final int price;
 	private final int rent;
+	private final int rent_1staff;
+	private final int rent_2staff;
+	private final int rent_3staff;
+	private final int rent_4staff;
+	private final int rent_CTO;
+	
 
-	private StartupSpaceValues(String spaceName, String spaceField, int setRequired, int price, int rent) {
+	private StartupSpaceValues(String spaceName, String spaceField, int setRequired, int price, int rent, int rent_1staff, int rent_2staff, int rent_3staff, int rent_4staff, int rent_CTO) {
 		this.spaceName = spaceName;
 		this.spaceField = spaceField;
 		this.setRequired = setRequired;
