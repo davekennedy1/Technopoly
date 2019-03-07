@@ -3,8 +3,6 @@
  */
 package g3.technopoly;
 
-import java.util.ArrayList;
-
 /**
  * @author bmurtland
  *
@@ -13,12 +11,12 @@ public class Player {
 
 	/**
 	 * Constants for Player Class setting min and max points not set as static as
-	 * possiblity to increase in later iterations
+	 * Possibility to increase in later iterations
 	 */
 	private final int minBoardPosition = 0;
 	private final int maxBoardPosition = 11;
-	private final int minplayerNumber = 0;
-	private final int maxplayerNumber = 3;
+	private final int minplayerNumber = 2;
+	private final int maxplayerNumber = 4;
 
 	/**
 	 * Declaration of all instance vars
@@ -27,7 +25,6 @@ public class Player {
 	private String name;
 	private int positionInBoard;
 	private double balanceAmount;
-
 
 	/**
 	 * Default Constructor
@@ -54,17 +51,17 @@ public class Player {
 //		this.setName(name);
 //		this.setPositionInBoard(positionInBoard);
 //		this.setBalanceAmount(balanceAmount);
-//		this.setOwnedStartups(ownedStartups);
+//		
 //	}
 
 	/**
 	 * CURRENT GAME ITERATION CONSTUCTOR - no startups owned at the start thus no
 	 * need for the space array list to be included
 	 * 
-	 * @param playerNumber
-	 * @param name
-	 * @param positionInBoard
-	 * @param balanceAmount
+	 * @param playerNumber >1 & <=4
+	 * @param name as per the game admin class
+	 * @param positionInBoard >=0 & <=11
+	 * @param balanceAmount 
 	 */
 
 	public Player(int playerNumber, String name, int positionInBoard, double balanceAmount) {
@@ -90,7 +87,7 @@ public class Player {
 	 * 
 	 * @param playerNumber validation int 2-4 inclusive
 	 */
-	public void setPlayerNumber(int playerNumber) {
+	public void setPlayerNumber(int playerNumber) throws IllegalArgumentException {
 		if ((playerNumber >= minplayerNumber) && (playerNumber <= maxplayerNumber)) {
 			this.playerNumber = playerNumber;
 		} else {
@@ -160,8 +157,6 @@ public class Player {
 		this.balanceAmount = balanceAmount;
 	}
 
-	
-
 	/**
 	 * display all method will run at start of each players turn and display the
 	 * info from this class
@@ -169,10 +164,7 @@ public class Player {
 	public void displayAll() {
 		System.err.println("***Player " + playerNumber + " - " + name + "***");
 		System.out.println("Current Position " + positionInBoard + " Balance: " + balanceAmount);
-		System.out.println("You own: " + ownedStartups);
 
 	}
 
 }
-
-
