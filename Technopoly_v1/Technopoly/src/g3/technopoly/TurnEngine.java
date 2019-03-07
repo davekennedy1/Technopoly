@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mypersonaltechnopoly.GameAdmin;
+import mypersonaltechnopoly.Messenger;
 import mypersonaltechnopoly.Space;
 import mypersonaltechnopoly.StartupSpace;
 
@@ -36,10 +37,10 @@ public class TurnEngine {
 		this.currentPlayerSpace = currentPlayerSpace;
 	}
 
-	
 	// Getters and setters
 	/**
 	 * Get the number of the current player
+	 * 
 	 * @return currentPlayer (int)
 	 */
 	public int getCurrentPlayer() {
@@ -48,6 +49,7 @@ public class TurnEngine {
 
 	/**
 	 * Set the current player number
+	 * 
 	 * @param currentPlayer (int)
 	 */
 	public void setCurrentPlayer(int currentPlayer) {
@@ -56,6 +58,7 @@ public class TurnEngine {
 
 	/**
 	 * Get the number of spaces on the board
+	 * 
 	 * @return boardSpaces (int)
 	 */
 	public int getBoardSpaces() {
@@ -64,6 +67,7 @@ public class TurnEngine {
 
 	/**
 	 * Set the number of spaces on the board
+	 * 
 	 * @param boardSpaces (int)
 	 */
 	public void setBoardSpaces(int boardSpaces) {
@@ -72,6 +76,7 @@ public class TurnEngine {
 
 	/**
 	 * Get the position of the current player on the board
+	 * 
 	 * @return currentPlayerSpace (int)
 	 */
 	public int getCurrentPlayerSpace() {
@@ -80,20 +85,18 @@ public class TurnEngine {
 
 	/**
 	 * Set the players position on the board
+	 * 
 	 * @param currentPlayerSpace (int)
 	 */
 	public void setCurrentPlayerSpace(int currentPlayerSpace) {
 		this.currentPlayerSpace = currentPlayerSpace;
 	}
 
-
 	// Methods
 	/**
-	 * Method to roll the dice and move the player 
-	 * Validation: check if doubles have been rolled.
-	 * Rolling doubles gives the current player another go.
-	 * However rolling doubles three times in a row results 
-	 * in a fine for the player.
+	 * Method to roll the dice and move the player Validation: check if doubles have
+	 * been rolled. Rolling doubles gives the current player another go. However
+	 * rolling doubles three times in a row results in a fine for the player.
 	 * 
 	 * @throws Exception
 	 */
@@ -104,74 +107,90 @@ public class TurnEngine {
 		int moveAmount = dice1 + dice2;
 
 		System.out.println("you were on space " + this.currentPlayerSpace);
-		
+
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + " giving you " + moveAmount);
-		
-		if (dice1 == dice2 && Driver.game.getDoublesCounter()!= 2) {
+
+		if (dice1 == dice2 && Driver.game.getDoublesCounter() != 2) {
 			System.out.println("Because you rolled doubles, you get another turn after this one!");
-			
+
 			Driver.game.setDoublesCounter(true);
-			
+
 			movePlayer(moveAmount);
-		}else if(dice1 == dice2 && Driver.game.getDoublesCounter()== 2) {
-			System.out.println("Three doubles in a row! Well the good news is wealthy capitalists don't go to jail, they just get a slap on the wrist!");
+		} else if (dice1 == dice2 && Driver.game.getDoublesCounter() == 2) {
+			System.out.println(
+					"Three doubles in a row! Well the good news is wealthy capitalists don't go to jail, they just get a slap on the wrist!");
 			System.out.println("You've been fined £" + TAX);
-			if(Bank.checkFunds(this.currentPlayer, TAX)) {
+			if (Bank.checkFunds(this.currentPlayer, TAX)) {
 				Bank.subtract(this.currentPlayer, TAX);
 				Driver.game.setDoublesCounter(false);
 				movePlayer(moveAmount);
-			}else {
-				//NEEDS A METHOD TO TERMINATE THE GAME!!!!!!!!!!!!!!!!!!!!!!!!
+			} else {
+				// NEEDS A METHOD TO TERMINATE THE GAME!!!!!!!!!!!!!!!!!!!!!!!!
 				System.out.println("YOU IS BROKE!!! GAME OVER");
 				Driver.game.setGameInPlay(false);
 			}
-			
-		}else {
+
+		} else {
 			Driver.game.setDoublesCounter(false);
 			movePlayer(moveAmount);
 		}
-		
-		
 
 	}
 
 	/**
 	 * Method to move the player the amount of spaces required by passing an amount.
-	 * Validation: Check if the player has passed the InvestNI space and 
-	 * work out the new space that the player has landed on.
+	 * Validation: Check if the player has passed the InvestNI space and work out
+	 * the new space that the player has landed on.
 	 * 
 	 * @param moveAmount (int)
 	 */
 	public void movePlayer(int moveAmount) {
 		int lapBoardBy;
-		
-		if((this.currentPlayerSpace + moveAmount)<boardSpaces) {
+
+		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			Driver.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on Space: " + this.currentPlayerSpace +"\n");
-		}else{
+			System.out.println("You landed on Space: " + this.currentPlayerSpace + "\n");
+		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
-			
+
 			Driver.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on Space: " + this.currentPlayerSpace);
-			if(this.currentPlayerSpace == 0) {
+			if (this.currentPlayerSpace == 0) {
 				System.out.println("You landed on InvestNI, you get £" + InvestNI.getInvestmentAmount());
 				Driver.investNI.addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\\n\n", Driver.players.get(currentPlayer).getBalanceAmount());
-			}else {
+			} else {
 				System.out.printf("You passed InvestNI, you get £%,.0f\n", InvestNI.getInvestmentAmount());
 				Driver.investNI.addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\n\n", Driver.players.get(currentPlayer).getBalanceAmount());
 			}
 		}
 	}
-	
-	
+
 	/**
-	 * Method that checks whether a player can develop any properties.
-	 * If the player can, the Space's canBeDeveloped is set to true.
-	 * Otherwise it remains as false.
+	 * 
+	 */
+	public void listOwnedAndCanDevelop() {
+
+		for (Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				if (((StartupSpace) s).getPlayerOwner() == getPlayerTurn() && ((StartupSpace) s).isCanBeDeveloped()) {
+					
+					System.out.println("You own and can develop: "+ s.getSpaceName());
+					//Below would use a formatter.
+//					Messenger.printStartup(s.getSpaceName(), ((StartupSpace) s).getRent(),
+//							((StartupSpace) s).getStaff());
+				}
+			}
+		}
+	}
+
+	/**
+	 * Method that checks whether a player can develop any properties. If the player
+	 * can, the Space's canBeDeveloped is set to true. Otherwise it remains as
+	 * false.
 	 * 
 	 * @param playerOwner
 	 * @return
@@ -233,7 +252,7 @@ public class TurnEngine {
 
 			requiredCounter = 0;
 		}
-		for(Space s : GameAdmin.spaces) {
+		for (Space s : GameAdmin.spaces) {
 			System.out.println(s);
 		}
 		return false;
