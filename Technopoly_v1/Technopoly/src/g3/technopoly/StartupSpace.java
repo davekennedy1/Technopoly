@@ -83,7 +83,7 @@ public class StartupSpace extends Space {
 	 * @param staff
 	 */
 	public StartupSpace(String name, int playerOwner, boolean canBeDeveloped, 
-			boolean isOwned, double price, double rent, int staff, String spaceField) {
+			boolean isOwned, double price, double rent, int staff, String spaceField, int fieldSetRequired) {
 		super(name);
 		this.setCanBeDeveloped(canBeDeveloped);
 		this.setOwned(isOwned);
