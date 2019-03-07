@@ -26,19 +26,22 @@ public class GameAdmin {
 	/**
 	 * ArrayList of the players
 	 */
-	public static ArrayList<Player> player = new ArrayList<Player>(); 
+	public static ArrayList<Player> players = new ArrayList<Player>(); 
 	
 	/**
 	 * ArrayList of the spaces passed to the Board
 	 */
-	private ArrayList<Space> spaces = new ArrayList<Space>(); 
+	private static ArrayList<Space> spaces = new ArrayList<Space>(); 
 	
 	/**
 	 * Creates the board Object 
 	 */
-	protected Board board = new Board(spaces);
+	protected static Board board = new Board(spaces);
 	
-	
+	/**
+	 * Sets up GameEngine
+	 */
+	public static GameEngine game;
 	
 	
 
@@ -110,6 +113,8 @@ public class GameAdmin {
 	
 	
 	
+	
+	
 
 	/**
 	 * Method to setup a new game by changing gameInPlay = true and creating a new board object
@@ -132,6 +137,15 @@ public class GameAdmin {
 
 		}		
 	}
+	
+	
+	
+
+	public static void startGame()throws Exception {
+		game = new GameEngine(spaces.size(), players.size());
+		game.gameManager();
+	}
+	
 	
 	
 	/**
