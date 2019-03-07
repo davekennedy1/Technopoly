@@ -154,11 +154,11 @@ public class TurnEngine {
 			System.out.println("You landed on Space: " + this.currentPlayerSpace);
 			if (this.currentPlayerSpace == 0) {
 				System.out.println("You landed on InvestNI, you get Â£" + InvestNI.getInvestmentAmount());
-				GameAdmin.investNI.addInvestment(this.currentPlayer);
-				System.out.printf("New Balance: Â£%,.0f\\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
+				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
+				System.out.printf("New Balance: Â£%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			} else {
 				System.out.printf("You passed InvestNI, you get Â£%,.0f\n", InvestNI.getInvestmentAmount());
-				GameAdmin.investNI.addInvestment(this.currentPlayer);
+				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: Â£%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			}
 		}
@@ -324,28 +324,28 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have one member of staff.");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 		case 1:
 			staffOnSpace++;
 			System.out.println("You have hired a Software Developer. You now have two members of staff.");
 //	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 		case 2:
 			staffOnSpace++;
 			System.out.println("You have hired a Software Developer. You now have three members of staff.");
 //	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 		case 3:
 			staffOnSpace++;
 			System.out.println("You have hired a CTO. You now have the maximum number of staff.");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 
 		default:
