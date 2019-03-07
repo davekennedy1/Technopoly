@@ -168,6 +168,27 @@ public class TurnEngine {
 			}
 		}
 	}
+	
+	/**
+	 * @author bmurtland
+	 * 
+	 * method will provide a list of owned startups for the player whose turn it is and 
+	 * print this to screen when called
+	 * For later iterations can use a formatter class
+	 */
+	
+	public void listOwned() {
+
+		for (Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
+					
+					System.out.println("You own: "+ s.getName());	
+				}
+			}
+		}
+	}
+
 
 	/**
 	 * 

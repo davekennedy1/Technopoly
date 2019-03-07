@@ -27,7 +27,7 @@ public class Player {
 	private String name;
 	private int positionInBoard;
 	private double balanceAmount;
-	private ArrayList<Space> ownedStartups;
+
 
 	/**
 	 * Default Constructor
@@ -160,23 +160,7 @@ public class Player {
 		this.balanceAmount = balanceAmount;
 	}
 
-	/**
-	 * getter for space object
-	 * 
-	 * @return
-	 */
-	public ArrayList<Space> getOwnedStartups() {
-		return ownedStartups;
-	}
-
-	/**
-	 * setter for space object
-	 * 
-	 * @param ownedStartups
-	 */
-	public void setOwnedStartups(ArrayList<Space> ownedStartups) {
-		this.ownedStartups = ownedStartups;
-	}
+	
 
 	/**
 	 * display all method will run at start of each players turn and display the
