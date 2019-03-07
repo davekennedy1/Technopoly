@@ -99,7 +99,7 @@ public class GameEngine {
 	 * @return currentPlayerSpace (int)
 	 */
 	public int getCurrentPlayerSpace() {
-		return Driver.players.get(currentPlayer).getPositionInBoard();
+		return GameAdmin.players.get(currentPlayer).getPositionInBoard();
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class GameEngine {
 	 * @param currentPlayerSpace (int)
 	 */
 	public void setCurrentPlayerSpace(int currentPlayerSpace) {
-		Driver.players.get(currentPlayer).setPositionInBoard(currentPlayerSpace);
+		GameAdmin.players.get(currentPlayer).setPositionInBoard(currentPlayerSpace);
 	}
 	
 
@@ -242,7 +242,7 @@ public class GameEngine {
 	 * Increases the round counter for every time play returns to the first player
 	 */
 	public void increaseRoundCount() {
-		if(this.previousPlayer == Driver.players.size()-1 && this.currentPlayer == Driver.players.get(0).getPlayerNumber()) {
+		if(this.previousPlayer == GameAdmin.players.size()-1 && this.currentPlayer == GameAdmin.players.get(0).getPlayerNumber()) {
 			roundCount++;
 			this.setRoundCountMessage(true);
 		}
@@ -254,7 +254,7 @@ public class GameEngine {
 				System.out.println("Round: " + getRoundCount());
 				this.setRoundCountMessage(false);
 			}
-			System.out.println("It's " + Driver.players.get(this.currentPlayer).getName() + "'s turn\n");
+			System.out.println("It's " + GameAdmin.players.get(this.currentPlayer).getName() + "'s turn\n");
 			turn = new TurnEngine(getCurrentPlayer(), getSpacesOnBoard(), getCurrentPlayerSpace());
 			turn.rollDice();
 			

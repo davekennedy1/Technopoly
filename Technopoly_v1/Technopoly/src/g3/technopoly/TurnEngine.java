@@ -110,28 +110,28 @@ public class TurnEngine {
 
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + " giving you " + moveAmount);
 
-		if (dice1 == dice2 && Driver.game.getDoublesCounter() != 2) {
+		if (dice1 == dice2 && GameAdmin.game.getDoublesCounter() != 2) {
 			System.out.println("Because you rolled doubles, you get another turn after this one!");
 
-			Driver.game.setDoublesCounter(true);
+			GameAdmin.game.setDoublesCounter(true);
 
 			movePlayer(moveAmount);
-		} else if (dice1 == dice2 && Driver.game.getDoublesCounter() == 2) {
+		} else if (dice1 == dice2 && GameAdmin.game.getDoublesCounter() == 2) {
 			System.out.println(
 					"Three doubles in a row! Well the good news is wealthy capitalists don't go to jail, they just get a slap on the wrist!");
 			System.out.println("You've been fined £" + TAX);
 			if (Bank.checkFunds(this.currentPlayer, TAX)) {
 				Bank.subtract(this.currentPlayer, TAX);
-				Driver.game.setDoublesCounter(false);
+				GameAdmin.game.setDoublesCounter(false);
 				movePlayer(moveAmount);
 			} else {
 				// NEEDS A METHOD TO TERMINATE THE GAME!!!!!!!!!!!!!!!!!!!!!!!!
 				System.out.println("YOU IS BROKE!!! GAME OVER");
-				Driver.game.setGameInPlay(false);
+				GameAdmin.game.setGameInPlay(false);
 			}
 
 		} else {
-			Driver.game.setDoublesCounter(false);
+			GameAdmin.game.setDoublesCounter(false);
 			movePlayer(moveAmount);
 		}
 
@@ -149,22 +149,22 @@ public class TurnEngine {
 
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
-			Driver.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
+			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on Space: " + this.currentPlayerSpace + "\n");
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
 
-			Driver.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
+			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on Space: " + this.currentPlayerSpace);
 			if (this.currentPlayerSpace == 0) {
 				System.out.println("You landed on InvestNI, you get £" + InvestNI.getInvestmentAmount());
-				Driver.investNI.addInvestment(this.currentPlayer);
-				System.out.printf("New Balance: £%,.0f\\n\n", Driver.players.get(currentPlayer).getBalanceAmount());
+				GameAdmin.investNI.addInvestment(this.currentPlayer);
+				System.out.printf("New Balance: £%,.0f\\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			} else {
 				System.out.printf("You passed InvestNI, you get £%,.0f\n", InvestNI.getInvestmentAmount());
-				Driver.investNI.addInvestment(this.currentPlayer);
-				System.out.printf("New Balance: £%,.0f\n\n", Driver.players.get(currentPlayer).getBalanceAmount());
+				GameAdmin.investNI.addInvestment(this.currentPlayer);
+				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			}
 		}
 	}
