@@ -7,6 +7,7 @@ package g3.technopoly;
  * nominally known as players 1-4.
  * It must be paid for before assigning a new owner as the price increases
  * with the first owner of the Startup to reflect business good will. 
+ * 
  * @author Dave Kennedy
  * @studentNo 13072064
  */
@@ -28,6 +29,8 @@ public class StartupSpace extends Space {
 	private boolean canBeDeveloped, isOwned;
 	private double price, rent;
 	private int playerOwner, staff;
+	private String spaceField;
+	private int fieldSetRequired;
 	
 	//constructors
 	/**
@@ -45,9 +48,10 @@ public class StartupSpace extends Space {
 	 * @param price
 	 * @param rent
 	 * @param staff
+	 * @param spaceField
 	 */
 	public StartupSpace(String name, boolean canBeDeveloped, 
-			boolean isOwned, double price, double rent, int staff) {
+			boolean isOwned, double price, double rent, int staff, String spaceField, int fieldSetRequired) {
 		super(name);
 		this.setCanBeDeveloped(canBeDeveloped);
 		this.setOwned(isOwned);
@@ -55,6 +59,8 @@ public class StartupSpace extends Space {
 		this.setRent(rent);
 		this.playerOwner = BANK_OWNER;
 		this.setStaff(staff);
+		this.setSpaceField(spaceField);
+		this.setFieldSpaceRequired(fieldSetRequired);
 	}
 	
 	/**
@@ -77,7 +83,7 @@ public class StartupSpace extends Space {
 	 * @param staff
 	 */
 	public StartupSpace(String name, int playerOwner, boolean canBeDeveloped, 
-			boolean isOwned, double price, double rent, int staff) {
+			boolean isOwned, double price, double rent, int staff, String spaceField) {
 		super(name);
 		this.setCanBeDeveloped(canBeDeveloped);
 		this.setOwned(isOwned);
@@ -85,6 +91,8 @@ public class StartupSpace extends Space {
 		this.setRent(rent);
 		this.setPlayerOwner(playerOwner);
 		this.setStaff(staff);
+		this.setSpaceField(spaceField);
+		this.setFieldSpaceRequired(fieldSetRequired);
 	}
 
 	//getters and setters
@@ -210,6 +218,43 @@ public class StartupSpace extends Space {
 		}
 		
 	}
+	
+	/**
+	 * Gets the amount of spaces in the field the player is required to own
+	 * before being allowed to develop the space
+	 * @return fieldSetRequired (int)
+	 */
+	public int getFieldSetRequired() {
+		return fieldSetRequired;
+	}
+
+	/**
+	 * Set the amount of spaces in the space field, the player is required is own
+	 * before being allowed to develop the space
+	 * @param fieldSetRequired(int);
+	 */
+	public void setFieldSpaceRequired(int fieldSetRequired) {
+		this.fieldSetRequired = fieldSetRequired;	
+	}
+	
+	
+	/**
+	 * Get the field type of this space
+	 * @return (String)
+	 */
+	public String getSpaceField() {
+		return spaceField;
+	}
+
+	/**
+	 * Set the price to buy of the StartupSpace
+	 * Validation: price cannot be set below the minPrice constant var 
+	 * @param set the price (double)
+	 */
+	public void setSpaceField(String spaceField) {
+		this.spaceField = spaceField;
+	}
+	
 	
 	//other methods
 	/**
