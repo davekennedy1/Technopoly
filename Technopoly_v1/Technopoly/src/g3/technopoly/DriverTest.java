@@ -12,7 +12,7 @@ public class DriverTest {
 		boolean name = ((StartupSpace) GameAdmin.board.getSpaces().get(0)).getCanBeDeveloped();
 		
 		int staffNumber = ((StartupSpace)GameAdmin.board.getSpaces().get(4)).getStaff();
-		kjhkjh
+		kjhkjhlkjdsaflkjaIsmael
 
 	}
 
