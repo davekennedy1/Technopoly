@@ -275,10 +275,7 @@ public class GameEngine {
 			increaseRoundCount();
 			this.turnCount++;
 			
-			//ROUND LIMITER NEEDS REMOVED
-			if(this.roundCount == 20) {
-				setGameInPlay(false);
-			}
+			
 
 		}while(this.gameInPlay);
 		
