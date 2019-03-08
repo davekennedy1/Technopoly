@@ -590,7 +590,7 @@ public class TurnEngine {
 					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			//System.out.println("\n \nPlease select one of the following options. ");
+			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
 
 			switch (returnedInput) {
@@ -614,7 +614,7 @@ public class TurnEngine {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.HIRE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			//System.out.println("\n \nPlease select one of the following options. ");
+			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
 
 			switch (returnedInput) {
@@ -634,7 +634,7 @@ public class TurnEngine {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.TAKEOVER.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			//System.out.println("\n \nPlease select one of the following options. ");
+			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
 
 			switch (returnedInput) {
@@ -647,6 +647,22 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 3:
+				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+				// call method here
+				break;
+			}
+		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 0) && (menuList.get(2) == 0)) {
+			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.END.getMenuOptions()
+					+ "\n 2. " + MenuOptions.TERMINATE.getMenuOptions());
+
+			int returnedInput = UserInput.userInputMenu(2);
+
+			switch (returnedInput) {
+
+			case 1:
+				endTurn();
+				break;
+			case 2:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
 				// call method here
 				break;
