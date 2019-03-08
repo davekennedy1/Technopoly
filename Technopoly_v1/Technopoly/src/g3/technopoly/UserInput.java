@@ -186,7 +186,7 @@ public class UserInput {
 	 * @param numberOfChoices
 	 * @return
 	 */
-	protected static boolean validateUserMenu(int userInput, int numberOfChoices) {
+	protected static boolean validateUserMenu(int userInput, int numberOfChoices)  {
 		
 		if((userInput > MENU_LOWER) && (userInput <= numberOfChoices)){
 			return true;
