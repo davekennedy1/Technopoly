@@ -3,6 +3,7 @@ package g3.technopoly;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class TurnEngine {
 
@@ -153,21 +154,22 @@ public class TurnEngine {
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
 			if (this.currentPlayerSpace == 0) {
-				System.out.printf("You get £%,.0f\n" , InvestNI.getInvestmentAmount());
-				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
+				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
+				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			} else {
 				System.out.printf("Because you passed InvestNI, you get £%,.0f\n", InvestNI.getInvestmentAmount());
-				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
+				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			}
 		}
 	}
-	
-	
-    //***********IN PROGRESS by BM************
+
+	// ***********IN PROGRESS by BM************
 	/**
-	 * @author bmurtland method - Tells you what space you landed on (name) checks
+	 * @author bmurtland 
+	 * @studentNumber 40246862
+	 * method - Tells you what space you landed on (name) checks
 	 *         if startup is owned? if true - calls pay licence fee Else if not
 	 *         owned calls menu to give option to buy
 	 */
@@ -192,6 +194,37 @@ public class TurnEngine {
 
 	/**
 	 * @author bmurtland
+	 * @studentNumber 40246862
+	 * Purchase startup method: Get the the space landed on 
+	 * Get the price 
+	 * Get the player balance 
+	 * New balance = balance � price 
+	 * Sysout you now own � array list of players spaces and player balance
+	 */
+	
+	public void purchaseStartup() {
+		
+		//need an temporary variable to store the price and pass into Bank
+		double propertyPrice;
+		System.out.println("Are you sure you want to purchase - Y or N"
+		+((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName());
+	
+		
+		
+		if(UserInput.use) {
+		propertyPrice = ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice();
+		Bank.subtract(currentPlayer, propertyPrice);
+		System.out.println("New Balance: "+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		listOwned();
+		//return to the menu
+		}else {
+			//return to menu
+	}
+	}
+
+	/**
+	 * @author bmurtland
+	 * @studentNumber 40246862
 	 * 
 	 *         method will provide a list of owned startups for the player whose
 	 *         turn it is and print this to screen when called For later iterations
@@ -297,7 +330,7 @@ public class TurnEngine {
 		}
 		return false;
 	}
-	
+
 /////////////////////////hires staff methods//////////////////////////////////////////////////
 //constants for the staff pricing 
 	private final int FIELD_ONE_STAFF_PRICE = 5000;
