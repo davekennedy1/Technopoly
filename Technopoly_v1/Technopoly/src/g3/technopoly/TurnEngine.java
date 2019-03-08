@@ -186,15 +186,12 @@ public class TurnEngine {
 	 *         owned calls menu to give option to buy
 	 */
 
-	public void landedStartupSpace() {
-		// Tells player the NAME of the space -IS THIS NEEDED
-		//System.out.println("You landed on " + GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName());
+	public void landedStartupSpace() {		
+		//Check if player has landed on Runway
 		if(GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway") {
 			
 		}else {
-		
-		
-		
+
 			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 				System.out.println("Player "
 						+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
