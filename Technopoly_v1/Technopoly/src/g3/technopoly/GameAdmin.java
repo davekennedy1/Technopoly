@@ -101,18 +101,12 @@ public class GameAdmin {
 			
 			playerName = userInput.userInputNames();
 
-			
-			
-			
 			while(checkIfNameUnique(playerName)) {
 					System.out.println("Please enter a unique name");
 					playerName = userInput.userInputNames();	
-					
 			}
-			
 					players.add(new Player(playerName, 0, 150000));
-				
-				}
+		}
 	}
 		
 	
