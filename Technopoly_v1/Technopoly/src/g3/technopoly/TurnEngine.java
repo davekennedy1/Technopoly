@@ -223,18 +223,19 @@ public class TurnEngine {
 		
 		//need an temporary variable to store the price and pass into Bank
 		double propertyPrice;
-		System.out.println("Are you sure you want to purchase - Y or N"
+		System.out.println("Are you sure you want to purchase "
 		+((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName());
-	
-		
-		
-		if(UserInput.use) {
+		//call scanner and validation
+		String uInput = UserInput.userInputValidation();
+				
+		if (uInput == "Y") {
 		propertyPrice = ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice();
 		Bank.subtract(currentPlayer, propertyPrice);
 		System.out.println("New Balance: "+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		listOwned();
 		//return to the menu
-		}else {
+		}else if (uInput =="N"){
+			
 			//return to menu
 	}
 	}
