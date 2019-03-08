@@ -175,7 +175,7 @@ public class UserInput {
 			valid = validateUserMenu(userInput, numberOfChoices);
 		
 		}while(!valid);
-		return userInput;
+		return userInput; 
 
 	}
 	
