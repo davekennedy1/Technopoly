@@ -1,5 +1,10 @@
 package g3.technopoly;
 
+/**
+ * Method to count Rounds of play, player turns and control the order of the game.
+ * @author Dave Kennedy
+ * @studentno 13072064
+ */
 public class GameEngine {
 
 	//Instance vars
