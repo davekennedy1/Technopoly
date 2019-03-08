@@ -201,6 +201,7 @@ public class TurnEngine {
 				
 				System.out.println("You already own this Startup");
 				System.out.println("Would you like to do anything else?");
+				menuList.set(0,0);
 				viewsMenu();
 			
 			
