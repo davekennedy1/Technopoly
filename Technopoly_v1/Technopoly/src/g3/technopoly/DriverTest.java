@@ -41,6 +41,6 @@ public void TimTime() {
 	
 	public void coletteMethod() {
 		
-		System.out.println("Colette!");
+		System.out.println("Colette !");
 	}
 }
