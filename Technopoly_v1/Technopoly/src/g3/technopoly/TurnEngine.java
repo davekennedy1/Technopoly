@@ -686,6 +686,11 @@ public class TurnEngine {
 		
 	}
 	
+	/**
+	 * Method to terminate the game and declare winner
+	 * @author Dave Kennedy
+	 * @studentno 13072064
+	 */
 	public void terminatesGame() {
 		System.out.println("Are you sure you want to Terminate the game?");
 		System.out.println("As the Quitter, (yeah that's right, I called you a quitter) your score will be ignored and you cannot win the game. ");
