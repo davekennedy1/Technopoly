@@ -55,15 +55,14 @@ public class Player {
 //	}
 
 	/**
-	 * CURRENT GAME ITERATION CONSTUCTOR - no startups owned at the start thus no
+	 * Below constructor is not needed as player number conflicts. 
+	 * this constructor has no startups owned at the start thus no
 	 * need for the space array list to be included
-	 * 
 	 * @param playerNumber >1 & <=4
 	 * @param name as per the game admin class
 	 * @param positionInBoard >=0 & <=11
 	 * @param balanceAmount 
 	 */
-
 //	public Player(int playerNumber, String name, int positionInBoard, double balanceAmount) {
 //		this.setPlayerNumber(playerNumber);
 //		this.setName(name);
@@ -72,12 +71,12 @@ public class Player {
 //
 //	}
 	/**
-	 * CONSTUCTOR WITH NO PLAYER NUMBER FOR USE IN GAME ADMIN
+	 * CURRENT GAME ITERATION CONSTUCTOR
+	 * CONSTUCTOR WITH NO PLAYER NUMBER FOR USE IN GAME ADMIN  
 	 * 
-	 * @param playerNumber
-	 * @param name
-	 * @param positionInBoard
-	 * @param balanceAmount
+	 * @param name as per the game admin class
+	 * @param positionInBoard >=0 & <=11
+	 * @param balanceAmount 
 	 */
 	public Player(String name, int positionInBoard, double balanceAmount) {
 		this.setName(name);
