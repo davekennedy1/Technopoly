@@ -196,8 +196,8 @@ public class TurnEngine {
 		} else {
 
 			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
-				System.out.println("Player "
-						+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
+				
+				System.out.println((GameAdmin.players.get(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()).getName())
 						+ " owns this space");
 
 				// call pay licence fee here
