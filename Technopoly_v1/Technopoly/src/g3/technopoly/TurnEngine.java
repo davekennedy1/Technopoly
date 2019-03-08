@@ -207,10 +207,11 @@ public class TurnEngine {
 				System.out.printf("%s is not owned. It costs £%,.0f\n\n",
 						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(),
 						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
-				purchaseStartup();
+				menuList.set(0, 1);
+				viewsMenu();
 			}
 		}
-		viewsMenu();
+		
 
 	}
 
