@@ -686,6 +686,19 @@ public class TurnEngine {
 		
 	}
 	
+	public void terminatesGame() {
+		System.out.println("Are you sure you want to Terminate the game?");
+		System.out.println("As the Quitter, (yeah that's right, I called you a quitter) your score will be ignored and you cannot win the game. ");
+		if(UserInput.userInputValidation().equalsIgnoreCase("y")){
+			//this will end the game
+			System.out.println("\nPffft, bloody communists!");
+			GameAdmin.game.setGameInPlay(false);
+			//ADD scores here
+		}else {
+			viewsMenu();
+		}
+	}
+	
 
 	/**
 	 * Lists all the available startup spaces for take over.
