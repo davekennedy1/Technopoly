@@ -22,7 +22,7 @@ public class DriverTest {
 
 	public void ismaelMethod() {
 
-		System.out.println("Hi Dave & Barbara!");
+		System.out.println("Hi Dave & Barbara! ");
 	}
 
 	public void ivebeenworkinallnight() {
@@ -33,5 +33,10 @@ public class DriverTest {
 	public void TimTime() {
 		
 		System.out.println("Tim time evvvvvverybody!");
+	}
+	
+	public void coletteMethod() {
+		
+		System.out.println("Colette!");
 	}
 }
