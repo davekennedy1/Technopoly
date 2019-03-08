@@ -107,7 +107,12 @@ public class TurnEngine {
 	 * @throws Exception
 	 */
 	public void rollDice() throws Exception {
-
+		//at the start of each turn check to see if the player has the ability to hire staff and 
+		//set the menu options as required
+		if(checkIfPlayerCanDevelop(currentPlayer)) {
+			menuList.set(1, 1);
+		}
+		
 		int dice1 = Dice.throwDice();
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
@@ -152,7 +157,7 @@ public class TurnEngine {
 	 */
 	public void movePlayer(int moveAmount) {
 		int lapBoardBy;
-
+		
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
@@ -200,7 +205,7 @@ public class TurnEngine {
 			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 				
 				System.out.println((GameAdmin.players.get(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()).getName())
-						+ " owns this space");
+						+ " owns this space\n");
 				
 				//call paysLicenceFee and pass the amount of rent to be paid
 				paysLicenceFee(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getRent());
@@ -369,7 +374,6 @@ public class TurnEngine {
 			requiredCounter = 0;
 		}
 		for (Space s : GameAdmin.spaces) {
-			System.out.println(s);
 		}
 		return false;
 	}
