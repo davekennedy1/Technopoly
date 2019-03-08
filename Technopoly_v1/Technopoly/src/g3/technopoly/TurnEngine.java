@@ -230,7 +230,7 @@ public class TurnEngine {
 		double propertyPrice;
 
 		// check player wants to purchase
-		System.out.println("Do you sure you want to purchase "
+		System.out.println("Are you sure you want to purchase "
 				+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName());
 
 		// call scanner and validation
