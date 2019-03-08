@@ -219,8 +219,8 @@ public class TurnEngine {
 	 * Get the the space landed on
 	 * Get the price 
 	 * Get the player balance 
-	 * New balance = balance – price 
-	 *Print out "you now own – array list of players spaces" and player balance
+	 * New balance = balance ï¿½ price 
+	 *Print out "you now own ï¿½ array list of players spaces" and player balance
 	 */
 
 	public void purchaseStartup() {
