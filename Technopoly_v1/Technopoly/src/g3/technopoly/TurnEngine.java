@@ -196,8 +196,14 @@ public class TurnEngine {
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
 
 		} else {
-			//Dave this is the line you were meaning to check!
-			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned() && ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()!= currentPlayer) {
+			
+			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned() && ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner() == currentPlayer) {
+				
+				System.out.println("You already own this Startup");
+				viewsMenu();
+			
+			
+			}else if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned() && ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()!= currentPlayer) {
 				
 				System.out.println((GameAdmin.players.get(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()).getName())
 						+ " owns this space\n\n");
