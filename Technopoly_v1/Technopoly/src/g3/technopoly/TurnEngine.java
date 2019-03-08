@@ -187,8 +187,8 @@ public class TurnEngine {
 	 */
 
 	public void landedStartupSpace() {		
-		//Check if player has landed on Runway
-		if(GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway") {
+		//Check if player has landed on Runway or InvestNI and ignore
+		if(GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway" || GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
 			
 		}else {
 
@@ -198,9 +198,9 @@ public class TurnEngine {
 						+ " owns this space");
 				// call pay licence fee here
 			} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
-				System.out.println(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName()
-						+ " is not owned. It costs "
-						+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+
+				System.out.printf("%s is not owned. It costs £%,.0f\n\n", ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(), ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+			
 			}
 		}
 		// call menu here
