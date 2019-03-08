@@ -200,6 +200,7 @@ public class TurnEngine {
 			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned() && ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner() == currentPlayer) {
 				
 				System.out.println("You already own this Startup");
+				System.out.println("Would you like to do anything else?");
 				viewsMenu();
 			
 			
