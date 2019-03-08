@@ -31,22 +31,23 @@ public class DriverTest {
 		System.out.println("mhm");
 	}
 
-public static void beeRocks() {
+	public static void beeRocks() {
 		System.out.println("Lol...");
-	int s = 10;
+		int s = 10;
 		int b = 5;
 		int c = 0;
 	}
-public void TimTime() {
-		
+
+	public void TimTime() {
+
 		System.out.println("Tool time evvvvvverybody!");
 	}
-	
+
 	public void coletteMethod() {
-		
+
 		System.out.println("Colette !");
 	}
-	
+
 	public void daveTime() {
 		System.out.println("Its not Dave time evvvvvverybody!");
 	}
