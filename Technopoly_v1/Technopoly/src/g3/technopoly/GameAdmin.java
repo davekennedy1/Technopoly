@@ -103,7 +103,7 @@ public class GameAdmin {
 			boolean duplicateName = false;
 			
 			for(Player players : players) {
-				if(players.getName().equals(playerName)) {
+				if(players.getName().equalsIgnoreCase(playerName)) {
 					duplicateName = !duplicateName;
 				}
 			}
@@ -112,8 +112,8 @@ public class GameAdmin {
 					System.out.println("Please enter a unique name");
 					playerName = userInput.userInputNames();
 			}
-					System.out.println("test");
-					players.add(new Player(0,playerName, 0, 150000));
+
+					players.add(new Player(playerName, 0, 150000));
 				
 				}
 			}	
