@@ -43,4 +43,8 @@ public void TimTime() {
 		
 		System.out.println("Colette !");
 	}
+	
+	public void daveTime() {
+		System.out.println("Its not Dave time evvvvvverybody!");
+	}
 }
