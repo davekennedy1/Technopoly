@@ -191,7 +191,7 @@ public class UserInput {
 		if((userInput >= MENU_LOWER) && (userInput <= numberOfChoices)){
 			return true;
 		}else {
-			return false;
+			return false; 
 
 		}
 	}
