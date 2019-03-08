@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-
+ 
 
 /**
  *  UserInput class - Version 1
