@@ -72,7 +72,7 @@ public class Player {
 //	}
 	/**
 	 * CURRENT GAME ITERATION CONSTUCTOR
-	 * CONSTUCTOR WITH NO PLAYER NUMBER FOR USE IN GAME ADMIN
+	 * CONSTUCTOR WITH NO PLAYER NUMBER FOR USE IN GAME ADMIN  
 	 * 
 	 * @param name as per the game admin class
 	 * @param positionInBoard >=0 & <=11
