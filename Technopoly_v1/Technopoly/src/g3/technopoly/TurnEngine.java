@@ -486,8 +486,8 @@ public class TurnEngine {
 		if(checkIfPlayerCanDevelop(currentPlayer)) {
 			menuList.set(1, 1);
 		}
-		
-		System.out.println("\n \nPlease select one of the following options. ");
+		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
+		System.out.println("Please select one of the following options. ");
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions()
