@@ -9,7 +9,7 @@ package g3.technopoly;
  */
 public enum MenuOptions {
 
-		PURCHASE ("Purchase startup"),
+		PURCHASE ("Purchase startup"), 
 		HIRE ("Hire staff"),
 		TAKEOVER ("Takeover startup"),
 		END ("End turn"),
