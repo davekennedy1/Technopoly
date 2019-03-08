@@ -49,7 +49,7 @@ public class GameAdmin {
 		
 		startGame();
 		
-			
+			 
 	}
 	
 
@@ -95,33 +95,47 @@ public class GameAdmin {
 	public static void promptNamesOfPlayers(int numberOfPlayers) {
 		
 		String playerName;
-	
+		
 		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
 			System.out.println("Enter name for player " + counter);
 			
 			playerName = userInput.userInputNames();
-			boolean duplicateName = false;
-			
-			for(Player players : players) {
-				if(players.getName().equalsIgnoreCase(playerName)) {
-					duplicateName = !duplicateName;
-				}
-			}
-			
-			while(duplicateName) {
-					System.out.println("Please enter a unique name");
-					
-					playerName = userInput.userInputNames();
-					
-			}
 
+			
+			
+			
+			while(checkIfNameUnique(playerName)) {
+					System.out.println("Please enter a unique name");
+					playerName = userInput.userInputNames();	
+					
+			}
+			
 					players.add(new Player(playerName, 0, 150000));
 				
 				}
-			}	
-			
-
+	}
+		
 	
+	public  static boolean checkIfNameUnique(String name) {
+		
+		boolean duplicateName = false; 
+		
+		for(Player players : players) {
+		if(players.getName().equalsIgnoreCase(name)) {
+		
+			duplicateName = true;
+	
+		} else {
+			
+			duplicateName = false;
+		}
+		
+		
+		
+	}
+
+	return duplicateName;
+	}
 	
 
 	/**
