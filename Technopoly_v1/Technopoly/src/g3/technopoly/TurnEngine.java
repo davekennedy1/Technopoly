@@ -475,13 +475,13 @@ public class TurnEngine {
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
 
 	public void viewsMenu() {
-
+		System.out.println("\n \nPlease select one of the following options. ");
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions()
 					+ "\n 4. " + MenuOptions.END.getMenuOptions() + "\n 5. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			System.out.println("\n \nPlease select one of the following options. ");
+			//System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(5);
 
 			switch (returnedInput) {
@@ -514,7 +514,7 @@ public class TurnEngine {
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			System.out.println("\n \nPlease select one of the following options. ");
+			//System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
 
 			switch (returnedInput) {
@@ -541,7 +541,7 @@ public class TurnEngine {
 					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			System.out.println("\n \nPlease select one of the following options. ");
+			//System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
 
 			switch (returnedInput) {
@@ -567,7 +567,7 @@ public class TurnEngine {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			System.out.println("\n \nPlease select one of the following options. ");
+			//System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
 
 			switch (returnedInput) {
@@ -590,7 +590,7 @@ public class TurnEngine {
 					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			System.out.println("\n \nPlease select one of the following options. ");
+			//System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
 
 			switch (returnedInput) {
@@ -616,7 +616,7 @@ public class TurnEngine {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.HIRE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			System.out.println("\n \nPlease select one of the following options. ");
+			//System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
 
 			switch (returnedInput) {
@@ -638,7 +638,7 @@ public class TurnEngine {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.TAKEOVER.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			System.out.println("\n \nPlease select one of the following options. ");
+			//System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
 
 			switch (returnedInput) {
