@@ -145,19 +145,19 @@ public class TurnEngine {
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on Space: " + this.currentPlayerSpace + "\n");
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(this.currentPlayerSpace));
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
 
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on Space: " + this.currentPlayerSpace);
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(this.currentPlayerSpace));
 			if (this.currentPlayerSpace == 0) {
-				System.out.println("You landed on InvestNI, you get £" + InvestNI.getInvestmentAmount());
+				System.out.println("You get £" + InvestNI.getInvestmentAmount());
 				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			} else {
-				System.out.printf("You passed InvestNI, you get £%,.0f\n", InvestNI.getInvestmentAmount());
+				System.out.printf("Because you passed InvestNI, you get £%,.0f\n", InvestNI.getInvestmentAmount());
 				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			}
