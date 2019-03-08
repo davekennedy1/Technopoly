@@ -1,6 +1,7 @@
 package g3.technopoly;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,7 +13,18 @@ public class TurnEngine {
 	private int boardSpaces;
 	private int currentPlayerSpace;
 	private static final double TAX = 1000;
+	
+	
+	//constants for the staff pricing 
+		private final int FIELD_ONE_STAFF_PRICE = 5000;
+		private final int FIELD_TWO_STAFF_PRICE = 10000;
+		private final int FIELD_THREE_STAFF_PRICE = 15000;
+		private final int FIELD_FOUR_STAFF_PRICE = 20000;
 
+
+	
+		////array list for menu
+		ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0,0,0,1,1));
 	// Constructors
 	/**
 	 * Empty Constructor
@@ -147,12 +159,14 @@ public class TurnEngine {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			landedStartupSpace();
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
 
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			landedStartupSpace();
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
 				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
@@ -174,19 +188,22 @@ public class TurnEngine {
 	 *         owned calls menu to give option to buy
 	 */
 
-	public void landedStartupSpace() {
-		// Tells player the NAME of the space -IS THIS NEEDED
-		System.out.println("You landed on " + GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName());
+	public void landedStartupSpace() {		
+		//Check if player has landed on Runway or InvestNI and ignore
+		if(GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway" || GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
+			
+		}else {
 
-		if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
-			System.out.println("Player "
-					+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
-					+ " owns this space");
-			// call pay licence fee here
-		} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
-			System.out.println(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName()
-					+ "is not owned. It costs "
-					+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
+				System.out.println("Player "
+						+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
+						+ " owns this space");
+				// call pay licence fee here
+			} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
+
+				System.out.printf("%s is not owned. It costs £%,.0f\n\n", ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(), ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+			
+			}
 		}
 		// call menu here
 
@@ -332,11 +349,6 @@ public class TurnEngine {
 	}
 
 /////////////////////////hires staff methods//////////////////////////////////////////////////
-//constants for the staff pricing 
-	private final int FIELD_ONE_STAFF_PRICE = 5000;
-	private final int FIELD_TWO_STAFF_PRICE = 10000;
-	private final int FIELD_THREE_STAFF_PRICE = 15000;
-	private final int FIELD_FOUR_STAFF_PRICE = 20000;
 
 	/**
 	 * method to assign the cost of each staff member to the field

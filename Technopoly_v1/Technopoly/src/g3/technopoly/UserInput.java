@@ -36,7 +36,7 @@ public class UserInput {
 	 * Business rule: The number of players must be between 2 and 4. 
 	 * @param input
 	 */
-	public int userInputPlayers() {
+	public static int userInputPlayers() {
 		boolean valid = false;
 		int players = 0;
 		do {
@@ -60,7 +60,7 @@ public class UserInput {
 	 * @param userInput
 	 * @return
 	 */
-	protected boolean validateUserPlayers(int userInput) {
+	protected static boolean validateUserPlayers(int userInput) {
 		
 		if ((userInput>=LOWER_PLAYER) && (userInput<=HIGHER_PLAYER)) {
 			return true;
@@ -75,7 +75,7 @@ public class UserInput {
 	 * Validation: Names cannot be empty strings or null values.
 	 * @param input
 	 */
-	public String userInputNames() {
+	public static String userInputNames() {
 		boolean valid = false;
 		String userName = EMPTY_STRING;
 		
@@ -99,7 +99,7 @@ public class UserInput {
 		 * @param userInput
 		 * @return
 		 */
-	protected boolean validateUserNames(String userInput) {
+	protected static boolean validateUserNames(String userInput) {
 		
 	if ((userInput.trim().equals(EMPTY_STRING)) || (userInput.trim().equals(null))) {
 			return false;
@@ -115,7 +115,7 @@ public class UserInput {
 	 * Validation: Input cannot be empty strings or null values.
 	 * @param input
 	 */
-	public String userInputValidation() {
+	public static String userInputValidation() {
 		boolean valid = false;
 		String userInput = EMPTY_STRING;
 		
@@ -140,7 +140,7 @@ public class UserInput {
 	 * Validation: Input cannot be empty strings or null values.
 	 * @return
 	 */
-	protected boolean validateUserValidation(String userInput) {
+	protected static boolean validateUserValidation(String userInput) {
 		
 		if((userInput.trim().equalsIgnoreCase(YES)) || (userInput.trim().equalsIgnoreCase(NO))) {
 			return true;
@@ -159,7 +159,7 @@ public class UserInput {
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	public int userInputMenu(int numberOfChoices){
+	public static int userInputMenu(int numberOfChoices){
 		boolean valid = false;
 		int userInput = 0;
 		
@@ -186,7 +186,7 @@ public class UserInput {
 	 * @param numberOfChoices
 	 * @return
 	 */
-	protected boolean validateUserMenu(int userInput, int numberOfChoices) {
+	protected static boolean validateUserMenu(int userInput, int numberOfChoices)  {
 		
 		if((userInput > MENU_LOWER) && (userInput <= numberOfChoices)){
 			return true;
