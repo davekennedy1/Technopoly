@@ -491,8 +491,7 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
-				// call method here
+				purchaseStartup();
 				break;
 			case 2:
 				System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
@@ -524,8 +523,7 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
-				// call method here
+				purchaseStartup();
 				break;
 			case 2:
 				System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
@@ -551,8 +549,7 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
-				// call method here
+				purchaseStartup();
 				break;
 			case 2:
 				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
@@ -577,7 +574,6 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				//System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
 				purchaseStartup();
 				break;
 			case 2:
