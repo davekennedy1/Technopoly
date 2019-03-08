@@ -201,8 +201,10 @@ public class TurnEngine {
 				
 				System.out.println((GameAdmin.players.get(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()).getName())
 						+ " owns this space");
+				
+				//call paysLicenceFee and pass the amount of rent to be paid
+				paysLicenceFee(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getRent());
 
-				// call pay licence fee here
 
 			} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 
