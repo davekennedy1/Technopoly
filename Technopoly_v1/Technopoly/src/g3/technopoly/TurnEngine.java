@@ -261,7 +261,7 @@ public class TurnEngine {
 			listOwned();
 			//add line for spacing
 			System.out.println();
-
+			System.out.println("What else would you like to do?");
 			viewsMenu();
 			
 			// if player selects N return to the menu
