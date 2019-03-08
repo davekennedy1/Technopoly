@@ -472,7 +472,7 @@ public class TurnEngine {
 
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
 
-	public static void viewsMenu() {
+	public void viewsMenu() {
 
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
@@ -571,8 +571,8 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
-				// call method here
+				//System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
+				purchaseStartup();
 				break;
 			case 2:
 				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
