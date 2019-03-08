@@ -271,7 +271,7 @@ public class TurnEngine {
 	 */
 
 	public void listOwned() {
-		System.out.println(currentPlayer + " owns: ");
+		System.out.println(GameAdmin.players.get(currentPlayer).getName() + " owns: ");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
