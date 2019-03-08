@@ -64,8 +64,22 @@ public class Player {
 	 * @param balanceAmount 
 	 */
 
-	public Player(int playerNumber, String name, int positionInBoard, double balanceAmount) {
-		this.setPlayerNumber(playerNumber);
+//	public Player(int playerNumber, String name, int positionInBoard, double balanceAmount) {
+//		this.setPlayerNumber(playerNumber);
+//		this.setName(name);
+//		this.setPositionInBoard(positionInBoard);
+//		this.setBalanceAmount(balanceAmount);
+//
+//	}
+	/**
+	 * CONSTUCTOR WITH NO PLAYER NUMBER FOR USE IN GAME ADMIN
+	 * 
+	 * @param playerNumber
+	 * @param name
+	 * @param positionInBoard
+	 * @param balanceAmount
+	 */
+	public Player(String name, int positionInBoard, double balanceAmount) {
 		this.setName(name);
 		this.setPositionInBoard(positionInBoard);
 		this.setBalanceAmount(balanceAmount);

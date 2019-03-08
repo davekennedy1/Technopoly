@@ -254,7 +254,8 @@ public class GameEngine {
 				System.out.println("Round: " + getRoundCount());
 				this.setRoundCountMessage(false);
 			}
-			System.out.println("It's " + GameAdmin.players.get(this.currentPlayer).getName() + "'s turn\n");
+			System.out.println(GameAdmin.players.size());
+			//System.out.println("It's " + GameAdmin.players.get(this.currentPlayer).getName() + "'s turn\n");
 			turn = new TurnEngine(getCurrentPlayer(), getSpacesOnBoard(), getCurrentPlayerSpace());
 			turn.rollDice();
 			
