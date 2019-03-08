@@ -502,9 +502,7 @@ public class TurnEngine {
 				// call method here
 				break;
 			case 4:
-				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
-				// call method here
-				break;
+				endTurn();
 
 			case 5:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
@@ -530,8 +528,7 @@ public class TurnEngine {
 				// call method here
 				break;
 			case 3:
-				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
-				// call method here
+				endTurn();
 				break;
 			case 4:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
@@ -556,8 +553,7 @@ public class TurnEngine {
 				// call method here
 				break;
 			case 3:
-				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
-				// call method here
+				endTurn();
 				break;
 			case 4:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
@@ -577,8 +573,7 @@ public class TurnEngine {
 				purchaseStartup();
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
-				// call method here
+				endTurn();
 				break;
 			case 3:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
@@ -604,8 +599,7 @@ public class TurnEngine {
 				// call method here
 				break;
 			case 3:
-				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
-				// call method here
+				endTurn();
 				break;
 			case 4:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
@@ -626,8 +620,7 @@ public class TurnEngine {
 				// call method here
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
-				// call method here
+				endTurn();
 				break;
 			case 3:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
@@ -648,8 +641,7 @@ public class TurnEngine {
 				// call method here
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
-				// call method here
+				endTurn();
 				break;
 			case 3:
 				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
@@ -662,7 +654,8 @@ public class TurnEngine {
 	public void endTurn() {
 		System.out.println("Are you sure you want to end your turn?");
 		if(UserInput.userInputValidation().equalsIgnoreCase("y")){
-			//this will end the turn
+			//this will end the turn and give an extra line in the console
+			System.out.println("\n");
 		}else {
 			viewsMenu();
 		}
