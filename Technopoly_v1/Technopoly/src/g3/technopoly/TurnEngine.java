@@ -101,7 +101,7 @@ public class TurnEngine {
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
 
-		System.out.println("you were on space " + this.currentPlayerSpace);
+		System.out.println("you were on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
 
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + " giving you " + moveAmount);
 
@@ -145,15 +145,15 @@ public class TurnEngine {
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(this.currentPlayerSpace));
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
 
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(this.currentPlayerSpace));
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
 			if (this.currentPlayerSpace == 0) {
-				System.out.println("You get £" + InvestNI.getInvestmentAmount());
+				System.out.printf("You get £%,.0f\n" , InvestNI.getInvestmentAmount());
 				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			} else {
