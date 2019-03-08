@@ -23,6 +23,7 @@ public class DriverTest {
 	public void ismaelMethod() {
 
 		System.out.println("Hi Dave & Barbara!");
+		System.out.println("Hi Colette!");
 	}
 
 	public void ivebeenworkinallnight() {
