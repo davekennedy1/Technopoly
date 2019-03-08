@@ -454,7 +454,7 @@ public class TurnEngine {
 //	}
 	
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
-	
+	   
 public static void viewsMenu() {
 		
 	if((menuList.get(0)== 1) && (menuList.get(1) == 1) && (menuList.get(2) ==1)){
