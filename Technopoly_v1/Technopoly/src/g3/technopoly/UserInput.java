@@ -43,7 +43,7 @@ public class UserInput {
 			try {
 			System.out.println("Hint: Please choose between 2 - 4 players");
 			players = sc1.nextInt();
-			sc1.nextLine();
+			sc1.nextLine(); 
 			
 			} catch (InputMismatchException e) {
 				sc1.next();
