@@ -236,7 +236,7 @@ public class TurnEngine {
 		// call scanner and validation
 		String uInput = UserInput.userInputValidation();
 
-		if (uInput == "Y") {
+		if (uInput.equalsIgnoreCase("Y")) {
 			propertyPrice = ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice();
 
 			// calculate the new balance
@@ -252,7 +252,7 @@ public class TurnEngine {
 			listOwned();
 
 			// if player selects N return to the menu
-		} else if (uInput == "N") {
+		} else if (uInput.equalsIgnoreCase("N")) {
 
 			viewsMenu();
 
