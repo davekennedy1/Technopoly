@@ -22,19 +22,19 @@ public class DriverTest {
 
 	public void ismaelMethod() {
 
-		System.out.println("Hi Dave & Barbara! ");
+		System.out.println("Hi Dave & Barbara!");
+		System.out.println("Hi Colette!");
 	}
 
 	public void ivebeenworkinallnight() {
 
 		System.out.println("mhm");
 	}
-	
-	public static void beeRocks() {
+
+public static void beeRocks() {
 		System.out.println("Lol...");
 		s+b=c;
 	}
-
 public void TimTime() {
 		
 		System.out.println("Tool time evvvvvverybody!");
@@ -43,5 +43,9 @@ public void TimTime() {
 	public void coletteMethod() {
 		
 		System.out.println("Colette !");
+	}
+	
+	public void daveTime() {
+		System.out.println("Its not Dave time evvvvvverybody!");
 	}
 }
