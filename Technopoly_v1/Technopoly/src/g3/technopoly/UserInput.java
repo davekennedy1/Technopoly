@@ -188,7 +188,7 @@ public class UserInput {
 	 */
 	protected static boolean validateUserMenu(int userInput, int numberOfChoices)  {
 		
-		if((userInput > MENU_LOWER) && (userInput <= numberOfChoices)){
+		if((userInput >= MENU_LOWER) && (userInput <= numberOfChoices)){
 			return true;
 		}else {
 			return false;
