@@ -221,8 +221,8 @@ public class TurnEngine {
 	 * Get the the space landed on
 	 * Get the price 
 	 * Get the player balance 
-	 * New balance = balance – price 
-	 *Print out "you now own – array list of players spaces" and player balance
+	 * New balance = balance ï¿½ price 
+	 *Print out "you now own ï¿½ array list of players spaces" and player balance
 	 */
 
 	public void purchaseStartup() {
@@ -446,6 +446,48 @@ public class TurnEngine {
 //		}
 //
 //	}
+	
+
+	
+/**
+ * 	
+ * @param rent
+ */
+public static void paysLicenceFee(double rent) {
+		
+		double licenceFee; 
+		
+		
+		//is the space owned?  StartupSpace/isOwned
+		
+		
+		//which player owns the space?   StartupSpace/playerOwner
+		
+		//Are there properties on the space
+		
+		
+		//What is the licence fee? StartupSpace/rent
+		
+		
+		
+		//BANK:
+		//Check IF current player has the balance to pay licence fee  
+		//No - terminate game
+		//Yes - deduct the licence fee from the current player 
+		//Add the licence fee to the balance of playerOwner
+		
+		
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
 	
