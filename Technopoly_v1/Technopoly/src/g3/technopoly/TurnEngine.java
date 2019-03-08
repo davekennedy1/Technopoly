@@ -13,18 +13,16 @@ public class TurnEngine {
 	private int boardSpaces;
 	private int currentPlayerSpace;
 	private static final double TAX = 1000;
-	
-	
-	//constants for the staff pricing 
-		private final int FIELD_ONE_STAFF_PRICE = 5000;
-		private final int FIELD_TWO_STAFF_PRICE = 10000;
-		private final int FIELD_THREE_STAFF_PRICE = 15000;
-		private final int FIELD_FOUR_STAFF_PRICE = 20000;
 
+	// constants for the staff pricing
+	private final int FIELD_ONE_STAFF_PRICE = 5000;
+	private final int FIELD_TWO_STAFF_PRICE = 10000;
+	private final int FIELD_THREE_STAFF_PRICE = 15000;
+	private final int FIELD_FOUR_STAFF_PRICE = 20000;
 
-	
-		////array list for menu
-		ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0,0,0,1,1));
+	//// array list for menu
+	ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0, 0, 0, 1, 1));
+
 	// Constructors
 	/**
 	 * Empty Constructor
@@ -181,72 +179,92 @@ public class TurnEngine {
 
 	// ***********IN PROGRESS by BM************
 	/**
-	 * @author bmurtland 
-	 * @studentNumber 40246862
-	 * method - Tells you what space you landed on (name) checks
-	 *         if startup is owned? if true - calls pay licence fee Else if not
-	 *         owned calls menu to give option to buy
+	 * @author bmurtland
+	 * @studentNumber 40246862 method - Tells you what space you landed on (name)
+	 *                checks if startup is owned? if true - calls pay licence fee
+	 *                Else if not owned calls menu to give option to buy
 	 */
 
-	public void landedStartupSpace() {		
-		//Check if player has landed on Runway or InvestNI and ignore
-		if(GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway" || GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
-			
-		}else {
+	public void landedStartupSpace() {
+		
+		// Check if player has landed on Runway or InvestNI and ignore
+		if (GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway"
+				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
+
+		} else {
 
 			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 				System.out.println("Player "
 						+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
 						+ " owns this space");
+				
 				// call pay licence fee here
+				
 			} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 
-				System.out.printf("%s is not owned. It costs Â£%,.0f\n\n", ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(), ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
-			
+				System.out.printf("%s is not owned. It costs Â£%,.0f\n\n",
+						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(),
+						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+				purchaseStartup();
 			}
 		}
-		// call menu here
+		//viewsMenu();
 
 	}
 
 	/**
 	 * @author bmurtland
-	 * @studentNumber 40246862
-	 * Purchase startup method: Get the the space landed on 
+	 * @studentNumber 40246862 
+	 * Purchase startup method: 
+	 * Get the the space landed on
 	 * Get the price 
 	 * Get the player balance 
 	 * New balance = balance – price 
-	 * Sysout you now own – array list of players spaces and player balance
+	 *Print out "you now own – array list of players spaces" and player balance
 	 */
-	
+
 	public void purchaseStartup() {
-		
-		//need an temporary variable to store the price and pass into Bank
+
+		// need an temporary variable to store the price and pass into Bank
 		double propertyPrice;
-		System.out.println("Are you sure you want to purchase "
-		+((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName());
-		//call scanner and validation
+		
+		//check player wants to purchase 
+		System.out.println("Do you sure you want to purchase "
+				+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName());
+		
+		// call scanner and validation
 		String uInput = UserInput.userInputValidation();
-				
+
 		if (uInput == "Y") {
-		propertyPrice = ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice();
-		Bank.subtract(currentPlayer, propertyPrice);
-		System.out.println("New Balance: "+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
-		listOwned();
-		//return to the menu 
-		}else if (uInput =="N"){
+			propertyPrice = ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice();
+
+			// calculate the new balance
+			Bank.subtract(currentPlayer, propertyPrice);
+
+			// print out new balance and array list of players owned spaces
+			System.out.println("New Balance: " + GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			
-			//return to menu
-	}
+			//add the start up to the players array list of startups
+			((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).setPlayerOwner(currentPlayer);
+			
+			//display all that players' startups
+			listOwned();
+
+			// if player selects N return to the menu
+		} else if (uInput == "N") {
+
+			// viewsMenu();
+
+		}
 	}
 
 	/**
 	 * @author bmurtland
 	 * @studentNumber 40246862
 	 * 
-	 *         method will provide a list of owned startups for the player whose
-	 *         turn it is and print this to screen when called For later iterations
-	 *         can use a formatter class
+	 *                method will provide a list of owned startups for the player
+	 *                whose turn it is and print this to screen when called For
+	 *                later iterations can use a formatter class
 	 */
 
 	public void listOwned() {
