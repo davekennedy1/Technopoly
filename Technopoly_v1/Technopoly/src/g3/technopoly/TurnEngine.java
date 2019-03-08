@@ -164,7 +164,7 @@ public class TurnEngine {
 		}
 	}
 	
-	//BM CHANGES SHIT
+	
     //***********IN PROGRESS by BM************
 	/**
 	 * @author bmurtland method - Tells you what space you landed on (name) checks
