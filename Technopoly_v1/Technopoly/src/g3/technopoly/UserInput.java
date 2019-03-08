@@ -165,7 +165,7 @@ public class UserInput {
 		
 		do {
 			try {
-				System.out.println("\n\nHint: Choose one of the options using the numbers provided");
+				System.out.println("\n\nHint: Choose one of the options using the numbers on your keyboard");
 				userInput = sc1.nextInt();
 				sc1.nextLine(); 
 				
