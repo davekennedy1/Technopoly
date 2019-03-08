@@ -1,6 +1,7 @@
 package g3.technopoly;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +12,18 @@ public class TurnEngine {
 	private int boardSpaces;
 	private int currentPlayerSpace;
 	private static final double TAX = 1000;
+	
+	
+	//constants for the staff pricing 
+		private final int FIELD_ONE_STAFF_PRICE = 5000;
+		private final int FIELD_TWO_STAFF_PRICE = 10000;
+		private final int FIELD_THREE_STAFF_PRICE = 15000;
+		private final int FIELD_FOUR_STAFF_PRICE = 20000;
 
+
+	
+	////array list for menu
+	ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0,0,0,1,1));
 	// Constructors
 	/**
 	 * Empty Constructor
@@ -299,11 +311,6 @@ public class TurnEngine {
 	}
 	
 /////////////////////////hires staff methods//////////////////////////////////////////////////
-//constants for the staff pricing 
-	private final int FIELD_ONE_STAFF_PRICE = 5000;
-	private final int FIELD_TWO_STAFF_PRICE = 10000;
-	private final int FIELD_THREE_STAFF_PRICE = 15000;
-	private final int FIELD_FOUR_STAFF_PRICE = 20000;
 
 	/**
 	 * method to assign the cost of each staff member to the field
