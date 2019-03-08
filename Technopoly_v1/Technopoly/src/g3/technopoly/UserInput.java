@@ -175,7 +175,7 @@ public class UserInput {
 			valid = validateUserMenu(userInput, numberOfChoices);
 		
 		}while(!valid);
-		return userInput;
+		return userInput; 
 
 	}
 	
@@ -188,10 +188,10 @@ public class UserInput {
 	 */
 	protected static boolean validateUserMenu(int userInput, int numberOfChoices)  {
 		
-		if((userInput > MENU_LOWER) && (userInput <= numberOfChoices)){
+		if((userInput >= MENU_LOWER) && (userInput <= numberOfChoices)){
 			return true;
 		}else {
-			return false;
+			return false; 
 
 		}
 	}
