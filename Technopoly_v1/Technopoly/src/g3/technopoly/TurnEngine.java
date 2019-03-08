@@ -107,11 +107,6 @@ public class TurnEngine {
 	 * @throws Exception
 	 */
 	public void rollDice() throws Exception {
-		//at the start of each turn check to see if the player has the ability to hire staff and 
-		//set the menu options as required
-		if(checkIfPlayerCanDevelop(currentPlayer)) {
-			menuList.set(1, 1);
-		}
 		
 		int dice1 = Dice.throwDice();
 		int dice2 = Dice.throwDice();
@@ -486,6 +481,12 @@ public class TurnEngine {
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
 
 	public void viewsMenu() {
+		//Before displaying the menu, check to see if the player has the ability to hire staff and 
+		//set the menu options as required
+		if(checkIfPlayerCanDevelop(currentPlayer)) {
+			menuList.set(1, 1);
+		}
+		
 		System.out.println("\n \nPlease select one of the following options. ");
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
