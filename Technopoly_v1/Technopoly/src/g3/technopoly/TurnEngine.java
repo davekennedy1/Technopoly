@@ -271,12 +271,12 @@ public class TurnEngine {
 	 */
 
 	public void listOwned() {
-
+		System.out.println("You own: ");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
 
-					System.out.println("You own: " + s.getName());
+					System.out.println(s.getName());
 				}
 			}
 		}
