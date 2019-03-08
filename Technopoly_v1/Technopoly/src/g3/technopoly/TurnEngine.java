@@ -22,8 +22,8 @@ public class TurnEngine {
 
 
 	
-	////array list for menu
-	ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0,0,0,1,1));
+		////array list for menu
+		ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0,0,0,1,1));
 	// Constructors
 	/**
 	 * Empty Constructor
