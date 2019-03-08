@@ -233,7 +233,7 @@ public class TurnEngine {
 		Bank.subtract(currentPlayer, propertyPrice);
 		System.out.println("New Balance: "+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		listOwned();
-		//return to the menu
+		//return to the menu 
 		}else if (uInput =="N"){
 			
 			//return to menu
