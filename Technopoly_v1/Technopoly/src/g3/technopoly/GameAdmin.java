@@ -40,10 +40,11 @@ public class GameAdmin {
 	 * Setup Entire game - prompt player number and player names
 	 * @param args
 	 */
-	public static void Main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 		
 		board.populateBoard();
-		
+		System.out.println("Welcome to Technopoly!\n");
+		System.out.println("How many players will be playing?");
 		promptNamesOfPlayers(userInput.userInputPlayers());
 		
 		startGame();
@@ -93,28 +94,31 @@ public class GameAdmin {
 	 */
 	public static void promptNamesOfPlayers(int numberOfPlayers) {
 		
-		
+		String playerName;
+	
 		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
-			
-			String playerName;
+			System.out.println("Enter name for player " + counter);
 			
 			playerName = userInput.userInputNames();
+			boolean duplicateName = false;
 			
-			for(int loop = 0; loop < players.size(); loop++) {
-				
-				if(players.get(loop).getName().equals(playerName)) {
-					System.out.println("That name already exists, please pick another one...");
+			for(Player players : players) {
+				if(players.getName().equals(playerName)) {
+					duplicateName = !duplicateName;
+				}
+			}
+			
+			while(duplicateName) {
+					System.out.println("Please enter a unique name");
 					playerName = userInput.userInputNames();
+			}
 					
-				}else {
-					
-					players.add(new Player(counter, playerName, 0, 150000));
+					players.add(new Player(0,playerName, 0, 150000));
+				
 				}
 			}	
 			
-		}
-		
-	}
+
 	
 	
 
@@ -126,6 +130,11 @@ public class GameAdmin {
 		
 		//Shuffle the position of the players
 		Collections.shuffle(players);
+		for(int loop = 0; loop < players.size(); loop++ ) {
+			players.get(loop).setPlayerNumber(loop+1);
+		}
+		
+		
 		
 	}
 	
