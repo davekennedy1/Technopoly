@@ -168,7 +168,7 @@ public class UserInput {
 			try {
 				System.out.println("Hint: Choose one of the following options using the numbers provided");
 				userInput = sc1.nextInt();
-				sc1.nextLine();
+				sc1.nextLine(); 
 				
 			} catch (InputMismatchException e) {
 						sc1.next();
