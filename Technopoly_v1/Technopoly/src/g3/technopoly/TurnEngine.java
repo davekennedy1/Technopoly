@@ -261,6 +261,7 @@ public class TurnEngine {
 			listOwned();
 			//add line for spacing
 			System.out.println();
+			menuList.set(0, 0);
 			System.out.println("What else would you like to do?");
 			viewsMenu();
 			
