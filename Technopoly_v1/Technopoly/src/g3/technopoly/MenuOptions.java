@@ -5,7 +5,7 @@ package g3.technopoly;
 
 /**
  * @author tgl16
- * ENUM to store the menu options  
+ * ENUM to store the menu options   
  */
 public enum MenuOptions {
 
