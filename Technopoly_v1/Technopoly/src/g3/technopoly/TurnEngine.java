@@ -416,7 +416,7 @@ public class TurnEngine {
 	 * be hired uniformly across start-ups in a field
 	 * 
 	 */
-//	public void hiresStaff(int startUpPosition, int playerNumber, int fieldCost) {
+	public void hiresStaff(int startUpPosition, int playerNumber, int fieldCost) {
 //
 ////this one line needs to be completed.
 ////int staffOnSpace = (StartupSpace)GameAdmin.board.getSpaces().
@@ -457,7 +457,7 @@ public class TurnEngine {
 //
 //		}
 //
-//	}
+	}
 
 	/**
 	 * 
@@ -670,6 +670,11 @@ public class TurnEngine {
 		}
 	}
 	
+	/**
+	 * Method to end the current players turn
+	 * @author Dave Kennedy
+	 * @studentno 13072064
+	 */
 	public void endTurn() {
 		System.out.println("Are you sure you want to end your turn?");
 		if(UserInput.userInputValidation().equalsIgnoreCase("y")){
@@ -680,6 +685,7 @@ public class TurnEngine {
 		}
 		
 	}
+	
 
 	/**
 	 * Lists all the available startup spaces for take over.
