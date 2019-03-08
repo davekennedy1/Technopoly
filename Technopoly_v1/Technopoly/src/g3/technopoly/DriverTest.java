@@ -32,6 +32,7 @@ public class DriverTest {
 	
 	public static void beeRocks() {
 		System.out.println("Lol...");
+		s+b=c;
 	}
 
 public void TimTime() {
