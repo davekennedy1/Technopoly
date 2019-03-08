@@ -458,19 +458,19 @@ public class TurnEngine {
 
 		double licenceFee;
 
-		// is the space owned? StartupSpace/isOwned
+		// is the space owned? StartupSpace/isOwned - Colette you don't need to check this. The method won't be called unless it's already owned.
 
 		// which player owns the space? StartupSpace/playerOwner
 
-		// Are there properties on the space
+		// Are there staff on the space
 
-		// What is the licence fee? StartupSpace/rent
+		// What is the licence fee? StartupSpace/rent - yes you're correct
 
 		// BANK:
-		// Check IF current player has the balance to pay licence fee
+		// Check IF current player has the balance to pay licence fee - Bank.checkfunds does this for you. it returns true or false
 		// No - terminate game
-		// Yes - deduct the licence fee from the current player
-		// Add the licence fee to the balance of playerOwner
+		// Yes - deduct the licence fee from the current player - Bank.subtract does this for you
+		// Add the licence fee to the balance of playerOwner - Bank.add does this for you
 
 	}
 
