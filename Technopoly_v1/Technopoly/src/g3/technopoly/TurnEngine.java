@@ -250,6 +250,8 @@ public class TurnEngine {
 
 			// display all that players' startups
 			listOwned();
+			//add line for spacing
+			System.out.println();
 
 			// if player selects N return to the menu
 		} else if (uInput.equalsIgnoreCase("N")) {
