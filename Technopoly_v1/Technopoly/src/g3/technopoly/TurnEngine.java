@@ -161,7 +161,9 @@ public class TurnEngine {
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
-
+			
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
 				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
@@ -173,7 +175,7 @@ public class TurnEngine {
 			}
 			
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			//System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
 			landedStartupSpace();
 			
 		}
