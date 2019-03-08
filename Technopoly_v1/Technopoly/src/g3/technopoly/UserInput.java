@@ -18,7 +18,7 @@ public class UserInput {
 	 private static final int LOWER_PLAYER = 2;
 	 private static final int HIGHER_PLAYER = 4;
 	 private static final String EMPTY_STRING = "";
-	 private static final int MENU_LOWER = 1;
+	 private static final int MENU_LOWER = 1; 
 	
 	// open scanner
 	static Scanner sc1 = new Scanner(System.in);
