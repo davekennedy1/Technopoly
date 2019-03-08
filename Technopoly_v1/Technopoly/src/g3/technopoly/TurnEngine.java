@@ -182,8 +182,7 @@ public class TurnEngine {
 	// ***********IN PROGRESS by BM************
 	/**
 	 * @author bmurtland
-	 * @studentNumber 40246862 
-	 * method - Tells you what space you landed on (name)
+	 * @studentNumber 40246862 method - Tells you what space you landed on (name)
 	 * checks if startup is owned? if true - calls pay licence fee
 	 * Else if not owned calls menu to give option to buy
 	 */
@@ -195,8 +194,6 @@ public class TurnEngine {
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
 
 		} else {
-			
-			//is this space owned by another player?
 
 			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 				System.out.println("Player "
@@ -205,8 +202,6 @@ public class TurnEngine {
 				
 				// call pay licence fee here
 				
-				//if not owned tell the player and call purchase start up method(player can buy here)
-				//then view the menu
 			} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 
 				System.out.printf("%s is not owned. It costs Â£%,.0f\n\n",
@@ -226,14 +221,9 @@ public class TurnEngine {
 	 * Get the the space landed on
 	 * Get the price 
 	 * Get the player balance 
-<<<<<<< HEAD
 	 * New balance = balance ï¿½ price 
+	* add the player as player owner of that space
 	 *Print out "you now own ï¿½ array list of players spaces" and player balance
-=======
-	 * New balance = balance – price 
-	 * add the player as player owner of that space
-	 *Print out "you now own – array list of players spaces" and player balance
->>>>>>> branch 'master' of https://gitlab.eeecs.qub.ac.uk/csc7053-1819/csc7053-1819-g3.git
 	 */
 
 	public void purchaseStartup() {
@@ -266,7 +256,7 @@ public class TurnEngine {
 			// if player selects N return to the menu
 		} else if (uInput == "N") {
 
-			viewsMenu();
+			 viewsMenu();
 
 		}
 	}
@@ -501,7 +491,7 @@ public static void paysLicenceFee(double rent) {
 	
 	
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
-	   
+	
 public static void viewsMenu() {
 		
 	if((menuList.get(0)== 1) && (menuList.get(1) == 1) && (menuList.get(2) ==1)){
