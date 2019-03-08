@@ -30,7 +30,7 @@ public class DriverTest {
 		System.out.println("mhm");
 	}
 	
-	public static void beeRocks () {
+	public static void beeRocks() {
 		System.out.println("Lol...");
 	}
 
