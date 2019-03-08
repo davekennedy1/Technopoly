@@ -30,8 +30,12 @@ public class DriverTest {
 		System.out.println("mhm");
 	}
 
-	public void TimTime() {
+	public void timTime() {
 		
 		System.out.println("Tim time evvvvvverybody!");
+	}
+	
+	public void daveTime() {
+		System.out.println("Its not Dave time evvvvvverybody!");
 	}
 }
