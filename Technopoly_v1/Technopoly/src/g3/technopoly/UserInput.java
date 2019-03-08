@@ -195,4 +195,37 @@ public class UserInput {
 
 		}
 	}
+	
+	/**
+	 * method to get a number for Ismail's method 
+	 * Validation: Number must be between 1 and 20 (20 to allow for more start-ups to be added) 
+	 * @return
+	 */
+	public static int getNumber() {
+		boolean valid = false;
+		int userInput = 0;
+		
+		do {
+			try {
+				System.out.println("Hint: Please input a number");
+				userInput = sc1.nextInt();
+				sc1.nextLine(); 
+				
+			} catch (InputMismatchException e) {
+						sc1.next();
+			}
+			valid = validateGetNumber(userInput);
+		
+		}while(!valid);
+		return userInput; 
+	}
+	
+	protected static boolean validateGetNumber(int userInput) {
+		if((userInput >0) && (userInput <21)){
+			return true;
+		}else {
+			return false; 
+		}
+	}	
+	
 }
