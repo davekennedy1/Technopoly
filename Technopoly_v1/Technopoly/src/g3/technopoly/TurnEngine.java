@@ -158,12 +158,14 @@ public class TurnEngine {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			landedStartupSpace();
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
 
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			landedStartupSpace();
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n" , InvestNI.getInvestmentAmount());
 				((InvestNI)GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
@@ -184,19 +186,22 @@ public class TurnEngine {
 	 *         owned calls menu to give option to buy
 	 */
 
-	public void landedStartupSpace() {
-		// Tells player the NAME of the space -IS THIS NEEDED
-		System.out.println("You landed on " + GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName());
+	public void landedStartupSpace() {		
+		//Check if player has landed on Runway or InvestNI and ignore
+		if(GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway" || GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
+			
+		}else {
 
-		if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
-			System.out.println("Player "
-					+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
-					+ " owns this space");
-			// call pay licence fee here
-		} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
-			System.out.println(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName()
-					+ "is not owned. It costs "
-					+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
+				System.out.println("Player "
+						+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()
+						+ " owns this space");
+				// call pay licence fee here
+			} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
+
+				System.out.printf("%s is not owned. It costs £%,.0f\n\n", ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(), ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
+			
+			}
 		}
 		// call menu here
 
