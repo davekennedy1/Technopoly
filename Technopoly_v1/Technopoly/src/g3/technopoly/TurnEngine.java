@@ -6,12 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import mypersonaltechnopoly.Bank;
-import mypersonaltechnopoly.GameAdmin;
-import mypersonaltechnopoly.Space;
-import mypersonaltechnopoly.StartupSpace;
-import mypersonaltechnopoly.UserInput;
-
 public class TurnEngine {
 
 	// Instance vars
@@ -713,7 +707,7 @@ public class TurnEngine {
 		// the owner of startup is sent a message to confirm he will allow the takeover
 		System.out.println(
 				"TAKEOVER! " + startupOwnerName + ", someone is attempting to take over +" + startupName + "!");
-		System.out.println("If you accept the deal, you would gain £" + takeOverPrice);
+		System.out.println("If you accept the deal, you would gain ï¿½" + takeOverPrice);
 		System.out.printf("Do you accept the offer? - ");
 
 		// owner response
