@@ -243,7 +243,7 @@ public class TurnEngine {
 			Bank.subtract(currentPlayer, propertyPrice);
 
 			// print out new balance and array list of players owned spaces
-			System.out.println("New Balance: " + GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
 			// add the start up to the players array list of startups
 			((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).setPlayerOwner(currentPlayer);
