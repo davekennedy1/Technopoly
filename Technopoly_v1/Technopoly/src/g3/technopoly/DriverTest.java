@@ -36,6 +36,6 @@ public class DriverTest {
 
 public void TimTime() {
 		
-		System.out.println("Tim time evvvvvverybody!");
+		System.out.println("Tool time evvvvvverybody!");
 	}
 }
