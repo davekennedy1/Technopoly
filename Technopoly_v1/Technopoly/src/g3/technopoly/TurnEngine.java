@@ -511,8 +511,7 @@ public class TurnEngine {
 				endTurn();
 
 			case 5:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 
@@ -536,8 +535,7 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 4:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 0) && (menuList.get(2) == 1)) {
@@ -561,8 +559,7 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 4:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 0) && (menuList.get(2) == 0)) {
@@ -581,8 +578,7 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 3:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
@@ -606,8 +602,7 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 4:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 1) && (menuList.get(2) == 0)) {
@@ -626,8 +621,7 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 3:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 0) && (menuList.get(2) == 1)) {
@@ -647,8 +641,7 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 3:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 0) && (menuList.get(2) == 0)) {
@@ -663,8 +656,7 @@ public class TurnEngine {
 				endTurn();
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
-				// call method here
+				terminatesGame();
 				break;
 			}
 		}
