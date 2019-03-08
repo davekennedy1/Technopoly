@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
+//top test
+
 /**
  *  UserInput class - Version 1
  *  @author T.Lewis 
@@ -18,7 +20,7 @@ public class UserInput {
 	 private static final int LOWER_PLAYER = 2;
 	 private static final int HIGHER_PLAYER = 4;
 	 private static final String EMPTY_STRING = "";
-	 private static final int MENU_LOWER = 1;
+	 private static final int MENU_LOWER = 1; 
 	
 	// open scanner
 	static Scanner sc1 = new Scanner(System.in);
@@ -43,6 +45,7 @@ public class UserInput {
 			try {
 			System.out.println("Hint: Please choose between 2 - 4 players");
 			players = sc1.nextInt();
+			sc1.nextLine(); 
 			
 			} catch (InputMismatchException e) {
 				sc1.next();
@@ -167,9 +170,11 @@ public class UserInput {
 			try {
 				System.out.println("Hint: Choose one of the following options using the numbers provided");
 				userInput = sc1.nextInt();
+				sc1.nextLine(); 
 				
 			} catch (InputMismatchException e) {
 						sc1.next();
+						
 			}
 			valid = validateUserMenu(userInput, numberOfChoices);
 		
@@ -188,7 +193,7 @@ public class UserInput {
 	protected boolean validateUserMenu(int userInput, int numberOfChoices) {
 		
 		if((userInput > MENU_LOWER) && (userInput <= numberOfChoices)){
-			return true;
+			return true; 
 		}else {
 			return false;
 
