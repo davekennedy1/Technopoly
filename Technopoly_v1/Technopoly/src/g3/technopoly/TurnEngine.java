@@ -658,6 +658,16 @@ public class TurnEngine {
 			}
 		}
 	}
+	
+	public void endTurn() {
+		System.out.println("Are you sure you want to end your turn?");
+		if(UserInput.userInputValidation().equalsIgnoreCase("y")){
+			//this will end the turn
+		}else {
+			viewsMenu();
+		}
+		
+	}
 
 	/**
 	 * Lists all the available startup spaces for take over.
