@@ -262,6 +262,8 @@ public class TurnEngine {
 			//add line for spacing
 			System.out.println();
 
+			viewsMenu();
+			
 			// if player selects N return to the menu
 		} else if (uInput.equalsIgnoreCase("N")) {
 
@@ -498,8 +500,7 @@ public class TurnEngine {
 				purchaseStartup();
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
-				// call method here
+				listOwnedAndCanDevelop();
 				break;
 			case 3:
 				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
@@ -528,8 +529,7 @@ public class TurnEngine {
 				purchaseStartup();
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
-				// call method here
+				listOwnedAndCanDevelop();
 				break;
 			case 3:
 				endTurn();
@@ -595,8 +595,7 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
-				// call method here
+				listOwnedAndCanDevelop();
 				break;
 			case 2:
 				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
@@ -620,8 +619,7 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
-				// call method here
+				listOwnedAndCanDevelop();
 				break;
 			case 2:
 				endTurn();
