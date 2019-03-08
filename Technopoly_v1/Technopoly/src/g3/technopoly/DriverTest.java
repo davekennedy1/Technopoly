@@ -34,4 +34,8 @@ public class DriverTest {
 		System.out.println("Lol...");
 	}
 
+public void TimTime() {
+		
+		System.out.println("Tim time evvvvvverybody!");
+	}
 }
