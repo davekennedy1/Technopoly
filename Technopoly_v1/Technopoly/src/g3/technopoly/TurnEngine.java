@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import userInput.UserInput;
+
 public class TurnEngine {
 
 	// Instance vars
@@ -21,7 +23,7 @@ public class TurnEngine {
 	private final int FIELD_FOUR_STAFF_PRICE = 20000;
 
 	//// array list for menu
-	ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0, 0, 0, 1, 1));
+	static ArrayList<Integer> menuList = new ArrayList<>(Arrays.asList(0, 0, 0, 1, 1));
 
 	// Constructors
 	/**
@@ -450,5 +452,216 @@ public class TurnEngine {
 //		}
 //
 //	}
+	
+////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
+	
+public static void viewsMenu() {
+		
+	if((menuList.get(0)== 1) && (menuList.get(1) == 1) && (menuList.get(2) ==1)){
+	System.out.printf("________________MENU__________________\n 1. "
+			+ MenuOptions.PURCHASE.getMenuOptions()+"\n 2. "
+			+ MenuOptions.HIRE.getMenuOptions() +"\n 3. " 
+			+MenuOptions.TAKEOVER.getMenuOptions()+"\n 4. "
+			+MenuOptions.END.getMenuOptions() +"\n 5. "
+			+ MenuOptions.TERMINATE.getMenuOptions());
+
+			System.out.println("\n \nPlease select one of the following options. ");
+			int returnedInput = UserInput.userInputMenu(5);
+			 
+			switch(returnedInput) {
+			
+			case 1:
+				System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
+				//call method here
+				break;
+			case 2:
+				System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
+				//call method here
+				break;
+			case 3:
+				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
+				//call method here
+				break;
+			case 4:
+				System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
+				//call method here
+				break;
+			
+			case 5:
+				System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+				//call method here
+				break;
+			}
+			
+			}else if ((menuList.get(0)== 1) && (menuList.get(1) == 1) && (menuList.get(2) ==0)){
+				System.out.printf("________________MENU__________________\n 1. "
+						+ MenuOptions.PURCHASE.getMenuOptions()+"\n 2. "
+						+ MenuOptions.HIRE.getMenuOptions() +"\n 3. " 
+						+MenuOptions.END.getMenuOptions() +"\n 4. "
+						+ MenuOptions.TERMINATE.getMenuOptions());
+
+						System.out.println("\n \nPlease select one of the following options. ");
+						int returnedInput = UserInput.userInputMenu(4);
+						 
+						switch(returnedInput) {
+						
+						case 1:
+							System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
+							//call method here
+							break;
+						case 2:
+							System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
+							//call method here
+							break;
+						case 3:
+							System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
+							//call method here
+							break;
+						case 4:
+							System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+							//call method here
+							break;
+						}			
+					}
+			else if ((menuList.get(0)== 1) && (menuList.get(1) == 0) && (menuList.get(2) ==1)){
+				System.out.printf("________________MENU__________________\n 1. "
+						+ MenuOptions.PURCHASE.getMenuOptions()+"\n 2. "
+						+ MenuOptions.TAKEOVER.getMenuOptions() +"\n 3. " 
+						+MenuOptions.END.getMenuOptions() +"\n 4. "
+						+ MenuOptions.TERMINATE.getMenuOptions());
+
+						System.out.println("\n \nPlease select one of the following options. ");
+						int returnedInput = UserInput.userInputMenu(4);
+						 
+						switch(returnedInput) {
+						
+						case 1:
+							System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
+							//call method here
+							break;
+						case 2:
+							System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
+							//call method here
+							break;
+						case 3:
+							System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
+							//call method here
+							break;
+						case 4:
+							System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+							//call method here
+							break;
+						}			
+					}
+				else if ((menuList.get(0)== 1) && (menuList.get(1) == 0) && (menuList.get(2) ==0)){
+						System.out.printf("________________MENU__________________\n 1. "
+								+ MenuOptions.PURCHASE.getMenuOptions()+"\n 2. "
+								+MenuOptions.END.getMenuOptions() +"\n 3. "
+								+ MenuOptions.TERMINATE.getMenuOptions());
+
+								System.out.println("\n \nPlease select one of the following options. ");
+								int returnedInput = UserInput.userInputMenu(3);
+								 
+								switch(returnedInput) {
+								
+								case 1:
+									System.out.println("You have selected " + MenuOptions.PURCHASE.getMenuOptions());
+									//call method here
+									break;
+								case 2:
+									System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
+									//call method here
+									break;
+								case 3:
+									System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+									//call method here
+									break;
+								}			
+							}
+				else if ((menuList.get(0)== 0) && (menuList.get(1) == 1) && (menuList.get(2) ==1)){
+				System.out.printf("________________MENU__________________\n 1. "
+						+ MenuOptions.HIRE.getMenuOptions()+"\n 2. "
+						+ MenuOptions.TAKEOVER.getMenuOptions() +"\n 3. " 
+						+MenuOptions.END.getMenuOptions() +"\n 4. "
+						+ MenuOptions.TERMINATE.getMenuOptions());
+
+						System.out.println("\n \nPlease select one of the following options. ");
+						int returnedInput = UserInput.userInputMenu(4);
+						 
+						switch(returnedInput) {
+						
+						case 1:
+							System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
+							//call method here
+							break;
+						case 2:
+							System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
+							//call method here
+							break;
+						case 3:
+							System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
+							//call method here
+							break;
+						case 4:
+							System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+							//call method here
+							break;
+						}			
+					}
+			else if ((menuList.get(0)== 0) && (menuList.get(1) == 1) && (menuList.get(2) ==0)){
+				System.out.printf("________________MENU__________________\n 1. "
+						+ MenuOptions.HIRE.getMenuOptions() +"\n 2. " 
+						+MenuOptions.END.getMenuOptions() +"\n 3. "
+						+ MenuOptions.TERMINATE.getMenuOptions());
+
+						System.out.println("\n \nPlease select one of the following options. ");
+						int returnedInput = UserInput.userInputMenu(3);
+						 
+						switch(returnedInput) {
+						
+						case 1:
+							System.out.println("You have selected " + MenuOptions.HIRE.getMenuOptions());
+							//call method here
+							break;
+						case 2:
+							System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
+							//call method here
+							break;
+						case 3:
+							System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+							//call method here
+							break;
+						}			
+					}
+			else if ((menuList.get(0)== 0) && (menuList.get(1) == 0) && (menuList.get(2) ==1)){
+				System.out.printf("________________MENU__________________\n 1. "
+						+ MenuOptions.TAKEOVER.getMenuOptions() +"\n 2. " 
+						+MenuOptions.END.getMenuOptions() +"\n 3. "
+						+ MenuOptions.TERMINATE.getMenuOptions());
+
+						System.out.println("\n \nPlease select one of the following options. ");
+						int returnedInput = UserInput.userInputMenu(3);
+						 
+						switch(returnedInput) {
+						
+						case 1:
+							System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
+							//call method here
+							break;
+						case 2:
+							System.out.println("You have selected " + MenuOptions.END.getMenuOptions());
+							//call method here
+							break;
+						case 3:
+							System.out.println("You have selected " + MenuOptions.TERMINATE.getMenuOptions());
+							//call method here
+							break;
+						}			
+					}
+	}		
+	
+	
+	
+	
 
 }

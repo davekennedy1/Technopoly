@@ -45,11 +45,11 @@ public class GameAdmin {
 		board.populateBoard();
 		System.out.println("Welcome to Technopoly!\n");
 		System.out.println("How many players will be playing?");
-		promptNamesOfPlayers(userInput.userInputPlayers());
+		promptNamesOfPlayers(UserInput.userInputPlayers());
 		
 		startGame();
 		
-			
+			 
 	}
 	
 
@@ -95,33 +95,45 @@ public class GameAdmin {
 	public static void promptNamesOfPlayers(int numberOfPlayers) {
 		
 		String playerName;
-	
+		
 		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
 			System.out.println("Enter name for player " + counter);
 			
-			playerName = userInput.userInputNames();
-			boolean duplicateName = false;
+			playerName = UserInput.userInputNames();
 			
-			for(Player players : players) {
-				if(players.getName().equalsIgnoreCase(playerName)) {
-					duplicateName = !duplicateName;
-				}
-			}
 			
-			while(duplicateName) {
+			while(checkIfNameUnique(playerName)) {
 					System.out.println("Please enter a unique name");
-					
-					playerName = userInput.userInputNames();
+					playerName = UserInput.userInputNames();	
 					
 			}
-
+			
 					players.add(new Player(playerName, 0, 150000));
 				
 				}
-			}	
-			
-
+	}
+		
 	
+	public  static boolean checkIfNameUnique(String name) {
+		
+		boolean duplicateName = false; 
+		
+		for(Player players : players) {
+		if(players.getName().equalsIgnoreCase(name)) {
+		
+			duplicateName = true;
+	
+		} else {
+			
+			duplicateName = false;
+		}
+		
+		
+		
+	}
+
+	return duplicateName;
+	}
 	
 
 	/**
