@@ -215,7 +215,7 @@ public class TurnEngine {
 				purchaseStartup();
 			}
 		}
-		//viewsMenu();
+		viewsMenu();
 
 	}
 
@@ -261,7 +261,7 @@ public class TurnEngine {
 			// if player selects N return to the menu
 		} else if (uInput == "N") {
 
-			// viewsMenu();
+			viewsMenu();
 
 		}
 	}
