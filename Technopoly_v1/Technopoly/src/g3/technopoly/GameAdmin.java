@@ -112,7 +112,7 @@ public class GameAdmin {
 					System.out.println("Please enter a unique name");
 					playerName = userInput.userInputNames();
 			}
-					
+					System.out.println("test");
 					players.add(new Player(0,playerName, 0, 150000));
 				
 				}
