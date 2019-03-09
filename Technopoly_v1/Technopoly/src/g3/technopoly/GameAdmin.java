@@ -45,8 +45,8 @@ public class GameAdmin {
 		board.populateBoard();
 		System.out.println("Welcome to Technopoly!\n");
 		System.out.println("How many players will be playing?");
-		promptNamesOfPlayers(userInput.userInputPlayers());
-		
+		promptNamesOfPlayers(UserInput.userInputPlayers());
+		shufflePlayers();
 		startGame();
 		
 			 
@@ -99,11 +99,11 @@ public class GameAdmin {
 		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
 			System.out.println("Enter name for player " + counter);
 			
-			playerName = userInput.userInputNames();
+			playerName = UserInput.userInputNames();
 
 			while(checkIfNameUnique(playerName)) {
 					System.out.println("Please enter a unique name");
-					playerName = userInput.userInputNames();	
+					playerName = UserInput.userInputNames();	
 			}
 					players.add(new Player(playerName, 0, 150000));
 		}
