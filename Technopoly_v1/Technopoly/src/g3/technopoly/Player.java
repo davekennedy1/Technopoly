@@ -15,7 +15,7 @@ public class Player {
 	 */
 	private final int minBoardPosition = 0;
 	private final int maxBoardPosition = 11;
-	private final int minplayerNumber = 2;
+	private final int minplayerNumber = 1;
 	private final int maxplayerNumber = 4;
 
 	/**
