@@ -18,7 +18,8 @@ public class GameEngine {
 	private boolean roundCountMessage = true;
 	private int numOfPlayers;
 	private int doublesCounter = 0;
-	private TurnEngine turn; 
+	private TurnEngine turn;
+	private int playerWhoLost;
 	
 	//Constructors
 	/**
@@ -97,6 +98,22 @@ public class GameEngine {
 		}else {
 			this.currentPlayer = currentPlayer;
 		}
+	}
+	
+	/**
+	 * Get the number of the player who lost
+	 * @return playerWhoLost (int)
+	 */
+	public int getPlayerWhoLost() {
+		return playerWhoLost;
+	}
+
+	/**
+	 * Set the number of the player who lost
+	 * @param playerWhoLost (int) 
+	 */
+	public void setPlayerWhoLost(int playerWhoLost) {
+		this.playerWhoLost = playerWhoLost;
 	}
 	
 	/**
