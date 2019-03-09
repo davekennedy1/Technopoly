@@ -802,32 +802,31 @@ public class TurnEngine {
 	 * Needs finished
 	 */
 	public void declareWinner() {
-//		ArrayList<Double> playersVal = new ArrayList<Double>();
-//		double playerBal;
-//		double playerPropVal = 0;
-//		double totalPlayerValue;
-//		
-//		for(int outter = 0; outter<GameAdmin.players.size(); outter++){
-//			playerBal = GameAdmin.players.get(outter).getBalanceAmount();
-//			for(int inner = 0; inner<GameAdmin.spaces.size(); inner++) {
-//				if(GameAdmin.spaces.get(inner) instanceof StartupSpace) {
-//					System.out.println("player num" + GameAdmin.players.get(outter).getPlayerNumber());
-//					System.out.println("player owner" + (((StartupSpace) GameAdmin.spaces.get(inner)).getPlayerOwner()));
-//					if ((((StartupSpace) GameAdmin.spaces.get(inner)).getPlayerOwner() == GameAdmin.players.get(outter).getPlayerNumber())) {
-//						
-//						playerPropVal = ((StartupSpace)GameAdmin.spaces.get(inner)).getPrice();
-//						
-//					}
-//					
-//				}
-//				
-//			}
-//			totalPlayerValue = playerBal + playerPropVal;
-//			System.out.println("player bal " + playerBal);
-//			System.out.println("player prop " + playerPropVal);
-//		}
+		ArrayList<Double> playersVal = new ArrayList<Double>();
+		double playerBal;
+		double playerPropVal = 0;
+		double totalPlayerValue;
 		
-		
+		System.out.println("worth of all players *****STILL NOT FINISHED CODING THIS PART*****");
+		for(int outter = 0; outter<GameAdmin.players.size(); outter++){
+			playerBal = GameAdmin.players.get(outter).getBalanceAmount();
+			for(int inner = 0; inner<GameAdmin.board.getSpaces().size(); inner++) {
+				//if  a startup has a non-bank owner
+				if(GameAdmin.spaces.get(inner) instanceof StartupSpace && ((StartupSpace) GameAdmin.spaces.get(inner)).getPlayerOwner() != -1 ) {
+					//calculate value of all startups owned by players
+					if (((StartupSpace) GameAdmin.board.getSpaces().get(inner)).getPlayerOwner() == outter) {
+						playerPropVal += ((StartupSpace)GameAdmin.board.getSpaces().get(inner)).getPrice();
+					}
+					
+				}
+				
+			}
+			totalPlayerValue = playerBal + playerPropVal;
+			playersVal.add(outter, totalPlayerValue);
+			playerPropVal = 0;
+		}
+		//display total worth of all players
+		System.out.println(playersVal.toString());
 		
 	}
 
