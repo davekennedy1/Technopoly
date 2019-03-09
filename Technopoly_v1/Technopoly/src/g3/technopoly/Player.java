@@ -25,6 +25,7 @@ public class Player {
 	private String name;
 	private int positionInBoard;
 	private double balanceAmount;
+	private double playerWorth;
 
 	/**
 	 * Default Constructor
@@ -126,6 +127,24 @@ public class Player {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	/**
+	 * getter for player worth
+	 * 
+	 * @return
+	 */
+	public double getPlayerWorth() {
+		return playerWorth;
+	}
+
+	/**
+	 * setter for player name
+	 * 
+	 * @param name
+	 */
+	public void setPlayerWorth(double playerWorth) {
+		this.playerWorth = playerWorth;
 	}
 
 	/**
