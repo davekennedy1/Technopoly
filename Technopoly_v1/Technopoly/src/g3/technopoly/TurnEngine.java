@@ -677,7 +677,7 @@ public class TurnEngine {
 			//this will end the game
 			System.out.println("\nPffft, bloody communists!");
 			GameAdmin.game.setGameInPlay(false);
-			//ADD scores here
+			declareWinner();
 		}else {
 			viewsMenu();
 		}
@@ -798,7 +798,36 @@ public class TurnEngine {
 
 	}
 	
+	/**
+	 * Needs finished
+	 */
 	public void declareWinner() {
+//		ArrayList<Double> playersVal = new ArrayList<Double>();
+//		double playerBal;
+//		double playerPropVal = 0;
+//		double totalPlayerValue;
+//		
+//		for(int outter = 0; outter<GameAdmin.players.size(); outter++){
+//			playerBal = GameAdmin.players.get(outter).getBalanceAmount();
+//			for(int inner = 0; inner<GameAdmin.spaces.size(); inner++) {
+//				if(GameAdmin.spaces.get(inner) instanceof StartupSpace) {
+//					System.out.println("player num" + GameAdmin.players.get(outter).getPlayerNumber());
+//					System.out.println("player owner" + (((StartupSpace) GameAdmin.spaces.get(inner)).getPlayerOwner()));
+//					if ((((StartupSpace) GameAdmin.spaces.get(inner)).getPlayerOwner() == GameAdmin.players.get(outter).getPlayerNumber())) {
+//						
+//						playerPropVal = ((StartupSpace)GameAdmin.spaces.get(inner)).getPrice();
+//						
+//					}
+//					
+//				}
+//				
+//			}
+//			totalPlayerValue = playerBal + playerPropVal;
+//			System.out.println("player bal " + playerBal);
+//			System.out.println("player prop " + playerPropVal);
+//		}
+		
+		
 		
 	}
 
