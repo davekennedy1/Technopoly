@@ -463,29 +463,7 @@ public class TurnEngine {
 //
 	}
 
-	/**
-	 * 
-	 * @param rent
-	 */
-	public static void paysLicenceFee(double rent) {
 
-		double licenceFee;
-
-		// is the space owned? StartupSpace/isOwned - Colette you don't need to check this. The method won't be called unless it's already owned.
-
-		// which player owns the space? StartupSpace/playerOwner
-
-		// Are there staff on the space
-
-		// What is the licence fee? StartupSpace/rent - yes you're correct
-
-		// BANK:
-		// Check IF current player has the balance to pay licence fee - Bank.checkfunds does this for you. it returns true or false
-		// No - terminate game
-		// Yes - deduct the licence fee from the current player - Bank.subtract does this for you
-		// Add the licence fee to the balance of playerOwner - Bank.add does this for you
-
-	}
 
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
 
@@ -782,6 +760,38 @@ public class TurnEngine {
 
 		} else {
 			System.out.println(startupOwnerName + " decided to not proceed. Your take over was rejected.");
+		}
+
+	}
+	
+	/**
+	 * Method to subtract the licence fee from currentPlayer 
+	 * and credit the balance of playerOwner
+	 * @author Colette Casey
+	 * @studentno 9524096
+	 *
+	 * @param rent
+	 */
+	public void paysLicenceFee(double rent) {
+
+		double licenceFee = rent;
+		int currentPlayer = GameAdmin.players.get(this.currentPlayer).getPlayerNumber();
+		int playerOwner = ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner();
+
+		// Check if current player has the balance to pay licence fee
+
+		if (Bank.checkFunds(currentPlayer, licenceFee)) {
+
+			System.out.printf("You've landed on a space owned by another player.  The licence fee £%,.0f has been debited from your account.\n\n", licenceFee);
+					
+			Bank.subtract(currentPlayer, licenceFee);
+			Bank.add(playerOwner, licenceFee);
+			System.out.printf("Current Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
+
+		} else {
+			System.out.println("You do not have insufficient funds to continue playing.  You've been declared bankrupt!");
+			GameAdmin.game.setGameInPlay(false);
+			//ADD scores here
 		}
 
 	}
