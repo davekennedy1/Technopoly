@@ -180,7 +180,7 @@ public class TurnEngine {
 		}
 	}
 
-	// ***********IN PROGRESS by BM************
+	
 	/**
 	 * @author bmurtland
 	 * @studentNumber 40246862 method - Tells you what space you landed on (name)
