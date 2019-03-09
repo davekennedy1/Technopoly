@@ -782,11 +782,11 @@ public class TurnEngine {
 
 		if (Bank.checkFunds(currentPlayer, licenceFee)) {
 
-			System.out.printf("You've landed on a space owned by another player.  The licence fee £%,.0f has been debited from your account.\n\n", licenceFee);
-					
-			Bank.subtract(currentPlayer, licenceFee);
+			System.out.printf("The licence fee £%,.0f has been debited from your account.\n\n", licenceFee);
+			Bank.subtract(this.currentPlayer, licenceFee);
+			
 			Bank.add(playerOwner, licenceFee);
-			System.out.printf("Current Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			System.out.printf("Current Balance: £%,.0f\n\n", GameAdmin.players.get(this.currentPlayer).getBalanceAmount());
 
 		} else {
 			System.out.println("You do not have insufficient funds to continue playing.  You've been declared bankrupt!");
