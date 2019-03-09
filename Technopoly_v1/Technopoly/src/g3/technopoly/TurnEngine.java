@@ -788,6 +788,9 @@ public class TurnEngine {
 			Bank.add(playerOwner, licenceFee);
 			System.out.printf("Current Balance: £%,.0f\n\n", GameAdmin.players.get(this.currentPlayer).getBalanceAmount());
 
+			menuList.set(0, 0);
+			System.out.println("Would you like to do anything else?");
+			viewsMenu();
 		} else {
 			System.out.println("You do not have insufficient funds to continue playing.  You've been declared bankrupt!");
 			GameAdmin.game.setGameInPlay(false);
