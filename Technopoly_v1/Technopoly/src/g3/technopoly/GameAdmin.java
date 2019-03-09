@@ -136,7 +136,7 @@ public class GameAdmin {
 	 * Method to assign the player a turn position 
 	 * @return
 	 */
-	public void shufflePlayers(){
+	public static void shufflePlayers(){
 		
 		//Shuffle the position of the players
 		Collections.shuffle(players);
