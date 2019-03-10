@@ -46,7 +46,7 @@ public class GameAdmin {
 		System.out.println("Welcome to Technopoly!\n");
 		System.out.println("How many players will be playing?");
 		promptNamesOfPlayers(UserInput.userInputPlayers());
-		shufflePlayers();
+		//shufflePlayers();
 		startGame();
 		
 			 
