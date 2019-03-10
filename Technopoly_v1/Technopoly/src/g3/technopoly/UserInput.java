@@ -124,8 +124,7 @@ public class UserInput {
 			try {
 				System.out.println("Please choose Yes(Y) or No (N)");
 				userInput = sc1.nextLine();
-				sc1.nextLine(); 
-				
+								
 			} catch (NullPointerException e) {
 				sc1.next();
 			}
@@ -154,7 +153,7 @@ public class UserInput {
 	
 	/**
 	 * 
-	 * THIS METHOD NEEDS TO BE REDONE TO FIT AIDANS EXAMPLE BUT IT SHOULD WORK AS IT IS
+	 * 
 	 *  
 	 * method to get user input as int for the menu
 	 * Validation: User must input a number between 1 - 5, depending on how many options are provided to them. 
