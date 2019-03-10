@@ -810,7 +810,6 @@ public class TurnEngine {
 		double playerPropVal = 0;
 		double totalPlayerValue;
 		
-		System.out.println("worth of all players *****STILL NOT FINISHED CODING THIS PART*****");
 		for(int outter = 0; outter<GameAdmin.players.size(); outter++){
 			playerBal = GameAdmin.players.get(outter).getBalanceAmount();
 			for(int inner = 0; inner<GameAdmin.board.getSpaces().size(); inner++) {
@@ -829,18 +828,23 @@ public class TurnEngine {
 			GameAdmin.players.get(outter).setPlayerWorth(totalPlayerValue);
 			playerPropVal = 0;
 		}
-		//display total worth of all players
-		//System.out.println(playersVal.toString());
-		System.out.println("Quitter was: " + GameAdmin.players.get(currentPlayer).getName());
-		for(int loop = 0; loop < GameAdmin.players.size(); loop++) {
-			System.out.printf("Name: %s - Worth: %,.0f\n", GameAdmin.players.get(loop).getName(), GameAdmin.players.get(loop).getPlayerWorth());
-		}
+		
 		Collections.sort(playersVal);
 		Collections.reverse(playersVal);
+		System.out.println("\n______________Winner/s______________");
+		//Declare winner
 		if(playersVal.get(0) != GameAdmin.players.get(currentPlayer).getPlayerWorth()) {
-			System.out.println("Winner is : " + playersVal.get(0));
+			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
+				if(playersVal.get(0) == GameAdmin.players.get(loop).getPlayerWorth()) {
+					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(), playersVal.get(0));
+				}
+			}
 		}else {
-			System.out.println("Winner is : " + playersVal.get(1));
+			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
+				if(playersVal.get(1) == GameAdmin.players.get(loop).getPlayerWorth()) {
+					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(), playersVal.get(1));
+				}
+			}
 		}
 	}
 
