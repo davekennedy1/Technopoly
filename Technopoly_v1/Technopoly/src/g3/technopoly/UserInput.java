@@ -83,6 +83,7 @@ public class UserInput {
 			try {
 			System.out.println("Hint: Empty names are not allowed");
 				userName = sc1.nextLine();
+				sc1.nextLine(); 
 
 			} catch (NullPointerException e) {
 				sc1.next();
@@ -123,6 +124,8 @@ public class UserInput {
 			try {
 				System.out.println("Please choose Yes(Y) or No (N)");
 				userInput = sc1.nextLine();
+				sc1.nextLine(); 
+				
 			} catch (NullPointerException e) {
 				sc1.next();
 			}
