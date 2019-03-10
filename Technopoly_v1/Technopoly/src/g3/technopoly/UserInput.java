@@ -83,7 +83,7 @@ public class UserInput {
 			try {
 			System.out.println("Hint: Empty names are not allowed");
 				userName = sc1.nextLine();
-				sc1.nextLine(); 
+			
 
 			} catch (NullPointerException e) {
 				sc1.next();
