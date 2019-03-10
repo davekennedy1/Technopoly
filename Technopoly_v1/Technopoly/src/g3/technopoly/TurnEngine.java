@@ -2,6 +2,7 @@ package g3.technopoly;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class TurnEngine {
 	private int boardSpaces;
 	private int currentPlayerSpace;
 	private static final double TAX = 1000;
+	private int terminatingPlayer;
 
 	// constants for the staff pricing
 	private final int FIELD_ONE_STAFF_PRICE = 5000;
@@ -676,6 +678,7 @@ public class TurnEngine {
 		if(UserInput.userInputValidation().equalsIgnoreCase("y")){
 			//this will end the game
 			System.out.println("\nPffft, bloody communists!");
+			terminatingPlayer = currentPlayer;
 			GameAdmin.game.setGameInPlay(false);
 			declareWinner();
 		}else {
@@ -823,11 +826,22 @@ public class TurnEngine {
 			}
 			totalPlayerValue = playerBal + playerPropVal;
 			playersVal.add(outter, totalPlayerValue);
+			GameAdmin.players.get(outter).setPlayerWorth(totalPlayerValue);
 			playerPropVal = 0;
 		}
 		//display total worth of all players
-		System.out.println(playersVal.toString());
-		
+		//System.out.println(playersVal.toString());
+		System.out.println("Quitter was: " + GameAdmin.players.get(currentPlayer).getName());
+		for(int loop = 0; loop < GameAdmin.players.size(); loop++) {
+			System.out.printf("Name: %s - Worth: %,.0f\n", GameAdmin.players.get(loop).getName(), GameAdmin.players.get(loop).getPlayerWorth());
+		}
+		Collections.sort(playersVal);
+		Collections.reverse(playersVal);
+		if(playersVal.get(0) != GameAdmin.players.get(currentPlayer).getPlayerWorth()) {
+			System.out.println("Winner is : " + playersVal.get(0));
+		}else {
+			System.out.println("Winner is : " + playersVal.get(1));
+		}
 	}
 
 }
