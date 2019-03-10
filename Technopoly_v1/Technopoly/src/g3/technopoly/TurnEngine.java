@@ -837,14 +837,14 @@ public class TurnEngine {
 		//Declare winner
 		if(playersVal.get(0) != GameAdmin.players.get(currentPlayer).getPlayerWorth()) {
 			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
-				if(playersVal.get(0) == GameAdmin.players.get(loop).getPlayerWorth()) {
+				if(playersVal.get(0) == GameAdmin.players.get(loop).getPlayerWorth() && GameAdmin.players.get(loop) != GameAdmin.players.get(currentPlayer)) {
 					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(), playersVal.get(0));
 				}
 			}
 			
 		}else {
 			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
-				if(playersVal.get(1) == GameAdmin.players.get(loop).getPlayerWorth()) {
+				if(playersVal.get(1) == GameAdmin.players.get(loop).getPlayerWorth() && GameAdmin.players.get(loop) != GameAdmin.players.get(currentPlayer)) {
 					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(), playersVal.get(1));
 				}
 			}
