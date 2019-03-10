@@ -831,7 +831,9 @@ public class TurnEngine {
 		
 		Collections.sort(playersVal);
 		Collections.reverse(playersVal);
+		
 		System.out.println("\n______________Winner/s______________");
+		
 		//Declare winner
 		if(playersVal.get(0) != GameAdmin.players.get(currentPlayer).getPlayerWorth()) {
 			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
@@ -839,6 +841,7 @@ public class TurnEngine {
 					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(), playersVal.get(0));
 				}
 			}
+			
 		}else {
 			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
 				if(playersVal.get(1) == GameAdmin.players.get(loop).getPlayerWorth()) {
