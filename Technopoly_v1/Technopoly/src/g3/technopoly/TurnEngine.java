@@ -781,7 +781,7 @@ public class TurnEngine {
 	public void paysLicenceFee(double rent) {
 
 		double licenceFee = rent;
-		int currentPlayer = GameAdmin.players.get(this.currentPlayer).getPlayerNumber();
+		int currentPlayer = getCurrentPlayer();
 		int playerOwner = ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner();
 
 		// Check if current player has the balance to pay licence fee
@@ -792,7 +792,7 @@ public class TurnEngine {
 			Bank.subtract(this.currentPlayer, licenceFee);
 			
 			Bank.add(playerOwner, licenceFee);
-			System.out.printf("Current Balance: £%,.0f\n\n", GameAdmin.players.get(this.currentPlayer).getBalanceAmount());
+			System.out.printf("Current Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
 			menuList.set(0, 0);
 			System.out.println("Would you like to do anything else?");
