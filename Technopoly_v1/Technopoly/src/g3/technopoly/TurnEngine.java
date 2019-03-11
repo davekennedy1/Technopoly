@@ -438,6 +438,7 @@ public class TurnEngine {
 			break;
 		case 1:
 			staffOnSpace++;
+			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
 			System.out.println("You have hired a Software Developer. You now have two members of staff.");
 //	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
@@ -445,6 +446,7 @@ public class TurnEngine {
 			break;
 		case 2:
 			staffOnSpace++;
+			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
 			System.out.println("You have hired a Software Developer. You now have three members of staff.");
 //	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
@@ -452,6 +454,7 @@ public class TurnEngine {
 			break;
 		case 3:
 			staffOnSpace++;
+			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
 			System.out.println("You have hired a CTO. You now have the maximum number of staff.");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
