@@ -5,15 +5,13 @@ import java.security.SecureRandom;
 /**
  * Class to return the value of a single dice roll
  * @author colettecasey
+ * @studentNo 9524096
  *
  */
 public class Dice {
 
 	// create secure random number generator for use in method rollDice
-	// My comment: secureRandom is now used to prevent cheats determining result
-	// instead of Random ***
-	// My comment: There is a heavier performance, not sure if this needs to be
-	// tested? ***
+	// secureRandom is now used to prevent cheats determining result instead of Random 
 
 	private static final SecureRandom diceFace = new SecureRandom();
 
