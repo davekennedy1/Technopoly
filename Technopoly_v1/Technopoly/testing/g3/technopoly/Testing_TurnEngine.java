@@ -2,12 +2,10 @@ package g3.technopoly;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
-public class TurnEngineTest {
+public class Testing_TurnEngine {
 
 	TurnEngine turnEngine = new TurnEngine();
 	int fieldCost = 1000;
@@ -47,17 +45,11 @@ public class TurnEngineTest {
 	
 //	@Test
 //	public void test_PlayerDeclareBankrupt() {
-	GameAdmin.players.add(new Player("player2", 0, 0));
+//	GameAdmin.players.add(new Player("player2", 0, 0));
 
 //		turnEngine.setCurrentPlayer(1);
 //		System.out.println(GameAdmin.players.get(turnEngine.getCurrentPlayer()).getBalanceAmount());
 //		turnEngine.paysLicenceFee(500);
 //	}
-	
-
-
-	
-	
-	
 
 }
