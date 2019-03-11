@@ -113,5 +113,5 @@ public class Testing_Board {
 		int actual = counter;
 		assertEquals(expected, actual);
 	}
-
+ 
 }
