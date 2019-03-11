@@ -15,12 +15,12 @@ public class TurnEngineTest {
 	@Before
 	public void setUp() throws Exception {
 		GameAdmin.board.populateBoard();
-		GameAdmin.players.add(new Player("player1", 0, 150000));
-		GameAdmin.players.add(new Player("player2", 0, 0));
+
 	}
 
 	@Test
 	public void test_HireStaffInIncrementsOfOne() {
+		GameAdmin.players.add(new Player("player1", 0, 150000));
 		((StartupSpace) GameAdmin.board.getSpaces().get(1)).setStaff(0);
 		
 		turnEngine.hiresStaff(1, 0, fieldCost);
@@ -47,6 +47,8 @@ public class TurnEngineTest {
 	
 //	@Test
 //	public void test_PlayerDeclareBankrupt() {
+	GameAdmin.players.add(new Player("player2", 0, 0));
+
 //		turnEngine.setCurrentPlayer(1);
 //		System.out.println(GameAdmin.players.get(turnEngine.getCurrentPlayer()).getBalanceAmount());
 //		turnEngine.paysLicenceFee(500);
