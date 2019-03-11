@@ -424,7 +424,7 @@ public class TurnEngine {
 	public void hiresStaff(int startUpPosition, int playerNumber, int fieldCost) {
 
 //this one line needs to be completed.
-		int staffOnSpace = ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).getStaff();
+		int staffOnSpace = ((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
 
 		switch (staffOnSpace) {
 
