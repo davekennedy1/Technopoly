@@ -41,7 +41,6 @@ public class GameAdmin {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		GameAdmin.game.setGameInPlay(true);
 		board.populateBoard();
 		System.out.println("Welcome to Technopoly!\n");
 		System.out.println("How many players will be playing?");

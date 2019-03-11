@@ -8,7 +8,7 @@ package g3.technopoly;
 public class GameEngine {
 
 	//Instance vars
-	private boolean gameInPlay = false;
+	private boolean gameInPlay;
 	private int currentPlayer;
 	private int previousPlayer;
 	private int playerSuccessiveTurnCounter;
