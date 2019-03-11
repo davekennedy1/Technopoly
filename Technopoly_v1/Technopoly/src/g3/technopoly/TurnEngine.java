@@ -430,6 +430,7 @@ public class TurnEngine {
 
 		case 0:
 			staffOnSpace++;
+			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
 			System.out.println("You have hired a Software Developer. You now have one member of staff.");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
