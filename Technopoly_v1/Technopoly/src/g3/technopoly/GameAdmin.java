@@ -28,7 +28,7 @@ public class GameAdmin {
 	
 	protected static Board board = new Board(spaces);
 	
-	public static GameEngine game;
+	public static GameEngine game = new GameEngine();
 	
 	public static UserInput userInput = new UserInput();
 	
