@@ -458,7 +458,7 @@ public class TurnEngine {
 			System.out.println("You have hired a CTO. You now have the maximum number of staff.");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("Â£" + fieldCost + " has been deducted from your account");
+			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 
 		default:
