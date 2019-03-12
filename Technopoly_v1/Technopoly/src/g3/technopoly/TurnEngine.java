@@ -458,7 +458,7 @@ public class TurnEngine {
 			System.out.println("You have hired a CTO. You now have the maximum number of staff.");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 
 		default:
@@ -477,6 +477,8 @@ public class TurnEngine {
 		//set the menu options as required
 		if(checkIfPlayerCanDevelop(currentPlayer)) {
 			menuList.set(1, 1);
+		}else {
+			menuList.set(1, 0);
 		}
 		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
 		System.out.println("Please select one of the following options. ");
