@@ -385,7 +385,7 @@ public class StartupSpace extends Space {
 				setPrice(licenceFee4Staff);
 			break; 
 			}
-		}else {
+		}else { 
 			throw new AssertionError("Max limit of staff reached");
 		}
 	}
