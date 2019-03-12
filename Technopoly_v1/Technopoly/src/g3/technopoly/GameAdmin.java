@@ -53,28 +53,6 @@ public class GameAdmin {
 			 
 	}
 	
-
-//	/**
-//	 * Method to setup a new game by changing gameInPlay = true and creating a new board object
-//	 */
-//	public void setupGame() {
-//		
-//		//Checks if there is a game in session.  If not, sets new game in session 
-//		if (gameInPlay == true) {
-//
-//			System.out.println("An existing game is already in session - please terminate it before starting a new game.");
-//
-//		} else {
-//			
-//			//Changes flag to set new game in session
-//			gameInPlay = true;
-//			
-//			
-//			//populates board with spaces
-//			board.populateBoard();
-//
-//		}		
-//	}
 	
 
 	/**
@@ -88,23 +66,6 @@ public class GameAdmin {
 		game.gameManager();
 	}
 	
-	
-	
-//	/**
-//	 * Method to prompt for name of Players 
-//	 */
-//	public static void promptNamesOfPlayers(int numberOfPlayers) {
-//		
-//		String playerName;
-//		
-//		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
-//			System.out.println("Enter name for player " + counter+":");
-//			
-//			playerName = UserInput.userInputNames();
-//			checkIfNameUnique(playerName);
-////					players.add(new Player(playerName, 0, 150000));
-//		}
-//	}
 		
 	
 	public static void promptNamesOfPlayers(int number) {
