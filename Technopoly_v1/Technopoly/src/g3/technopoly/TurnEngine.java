@@ -169,17 +169,20 @@ public class TurnEngine {
 	 */
 	public void movePlayer(int moveAmount) {
 		int lapBoardBy;
-
+		String spaceField = "";
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "!\n");
+			if (GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()) instanceof StartupSpace) {
+				spaceField = "- " + ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getSpaceField();
+			}
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "! "+spaceField+"\n");
 			landedStartupSpace();
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
 
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "! "+spaceField+"\n");
 
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
