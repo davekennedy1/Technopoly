@@ -16,16 +16,16 @@ public enum StartupSpaceValues {
 
 	// Properties for each Value.
 
-	WEBDEV1("Artisan Web", "WebDev", 2, 12000, 800, 4000, 10000, 30000, 45000, 60000, 5000),
-	WEBDEV2("Reflex Studios", "WebDev", 2, 12000, 800, 4000, 10000, 30000, 45000, 60000, 5000),
-	FINTECH1("Deloitte", "FinTech", 3, 18000, 1400, 7000, 20000, 55000, 75000, 95000, 10000),
-	FINTECH2("PWC", "FinTech", 3, 18000, 1400, 7000, 20000, 55000, 75000, 95000, 10000),
-	FINTECH3("Pearson", "FinTech", 3, 20000, 1600, 8000, 22000, 60000, 80000, 100000, 10000),
-	CLOUD1("Rapid7", "Cloud", 3, 26000, 2200, 11000, 33000, 80000, 97500, 115000, 15000),
-	CLOUD2("Liberty IT", "Cloud", 3, 26000, 2200, 11000, 30800, 77000, 99000, 121000, 15000),
-	CLOUD3("Cloud Migration 365", "Cloud", 3, 28000, 2400, 12000, 36000, 85000, 102500, 120000, 15000),
-	AI1("HAL Robotics", "AI", 2, 32000, 2800, 15000, 45000, 100000, 120000, 140000, 20000),
-	AI2("IC Resources", "AI", 2, 35000, 3500, 17500, 50000, 110000, 130000, 150000, 20000);
+	WEBDEV1("Artisan Web", "WebDev", 2, 12000, 800, 4000, 10000, 30000, 45000, 5000),
+	WEBDEV2("Reflex Studios", "WebDev", 2, 12000, 800, 4000, 10000, 30000, 45000, 5000),
+	FINTECH1("Deloitte", "FinTech", 3, 18000, 1400, 7000, 20000, 55000, 75000, 10000),
+	FINTECH2("PWC", "FinTech", 3, 18000, 1400, 7000, 20000, 55000, 75000, 10000),
+	FINTECH3("Pearson", "FinTech", 3, 20000, 1600, 8000, 22000, 60000, 80000, 10000),
+	CLOUD1("Rapid7", "Cloud", 3, 26000, 2200, 11000, 33000, 80000, 97500, 15000),
+	CLOUD2("Liberty IT", "Cloud", 3, 26000, 2200, 11000, 30800, 77000, 99000, 15000),
+	CLOUD3("Cloud Migration 365", "Cloud", 3, 28000, 2400, 12000, 36000, 85000, 102500, 15000),
+	AI1("HAL Robotics", "AI", 2, 32000, 2800, 15000, 45000, 100000, 120000, 20000),
+	AI2("IC Resources", "AI", 2, 35000, 3500, 17500, 50000, 110000, 130000, 20000);
 
 	private final String spaceName;
 	private final String spaceField;
@@ -36,11 +36,11 @@ public enum StartupSpaceValues {
 	private final int staff_2_price;
 	private final int staff_3_price;
 	private final int staff_4_price;
-	private final int CTO_price;
+	
 	private final double priceToHireStaff;
  
 	private StartupSpaceValues(String spaceName, String spaceField, int setRequired, int price, int site_price,
-			int staff_1_price, int staff_2_price, int staff_3_price, int staff_4_price, int CTO_price,
+			int staff_1_price, int staff_2_price, int staff_3_price, int staff_4_price, 
 			double priceToHireStaff) {
 		this.spaceName = spaceName;
 		this.spaceField = spaceField;
@@ -51,7 +51,6 @@ public enum StartupSpaceValues {
 		this.staff_2_price = staff_2_price;
 		this.staff_3_price = staff_3_price;
 		this.staff_4_price = staff_4_price;
-		this.CTO_price = CTO_price;
 		this.priceToHireStaff = priceToHireStaff;
 	}
 
@@ -91,9 +90,6 @@ public enum StartupSpaceValues {
 		return staff_4_price;
 	}
 
-	public int getCTO_price() {
-		return CTO_price;
-	}
 
 	public double getPriceToHireStaff() {
 		return priceToHireStaff;
