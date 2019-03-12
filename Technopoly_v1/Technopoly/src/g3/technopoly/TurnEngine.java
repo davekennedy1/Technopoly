@@ -324,13 +324,11 @@ public class TurnEngine {
 		}
 		
 		System.out.println("Select a startup:");
-		int userInput = UserInput.getNumber();
-		
-		while(userInput < 1 && userInput > (startupIndex.size()-1)) {
-			userInput = UserInput.getNumber();
-		}
-		
-		System.out.println("You selected index: " + startupIndex.get(userInput-1) );
+		int userInput = UserInput.userInputMenu(counter-1);
+		double fieldCost = ((StartupSpace)GameAdmin.board.getSpaces().get(userInput-1)).getPriceOfStaff();
+		//send input to hire staff
+		hiresStaff(startupIndex.get(userInput-1), getCurrentPlayer(), fieldCost);
+
 		
 	}
 
@@ -435,7 +433,7 @@ public class TurnEngine {
 	 * be hired uniformly across start-ups in a field
 	 * 
 	 */
-	public void hiresStaff(int startUpPosition, int playerNumber, int fieldCost) {
+	public void hiresStaff(int startUpPosition, int playerNumber, double fieldCost) {
 
 //this one line needs to be completed.
 		int staffOnSpace = ((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();

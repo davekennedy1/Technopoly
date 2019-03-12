@@ -38,7 +38,7 @@ public enum StartupSpaceValues {
 	private final int staff_4_price;
 	private final int CTO_price;
 	private final double priceToHireStaff;
-
+ 
 	private StartupSpaceValues(String spaceName, String spaceField, int setRequired, int price, int site_price,
 			int staff_1_price, int staff_2_price, int staff_3_price, int staff_4_price, int CTO_price,
 			double priceToHireStaff) {
