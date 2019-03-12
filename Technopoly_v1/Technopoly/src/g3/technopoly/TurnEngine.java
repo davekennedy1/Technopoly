@@ -406,45 +406,36 @@ public class TurnEngine {
 	 */
 	public void hiresStaff(int startUpPosition, int playerNumber, double fieldCost) {
 
-//this one line needs to be completed.
 		int staffOnSpace = ((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
 		String spaceName = GameAdmin.board.getSpaces().get(startUpPosition).getName();
 		switch (staffOnSpace) {
 
 		case 0:
-			staffOnSpace++;
-			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(1);
 			System.out.println(
 					"You have hired a Software Developer. You now have one member of staff.(" + spaceName + ")");
-//priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("Â£" + fieldCost + " has been deducted from your account");
+			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 1:
-			staffOnSpace++;
-			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(2);
 			System.out.println(
 					"You have hired a Software Developer. You now have two members of staff.(" + spaceName + ")");
-//	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("Â£" + fieldCost + " has been deducted from your account");
+			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 2:
-			staffOnSpace++;
-			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(3);
 			System.out.println(
 					"You have hired a Software Developer. You now have three members of staff.(" + spaceName + ")");
-//	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("Â£" + fieldCost + " has been deducted from your account");
+			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 3:
-			staffOnSpace++;
-			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(4);
 			System.out.println("You have hired a CTO. You now have the maximum number of staff.(" + spaceName + ")");
-//priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
+			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 
 		default:
