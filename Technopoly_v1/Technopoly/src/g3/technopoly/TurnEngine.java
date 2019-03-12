@@ -735,7 +735,7 @@ public class TurnEngine {
 			String spaceName = GameAdmin.spaces.get(index).getName();
 			int startupOwnerIndex = ((StartupSpace) GameAdmin.spaces.get(index)).getPlayerOwner();
 			String startupOwnerName = GameAdmin.players.get(startupOwnerIndex).getName();
-			System.out.println(list + ". " + spaceName + " £"+ ((StartupSpace) GameAdmin.spaces.get(index)).getPrice() + " (Owner: " + startupOwnerName + ").");
+			System.out.println(list + ". " + spaceName + " ï¿½"+ ((StartupSpace) GameAdmin.spaces.get(index)).getPrice() + " (Owner: " + startupOwnerName + ").");
 			list++;
 		}
 		
@@ -760,7 +760,7 @@ public class TurnEngine {
 		// the owner of startup is sent a message to confirm he will allow the takeover
 		System.out.println(
 				"TAKEOVER! " + startupOwnerName + ", someone is attempting to take over " + propertyName + "!");
-		System.out.println("If you accept the deal, you would gain £ " + startupPrice);
+		System.out.println("If you accept the deal, you would gain ï¿½ " + startupPrice);
 		System.out.printf("Do you accept the offer? - ");
 
 		// owner response
@@ -773,9 +773,9 @@ public class TurnEngine {
 			// update balances
 			Bank.subtract(getCurrentPlayer(), startupPrice);
 			Bank.add(startupOwnerIndex, startupPrice);
-			System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() +", your new balance is: £" + GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() +", your new balance is: ï¿½" + GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			System.out.println();
-			System.out.println(GameAdmin.players.get(startupOwnerIndex).getName() + ", your new balance is: £" + GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
+			System.out.println(GameAdmin.players.get(startupOwnerIndex).getName() + ", your new balance is: ï¿½" + GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
 		} else {
 			System.out.println(startupOwnerName + " decided to not proceed. Your take over was rejected.");
 		}
@@ -789,7 +789,7 @@ public class TurnEngine {
 	 * @return boolean
 	 */
 	public void checkForTakeOver() {
-
+		menuList.set(2, 0);
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				// if startup is owned && startup owner is not the current player
