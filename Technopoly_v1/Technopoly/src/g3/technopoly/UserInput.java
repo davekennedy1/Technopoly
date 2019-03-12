@@ -199,7 +199,7 @@ public class UserInput {
 	}
 	
 	/**
-	 * method to get a number for Ismail's method 
+	 * method to get a number for Ismael's method - HE MAY NOT NEED.
 	 * Validation: Number must be between 1 and 20 (20 to allow for more start-ups to be added) 
 	 * @return
 	 */
@@ -222,6 +222,12 @@ public class UserInput {
 		return userInput; 
 	}
 	
+	/**
+	 * method to check the validation rules of Ismael's method - HE MAY NOT NEED.
+	 * Validation: Number must be between 1 and 20 (20 to allow for more start-ups to be added) 
+	 * @param userInput
+	 * @return
+	 */
 	protected static boolean validateGetNumber(int userInput) {
 		if((userInput >0) && (userInput <21)){
 			return true;
