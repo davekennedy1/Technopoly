@@ -313,7 +313,7 @@ public class TurnEngine {
 		ArrayList<Integer> startupIndex = new ArrayList<Integer>();
 		int menuNumbers = 1;
 
-		System.out.println("You own and can develop: \n");
+		System.out.println("Select a startup to develop: \n");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
@@ -325,9 +325,15 @@ public class TurnEngine {
 				}
 			}
 		}
-
-		System.out.println("Select a startup:");
+		
 		int userInput = UserInput.userInputMenu(menuNumbers - 1);
+		System.out.println("Are you sure you would like to develop: "+GameAdmin.board.getSpaces().get(userInput).getName());
+		String userChoice = UserInput.userInputValidation();
+		
+		if (userChoice.equalsIgnoreCase("Y")) {
+			
+		
+		// are you sure you want?
 		double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(userInput)).getPriceOfStaff();
 		// send input to hire staff
 		hiresStaff(startupIndex.get(userInput - 1), getCurrentPlayer(), fieldCost);
@@ -337,6 +343,9 @@ public class TurnEngine {
 		System.out.println("What else would you like to do?");
 		menuList.set(1, 0);
 		viewsMenu();
+		} else {
+			viewsMenu();
+		}
 	}
 
 	/**
@@ -486,10 +495,6 @@ public class TurnEngine {
 			menuList.set(1, 0);
 		}
 		
-		
-		System.out.println();
-		System.out.println("###### ###### ####### ARRAY BEFORE LOADING MENU IS: " +menuList.toString());
-		System.out.println();
 		
 		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
 		System.out.println("Please select one of the following options. ");
