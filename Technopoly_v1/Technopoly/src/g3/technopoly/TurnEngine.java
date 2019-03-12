@@ -326,7 +326,7 @@ public class TurnEngine {
 		System.out.println("Select a startup:");
 		int userInput = UserInput.getNumber();
 		
-		while(userInput < 1 && userInput > startupIndex.size()) {
+		while(userInput < 1 && userInput > (startupIndex.size()-1)) {
 			userInput = UserInput.getNumber();
 		}
 		
