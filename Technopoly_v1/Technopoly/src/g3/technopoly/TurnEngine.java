@@ -108,7 +108,7 @@ public class TurnEngine {
 	 * @throws Exception
 	 */
 	public void rollDice() throws Exception {
-
+		
 		int dice1 = Dice.throwDice();
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
@@ -195,6 +195,7 @@ public class TurnEngine {
 		// Check if player has landed on Runway or InvestNI and ignore
 		if (GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway"
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
+			
 			menuList.set(0, 0);
 			viewsMenu();
 		} else {
@@ -623,7 +624,7 @@ public class TurnEngine {
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
-			System.out.println("you made it here");
+			
 			switch (returnedInput) {
 			
 			case 1:
@@ -783,6 +784,7 @@ public class TurnEngine {
 				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
 					menuList.set(2, 1);
 				}
+				
 			}
 		}
 	}
