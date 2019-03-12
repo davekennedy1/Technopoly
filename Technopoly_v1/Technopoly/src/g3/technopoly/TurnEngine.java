@@ -346,6 +346,8 @@ public class TurnEngine {
 	 */
 	public boolean checkIfPlayerCanDevelop(int playerOwner) {
 
+		boolean canDevelop = false;
+		
 		// Populate Map with fields (can't be duplicate, nice!) with available fields.
 		Map<String, Integer> uniqueFields = new HashMap<>();
 
@@ -382,7 +384,7 @@ public class TurnEngine {
 					}
 
 				}
-				return true; // Yes! He can!
+				canDevelop = true; // Yes! He can!
 			} else {
 				for (Space s : GameAdmin.spaces) {
 					if (s instanceof StartupSpace) {
@@ -394,9 +396,8 @@ public class TurnEngine {
 			}
 			requiredCounter = 0;
 		}
-//		for (Space s : GameAdmin.spaces) {
-//		}
-		return false;
+
+		return canDevelop;
 	}
 
 /////////////////////////hires staff methods//////////////////////////////////////////////////
