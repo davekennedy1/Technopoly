@@ -773,6 +773,25 @@ public class TurnEngine {
 		}
 
 	}
+	
+	/**
+	 * Check if any startups are available for 'takeover'. 
+	 * Startup cannot be owned by the current player.
+	 * @return boolean
+	 */
+	public boolean checkForTakeOver() {
+
+		for (Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				// if startup is owned && startup owner is not the current player
+				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
 
 	/**
 	 * Method to subtract the licence fee from currentPlayer and credit the balance
@@ -868,5 +887,7 @@ public class TurnEngine {
 			}
 		}
 	}
+	
+	
 
 }
