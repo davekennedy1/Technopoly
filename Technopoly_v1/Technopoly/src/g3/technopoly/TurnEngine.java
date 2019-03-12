@@ -804,6 +804,9 @@ public class TurnEngine {
 			System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() +", your new balance is: �" + GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			System.out.println();
 			System.out.println(GameAdmin.players.get(startupOwnerIndex).getName() + ", your new balance is: �" + GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
+			System.out.println();
+			listOwned();
+			
 		} else {
 			System.out.println(startupOwnerName + " decided to not proceed. Your take over was rejected.");
 		}
