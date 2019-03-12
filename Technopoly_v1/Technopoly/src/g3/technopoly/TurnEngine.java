@@ -112,10 +112,26 @@ public class TurnEngine {
 		int dice1 = Dice.throwDice();
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
-
+		boolean playerHasStartups = false;
+		
+		//if current player owns any, call listOwned();
+		for(Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer()) {
+					playerHasStartups = true;
+				}
+			}
+		}
+		
+		if (playerHasStartups) {
+			listOwned();
+		} else {
+			System.out.println("You currently own 0 startups.");
+		}
+		
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
-		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount+" spaces.");
+		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount+" spaces.\n");
 
 		if (dice1 == dice2 && GameAdmin.game.getDoublesCounter() != 2) {
 			System.out.println("Because you rolled doubles, you get another turn after this one!");
@@ -157,7 +173,7 @@ public class TurnEngine {
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("\nYou landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "!\n");
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "!\n");
 			landedStartupSpace();
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
@@ -291,15 +307,16 @@ public class TurnEngine {
 	 */
 
 	public void listOwned() {
-		System.out.println(GameAdmin.players.get(currentPlayer).getName() + " owns: ");
+		System.out.println("You own the following startups: ");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
 
-					System.out.println(s.getName());
+					System.out.println("- "+s.getName());
 				}
 			}
 		}
+		System.out.println();
 	}
 
 	/**
@@ -320,7 +337,8 @@ public class TurnEngine {
 						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
-					System.out.println(menuNumbers + ". " + s.getName());
+					System.out.printf(menuNumbers + ". " + s.getName() + " - "+((StartupSpace) s).getSpaceField()+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() +"/4)", " ");
+					System.out.println();
 					menuNumbers++;
 				}
 			}
@@ -740,7 +758,7 @@ public class TurnEngine {
 			String spaceName = GameAdmin.spaces.get(index).getName();
 			int startupOwnerIndex = ((StartupSpace) GameAdmin.spaces.get(index)).getPlayerOwner();
 			String startupOwnerName = GameAdmin.players.get(startupOwnerIndex).getName();
-			System.out.println(list + ". " + spaceName + " �"+ ((StartupSpace) GameAdmin.spaces.get(index)).getPrice() + " (Owner: " + startupOwnerName + ").");
+			System.out.println(list + ". " + spaceName + " �"+ ((StartupSpace) GameAdmin.spaces.get(index)).getPrice() + " (Area: "+((StartupSpace) GameAdmin.spaces.get(index)).getSpaceField() +" Owner: " + startupOwnerName + ").");
 			list++;
 		}
 		
