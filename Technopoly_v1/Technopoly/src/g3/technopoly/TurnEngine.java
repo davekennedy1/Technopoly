@@ -316,7 +316,7 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
-						&& ((StartupSpace) s).getCanBeDeveloped() == true) {
+						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() <4) {
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
 					System.out.println(menuNumbers + ". " + s.getName());
