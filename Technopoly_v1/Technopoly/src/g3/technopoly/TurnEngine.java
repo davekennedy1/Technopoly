@@ -732,7 +732,7 @@ public class TurnEngine {
 			}
 		}
 
-		System.out.println("You can attempt to take over these startups:\n");
+		System.out.println("Select one of the following startups:\n");
 		
 		// loop through the available takeover startups
 		int list = 1;
@@ -744,10 +744,12 @@ public class TurnEngine {
 			list++;
 		}
 		
-		
-		
 		// ask for user input in number
 		int userInput = UserInput.userInputMenu(availableStartups.size());
+		
+		// verify
+		
+		
 		// access content in array of given userinput
 		
 		int indexAccesor = userInput - 1;
@@ -756,8 +758,11 @@ public class TurnEngine {
 //		System.out.println(indexOfStartupSpace);
 		String propertyName = GameAdmin.board.getSpaces().get(indexOfStartupSpace).getName();
 		
-		// 
+		System.out.println("Are you sure you would like to takeover: "+propertyName+"?");
+		String userChoice = UserInput.userInputValidation();
 		
+		if (userChoice.equalsIgnoreCase("y")) {
+			
 		int startupOwnerIndex = ((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).getPlayerOwner();
 		String startupOwnerName = GameAdmin.players.get(startupOwnerIndex).getName();
 		double startupPrice = ((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).getPrice();
@@ -785,6 +790,9 @@ public class TurnEngine {
 			System.out.println(startupOwnerName + " decided to not proceed. Your take over was rejected.");
 		}
 		viewsMenu();
+		} else {
+			viewsMenu();
+		}
 
 	}
 	
