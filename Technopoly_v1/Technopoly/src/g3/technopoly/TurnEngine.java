@@ -747,7 +747,7 @@ public class TurnEngine {
 		// the owner of startup is sent a message to confirm he will allow the takeover
 		System.out.println(
 				"TAKEOVER! " + startupOwnerName + ", someone is attempting to take over " + propertyName + "!");
-		System.out.println("If you accept the deal, you would gain £" + startupPrice);
+		System.out.println("If you accept the deal, you would gain £ " + startupPrice);
 		System.out.printf("Do you accept the offer? - ");
 
 		// owner response
