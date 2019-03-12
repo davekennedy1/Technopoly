@@ -23,6 +23,8 @@ public class GameAdmin {
 	//private boolean gameInPlay = false;
 	
 	public static ArrayList<Player> players = new ArrayList<Player>(); 
+	public static ArrayList<String> playerNames = new ArrayList<String>();
+
 	
 	protected static ArrayList<Space> spaces = new ArrayList<Space>(); 
 	
@@ -88,46 +90,48 @@ public class GameAdmin {
 	
 	
 	
-	/**
-	 * Method to prompt for name of Players 
-	 */
-	public static void promptNamesOfPlayers(int numberOfPlayers) {
+//	/**
+//	 * Method to prompt for name of Players 
+//	 */
+//	public static void promptNamesOfPlayers(int numberOfPlayers) {
+//		
+//		String playerName;
+//		
+//		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
+//			System.out.println("Enter name for player " + counter+":");
+//			
+//			playerName = UserInput.userInputNames();
+//			checkIfNameUnique(playerName);
+////					players.add(new Player(playerName, 0, 150000));
+//		}
+//	}
 		
-		String playerName;
-		
-		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
-			System.out.println("Enter name for player " + counter+":");
-			
-			playerName = UserInput.userInputNames();
+	
+	public static void promptNamesOfPlayers(int number) {
 
-			while(checkIfNameUnique(playerName)) {
-					System.out.println("Please enter a unique name");
-					playerName = UserInput.userInputNames();	
+		ArrayList<String> playerNames = new ArrayList<String>();
+		
+		int players = number;
+		int counter = 1;
+		do {
+			System.out.println("Please enter a name for player " +counter );
+			String givenname = UserInput.userInputNames();
+			
+			if (playerNames.contains(givenname.toLowerCase())) {
+				System.out.println("\nWoops! That name already exists. Please enter a unique name.");
+			} else {
+				playerNames.add(givenname.toLowerCase());
+				GameAdmin.players.add(new Player(givenname, 0, 150000));
+				players--;
+				counter++;
 			}
-					players.add(new Player(playerName, 0, 150000));
-		}
-	}
-		
-	
-	public  static boolean checkIfNameUnique(String name) {
-		
-		boolean duplicateName = false; 
-		
-		for(Player players : players) {
-		if(players.getName().equalsIgnoreCase(name)) {
-		
-			duplicateName = true;
-	
-		} else {
 			
-			duplicateName = false;
+			
+		} while (players>0);
+		
+		for(Player p : GameAdmin.players) {
+			System.out.println(p.getName());
 		}
-		
-		
-		
-	}
-
-	return duplicateName;
 	}
 	
 
