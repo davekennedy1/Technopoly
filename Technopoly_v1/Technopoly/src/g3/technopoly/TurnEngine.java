@@ -108,31 +108,31 @@ public class TurnEngine {
 	 * @throws Exception
 	 */
 	public void rollDice() throws Exception {
-		
+
 		int dice1 = Dice.throwDice();
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
 		boolean playerHasStartups = false;
-		
-		//if current player owns any, call listOwned();
-		for(Space s : GameAdmin.spaces) {
+
+		// if current player owns any, call listOwned();
+		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
-				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer()) {
+				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
 					playerHasStartups = true;
 				}
 			}
 		}
-		
+
 		if (playerHasStartups) {
 			System.out.println();
 			listOwned();
 		} else {
-			
+
 		}
-		
+
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
-		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount+" spaces.\n");
+		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount + " spaces.\n");
 
 		if (dice1 == dice2 && GameAdmin.game.getDoublesCounter() != 2) {
 			System.out.println("Because you rolled doubles, you get another turn after this one!");
@@ -175,15 +175,18 @@ public class TurnEngine {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
 			if (GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()) instanceof StartupSpace) {
-				spaceField = "- " + ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getSpaceField();
+				spaceField = "- "
+						+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getSpaceField();
 			}
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "! "+spaceField+"\n");
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "! "
+					+ spaceField + "\n");
 			landedStartupSpace();
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
 
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "! "+spaceField+"\n");
+			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "! "
+					+ spaceField + "\n");
 
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
@@ -215,9 +218,9 @@ public class TurnEngine {
 		// Check if player has landed on Runway or InvestNI and ignore
 		if (GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway"
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
-			
+
 			menuList.set(0, 0);
-			
+
 			viewsMenu();
 		} else {
 
@@ -269,7 +272,7 @@ public class TurnEngine {
 
 		// check player wants to purchase
 		System.out.println("Are you sure you want to purchase "
-				+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName()+"?");
+				+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName() + "?");
 
 		// call scanner and validation
 		String uInput = UserInput.userInputValidation();
@@ -317,7 +320,7 @@ public class TurnEngine {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
 
-					System.out.println("- "+s.getName());
+					System.out.println("- " + s.getName());
 				}
 			}
 		}
@@ -342,36 +345,36 @@ public class TurnEngine {
 						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
-					System.out.printf(menuNumbers + ". " + s.getName() + " - "+((StartupSpace) s).getSpaceField()+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() +"/4)", " ");
+					System.out.printf(menuNumbers + ". " + s.getName() + " - " + ((StartupSpace) s).getSpaceField()
+							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
 					System.out.println();
 					menuNumbers++;
 				}
 			}
 		}
-		
+
 		int userInput = UserInput.userInputMenu(menuNumbers - 1);
-		for(Integer i : startupIndex) {
+		for (Integer i : startupIndex) {
 			System.out.println(GameAdmin.board.getSpaces().get(i).getName());
 		}
 		System.err.println(userInput);
-		
-		
-		System.out.println("Are you sure you would like to develop: "+GameAdmin.board.getSpaces().get(startupIndex.get(userInput-1)).getName());
+
+		System.out.println("Are you sure you would like to develop: "
+				+ GameAdmin.board.getSpaces().get(startupIndex.get(userInput - 1)).getName());
 		String userChoice = UserInput.userInputValidation();
-		
+
 		if (userChoice.equalsIgnoreCase("Y")) {
-			
-		
-		// are you sure you want?
-		double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(userInput)).getPriceOfStaff();
-		// send input to hire staff
-		hiresStaff(startupIndex.get(userInput - 1), getCurrentPlayer(), fieldCost);
-		// add line for spacing
-		System.out.println();
+
+			// are you sure you want?
+			double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(userInput)).getPriceOfStaff();
+			// send input to hire staff
+			hiresStaff(startupIndex.get(userInput - 1), getCurrentPlayer(), fieldCost);
+			// add line for spacing
+			System.out.println();
 //		menuList.set(0, 0);
-		System.out.println("What else would you like to do?");
-		menuList.set(1, 0);
-		viewsMenu();
+			System.out.println("What else would you like to do?");
+			menuList.set(1, 0);
+			viewsMenu();
 		} else {
 			viewsMenu();
 		}
@@ -445,9 +448,10 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				// if you don't find one, set foundnone to false
-				if (((StartupSpace) s).getPlayerOwner() == playerOwner && ((StartupSpace) s).getStaff() < 4 && ((StartupSpace)s).getCanBeDeveloped()==true) {
+				if (((StartupSpace) s).getPlayerOwner() == playerOwner && ((StartupSpace) s).getStaff() < 4
+						&& ((StartupSpace) s).getCanBeDeveloped() == true) {
 					foundone = true;
-				} 
+				}
 			}
 		}
 
@@ -501,7 +505,7 @@ public class TurnEngine {
 					+ spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("�" + fieldCost + " has been deducted from your account");
-			menuList.set(1,0);
+			menuList.set(1, 0);
 			break;
 
 		default:
@@ -523,13 +527,10 @@ public class TurnEngine {
 		} else {
 			menuList.set(1, 0);
 		}
-		
-		
+
 		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
 		System.out.println("Please select one of the following options. ");
-		
-		
-		
+
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions()
@@ -670,9 +671,9 @@ public class TurnEngine {
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
-			
+
 			switch (returnedInput) {
-			
+
 			case 1:
 				takesOverStartup();
 				break;
@@ -762,75 +763,80 @@ public class TurnEngine {
 		}
 
 		System.out.println("Select one of the following startups:\n");
-		
+
 		// loop through the available takeover startups
 		int list = 1;
 		for (Integer index : availableStartups) {
 			String spaceName = GameAdmin.spaces.get(index).getName();
 			int startupOwnerIndex = ((StartupSpace) GameAdmin.spaces.get(index)).getPlayerOwner();
 			String startupOwnerName = GameAdmin.players.get(startupOwnerIndex).getName();
-			System.out.println(list + ". " + spaceName + " �"+ ((StartupSpace) GameAdmin.spaces.get(index)).getPrice() + " (Area: "+((StartupSpace) GameAdmin.spaces.get(index)).getSpaceField() +" Owner: " + startupOwnerName + ").");
+			System.out
+					.println(list + ". " + spaceName + " �" + ((StartupSpace) GameAdmin.spaces.get(index)).getPrice()
+							+ " (Area: " + ((StartupSpace) GameAdmin.spaces.get(index)).getSpaceField() + " Owner: "
+							+ startupOwnerName + ").");
 			list++;
 		}
-		
+
 		// ask for user input in number
 		int userInput = UserInput.userInputMenu(availableStartups.size());
-		
+
 		// verify
-		
-		
+
 		// access content in array of given userinput
-		
+
 		int indexAccesor = userInput - 1;
 //		System.out.println(indexAccesor);
 		int indexOfStartupSpace = availableStartups.get(indexAccesor);
 //		System.out.println(indexOfStartupSpace);
 		String propertyName = GameAdmin.board.getSpaces().get(indexOfStartupSpace).getName();
-		
-		System.out.println("Are you sure you would like to takeover: "+propertyName+"?");
+
+		System.out.println("Are you sure you would like to takeover: " + propertyName + "?");
 		String userChoice = UserInput.userInputValidation();
-		
+
 		if (userChoice.equalsIgnoreCase("y")) {
-			
-		int startupOwnerIndex = ((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).getPlayerOwner();
-		String startupOwnerName = GameAdmin.players.get(startupOwnerIndex).getName();
-		double startupPrice = ((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).getPrice();
 
-		// the owner of startup is sent a message to confirm he will allow the takeover
-		System.out.println(
-				"TAKEOVER! " + startupOwnerName + ", someone is attempting to take over " + propertyName + "!");
-		System.out.println("If you accept the deal, you would gain � " + startupPrice);
-		System.out.printf("Do you accept the offer? - ");
+			int startupOwnerIndex = ((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).getPlayerOwner();
+			String startupOwnerName = GameAdmin.players.get(startupOwnerIndex).getName();
+			double startupPrice = ((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).getPrice();
 
-		// owner response
-		String response = UserInput.userInputValidation();
+			// the owner of startup is sent a message to confirm he will allow the takeover
+			System.out.println(
+					"TAKEOVER! " + startupOwnerName + ", someone is attempting to take over " + propertyName + "!");
+			System.out.println("If you accept the deal, you would gain � " + startupPrice);
+			System.out.printf("Do you accept the offer? - ");
 
-		// if true, set owner to current player.
-		if (response.equalsIgnoreCase("Y")) {
+			// owner response
+			String response = UserInput.userInputValidation();
 
-			((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).setPlayerOwner(getCurrentPlayer());
-			// update balances
-			Bank.subtract(getCurrentPlayer(), startupPrice);
-			Bank.add(startupOwnerIndex, startupPrice);
-			System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() +", your new balance is: �" + GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
-			System.out.println();
-			System.out.println(GameAdmin.players.get(startupOwnerIndex).getName() + ", your new balance is: �" + GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
-			System.out.println();
-			listOwned();
-			
-		} else {
-			System.out.println(startupOwnerName + " decided to not proceed. Your take over was rejected.");
-		}
-		viewsMenu();
+			// if true, set owner to current player.
+			if (response.equalsIgnoreCase("Y")) {
+
+				((StartupSpace) GameAdmin.spaces.get(indexOfStartupSpace)).setPlayerOwner(getCurrentPlayer());
+				// update balances
+				Bank.subtract(getCurrentPlayer(), startupPrice);
+				Bank.add(startupOwnerIndex, startupPrice);
+				System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() + ", your new balance is: �"
+						+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+				System.out.println();
+				System.out.println(GameAdmin.players.get(startupOwnerIndex).getName() + ", your new balance is: �"
+						+ GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
+				System.out.println();
+				listOwned();
+
+			} else {
+				System.out.println(startupOwnerName + " decided to not proceed. Your take over was rejected.");
+			}
+			viewsMenu();
 		} else {
 			viewsMenu();
 		}
 
 	}
-	
+
 	/**
-	 * Check if any startups are available for 'takeover'. 
-	 * Startup cannot be owned by the current player.
+	 * Check if any startups are available for 'takeover'. Startup cannot be owned
+	 * by the current player.
+	 * 
 	 * @return boolean
 	 */
 	public void checkForTakeOver() {
@@ -841,7 +847,7 @@ public class TurnEngine {
 				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
 					menuList.set(2, 1);
 				}
-				
+
 			}
 		}
 	}
@@ -940,7 +946,5 @@ public class TurnEngine {
 			}
 		}
 	}
-	
-	
 
 }
