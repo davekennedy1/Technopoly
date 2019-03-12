@@ -488,7 +488,7 @@ public class TurnEngine {
 		
 		
 		System.out.println();
-		System.out.println("####### ###### ####### ARRAY BEFORE LOADING MENU IS: " +menuList.toString());
+		System.out.println("###### ###### ####### ARRAY BEFORE LOADING MENU IS: " +menuList.toString());
 		System.out.println();
 		
 		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
