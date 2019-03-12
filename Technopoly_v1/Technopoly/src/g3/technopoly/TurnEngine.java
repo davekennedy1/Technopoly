@@ -407,9 +407,9 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				// if you don't find one, set foundnone to false
-				if (((StartupSpace) s).getPlayerOwner() == playerOwner && ((StartupSpace) s).getStaff() < 4) {
+				if (((StartupSpace) s).getPlayerOwner() == playerOwner && ((StartupSpace) s).getStaff() < 4 && ((StartupSpace)s).getCanBeDeveloped()==true) {
 					foundone = true;
-				}
+				} 
 			}
 		}
 
@@ -485,8 +485,17 @@ public class TurnEngine {
 		} else {
 			menuList.set(1, 0);
 		}
+		
+		
+		System.out.println();
+		System.out.println("####### ###### ####### ARRAY BEFORE LOADING MENU IS: " +menuList.toString());
+		System.out.println();
+		
 		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
 		System.out.println("Please select one of the following options. ");
+		
+		
+		
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions()
