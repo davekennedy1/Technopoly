@@ -44,7 +44,7 @@ public enum StartupSpaceValues {
 			double priceToHireStaff) {
 		this.spaceName = spaceName;
 		this.spaceField = spaceField;
-		this.setRequired = setRequired;
+		this.setRequired = setRequired; 
 		this.price = price;
 		this.site_price = site_price;
 		this.staff_1_price = staff_1_price;
