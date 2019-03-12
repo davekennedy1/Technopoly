@@ -330,7 +330,6 @@ public class TurnEngine {
 			userInput = UserInput.getNumber();
 		}
 		
-		System.out.println("DEBUG: Available indexes: "+startupIndex.toString());
 		System.out.println("You selected index: " + startupIndex.get(userInput-1) );
 		
 	}
