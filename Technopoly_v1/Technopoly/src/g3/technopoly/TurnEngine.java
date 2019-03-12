@@ -108,7 +108,7 @@ public class TurnEngine {
 	 * @throws Exception
 	 */
 	public void rollDice() throws Exception {
-		
+
 		int dice1 = Dice.throwDice();
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
@@ -153,7 +153,7 @@ public class TurnEngine {
 	 */
 	public void movePlayer(int moveAmount) {
 		int lapBoardBy;
-		
+
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
@@ -162,9 +162,9 @@ public class TurnEngine {
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
 			this.currentPlayerSpace = lapBoardBy;
-			
+
 			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
-			
+
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
 				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
@@ -174,15 +174,15 @@ public class TurnEngine {
 				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			}
-			
+
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			//System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			// System.out.println("You landed on " +
+			// GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
 			landedStartupSpace();
-			
+
 		}
 	}
 
-	
 	/**
 	 * @author bmurtland
 	 * @studentNumber 40246862 method - Tells you what space you landed on (name)
@@ -195,26 +195,29 @@ public class TurnEngine {
 		// Check if player has landed on Runway or InvestNI and ignore
 		if (GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway"
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
-				menuList.set(0,0);
-				viewsMenu();
+			menuList.set(0, 0);
+			viewsMenu();
 		} else {
-			
-			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned() && ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner() == currentPlayer) {
-				
+
+			if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()
+					&& ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()))
+							.getPlayerOwner() == currentPlayer) {
+
 				System.out.println("You already own this Startup");
 				System.out.println("Would you like to do anything else?");
-				menuList.set(0,0);
+				menuList.set(0, 0);
 				viewsMenu();
-			
-			
-			}else if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned() && ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()!= currentPlayer) {
-				
-				System.out.println((GameAdmin.players.get(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner()).getName())
-						+ " owns this space\n\n");
-				
-				//call paysLicenceFee and pass the amount of rent to be paid
-				paysLicenceFee(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getRent());
 
+			} else if (((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()
+					&& ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()))
+							.getPlayerOwner() != currentPlayer) {
+
+				System.out.println((GameAdmin.players
+						.get(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPlayerOwner())
+						.getName()) + " owns this space\n\n");
+
+				// call paysLicenceFee and pass the amount of rent to be paid
+				paysLicenceFee(((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getRent());
 
 			} else if (!((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).isOwned()) {
 
@@ -225,7 +228,6 @@ public class TurnEngine {
 				viewsMenu();
 			}
 		}
-		
 
 	}
 
@@ -264,12 +266,12 @@ public class TurnEngine {
 
 			// display all that players' startups
 			listOwned();
-			//add line for spacing
+			// add line for spacing
 			System.out.println();
 			menuList.set(0, 0);
 			System.out.println("What else would you like to do?");
 			viewsMenu();
-			
+
 			// if player selects N return to the menu
 		} else if (uInput.equalsIgnoreCase("N")) {
 
@@ -308,8 +310,8 @@ public class TurnEngine {
 	public void listOwnedAndCanDevelop() {
 		checkIfPlayerCanDevelop(getCurrentPlayer());
 		ArrayList<Integer> startupIndex = new ArrayList<Integer>();
-		int counter = 1;
-		
+		int menuNumbers = 1;
+
 		System.out.println("You own and can develop: \n");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
@@ -317,19 +319,18 @@ public class TurnEngine {
 						&& ((StartupSpace) s).getCanBeDeveloped() == true) {
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
-					System.out.println(counter + ". " +s.getName());
-					counter++;
+					System.out.println(menuNumbers + ". " + s.getName());
+					menuNumbers++;
 				}
 			}
 		}
-		
-		System.out.println("Select a startup:");
-		int userInput = UserInput.userInputMenu(counter-1);
-		double fieldCost = ((StartupSpace)GameAdmin.board.getSpaces().get(userInput-1)).getPriceOfStaff();
-		//send input to hire staff
-		hiresStaff(startupIndex.get(userInput-1), getCurrentPlayer(), fieldCost);
 
-		
+		System.out.println("Select a startup:");
+		int userInput = UserInput.userInputMenu(menuNumbers - 1);
+		double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(userInput)).getPriceOfStaff();
+		// send input to hire staff
+		hiresStaff(startupIndex.get(userInput - 1), getCurrentPlayer(), fieldCost);
+
 	}
 
 	/**
@@ -345,7 +346,7 @@ public class TurnEngine {
 	public boolean checkIfPlayerCanDevelop(int playerOwner) {
 
 		boolean canDevelop = false;
-		
+
 		// Populate Map with fields (can't be duplicate, nice!) with available fields.
 		Map<String, Integer> uniqueFields = new HashMap<>();
 
@@ -398,36 +399,6 @@ public class TurnEngine {
 		return canDevelop;
 	}
 
-/////////////////////////hires staff methods//////////////////////////////////////////////////
-
-	/**
-	 * method to assign the cost of each staff member to the field
-	 * 
-	 * @param field
-	 * @return
-	 */
-	public int fieldCostStaffSpecification(int field) {
-
-		int fieldCost = 0;
-
-		switch (field) {
-
-		case 1:
-			fieldCost = FIELD_ONE_STAFF_PRICE;
-			break;
-		case 2:
-			fieldCost = FIELD_TWO_STAFF_PRICE;
-			break;
-		case 3:
-			fieldCost = FIELD_THREE_STAFF_PRICE;
-			break;
-		case 4:
-			fieldCost = FIELD_FOUR_STAFF_PRICE;
-			break;
-		}
-		return fieldCost;
-	}
-
 	/**
 	 * method to check if staff can be hired in a space Business rules: Staff must
 	 * be hired uniformly across start-ups in a field
@@ -436,38 +407,41 @@ public class TurnEngine {
 	public void hiresStaff(int startUpPosition, int playerNumber, double fieldCost) {
 
 //this one line needs to be completed.
-		int staffOnSpace = ((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
-
+		int staffOnSpace = ((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
+		String spaceName = GameAdmin.board.getSpaces().get(startUpPosition).getName();
 		switch (staffOnSpace) {
 
 		case 0:
 			staffOnSpace++;
-			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
-			System.out.println("You have hired a Software Developer. You now have one member of staff.");
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			System.out.println(
+					"You have hired a Software Developer. You now have one member of staff.(" + spaceName + ")");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 1:
 			staffOnSpace++;
-			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
-			System.out.println("You have hired a Software Developer. You now have two members of staff.");
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			System.out.println(
+					"You have hired a Software Developer. You now have two members of staff.(" + spaceName + ")");
 //	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 2:
 			staffOnSpace++;
-			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
-			System.out.println("You have hired a Software Developer. You now have three members of staff.");
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			System.out.println(
+					"You have hired a Software Developer. You now have three members of staff.(" + spaceName + ")");
 //	priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 3:
 			staffOnSpace++;
-			((StartupSpace)GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
-			System.out.println("You have hired a CTO. You now have the maximum number of staff.");
+			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).setStaff(staffOnSpace);
+			System.out.println("You have hired a CTO. You now have the maximum number of staff.(" + spaceName + ")");
 //priceOfStaffSubtract(playerNumber);
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("�" + fieldCost + " has been deducted from your account");
@@ -480,16 +454,15 @@ public class TurnEngine {
 
 	}
 
-
-
 ////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
 
 	public void viewsMenu() {
-		//Before displaying the menu, check to see if the player has the ability to hire staff and 
-		//set the menu options as required
-		if(checkIfPlayerCanDevelop(currentPlayer)) {
+		// Before displaying the menu, check to see if the player has the ability to
+		// hire staff and
+		// set the menu options as required
+		if (checkIfPlayerCanDevelop(currentPlayer)) {
 			menuList.set(1, 1);
-		}else {
+		} else {
 			menuList.set(1, 0);
 		}
 		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
@@ -499,7 +472,7 @@ public class TurnEngine {
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions()
 					+ "\n 4. " + MenuOptions.END.getMenuOptions() + "\n 5. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			//System.out.println("\n \nPlease select one of the following options. ");
+			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(5);
 
 			switch (returnedInput) {
@@ -527,7 +500,7 @@ public class TurnEngine {
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			//System.out.println("\n \nPlease select one of the following options. ");
+			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
 
 			switch (returnedInput) {
@@ -550,7 +523,7 @@ public class TurnEngine {
 					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			//System.out.println("\n \nPlease select one of the following options. ");
+			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
 
 			switch (returnedInput) {
@@ -573,7 +546,7 @@ public class TurnEngine {
 			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
-			//System.out.println("\n \nPlease select one of the following options. ");
+			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
 
 			switch (returnedInput) {
@@ -668,42 +641,44 @@ public class TurnEngine {
 			}
 		}
 	}
-	
+
 	/**
 	 * Method to end the current players turn
+	 * 
 	 * @author Dave Kennedy
 	 * @studentno 13072064
 	 */
 	public void endTurn() {
 		System.out.println("Are you sure you want to end your turn?");
-		if(UserInput.userInputValidation().equalsIgnoreCase("y")){
-			//this will end the turn and give an extra line in the console
+		if (UserInput.userInputValidation().equalsIgnoreCase("y")) {
+			// this will end the turn and give an extra line in the console
 			System.out.println("\n");
-		}else {
+		} else {
 			viewsMenu();
 		}
-		
+
 	}
-	
+
 	/**
 	 * Method to terminate the game and declare winner
+	 * 
 	 * @author Dave Kennedy
 	 * @studentno 13072064
 	 */
 	public void terminatesGame() {
 		System.out.println("Are you sure you want to Terminate the game?");
-		System.out.println("As the Quitter, (yeah that's right, I called you a quitter) your score will be ignored and you cannot win the game. ");
-		if(UserInput.userInputValidation().equalsIgnoreCase("y")){
-			//this will end the game
+		System.out.println(
+				"As the Quitter, (yeah that's right, I called you a quitter) your score will be ignored and you cannot win the game. ");
+		if (UserInput.userInputValidation().equalsIgnoreCase("y")) {
+			// this will end the game
 			System.out.println("\nPffft, bloody communists!");
 			terminatingPlayer = currentPlayer;
 			GameAdmin.game.setGameInPlay(false);
 			declareWinner();
-		}else {
+		} else {
 			viewsMenu();
 		}
 	}
-	
 
 	/**
 	 * Lists all the available startup spaces for take over.
@@ -783,10 +758,11 @@ public class TurnEngine {
 		}
 
 	}
-	
+
 	/**
-	 * Method to subtract the licence fee from currentPlayer 
-	 * and credit the balance of playerOwner
+	 * Method to subtract the licence fee from currentPlayer and credit the balance
+	 * of playerOwner
+	 * 
 	 * @author Colette Casey
 	 * @studentno 9524096
 	 *
@@ -804,67 +780,75 @@ public class TurnEngine {
 
 			System.out.printf("The licence fee £%,.0f has been debited from your account.\n\n", licenceFee);
 			Bank.subtract(this.currentPlayer, licenceFee);
-			
+
 			Bank.add(playerOwner, licenceFee);
-			System.out.printf("Current Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			System.out.printf("Current Balance: £%,.0f\n\n",
+					GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
 			menuList.set(0, 0);
 			System.out.println("Would you like to do anything else?");
 			viewsMenu();
 		} else {
-			System.out.println("You do not have insufficient funds to continue playing.  You've been declared bankrupt!");
+			System.out
+					.println("You do not have insufficient funds to continue playing.  You've been declared bankrupt!");
 			GameAdmin.game.setGameInPlay(false);
-			//ADD scores here
+			// ADD scores here
 		}
 
 	}
-	
+
 	/**
-	 * Method to declare a winner. Winner is the player with the biggest cash balance + total property value.
-	 * The player that terminates the game cannot be declared the winner
+	 * Method to declare a winner. Winner is the player with the biggest cash
+	 * balance + total property value. The player that terminates the game cannot be
+	 * declared the winner
 	 */
 	public void declareWinner() {
 		ArrayList<Double> playersVal = new ArrayList<Double>();
 		double playerBal;
 		double playerPropVal = 0;
 		double totalPlayerValue;
-		
-		for(int outter = 0; outter<GameAdmin.players.size(); outter++){
+
+		for (int outter = 0; outter < GameAdmin.players.size(); outter++) {
 			playerBal = GameAdmin.players.get(outter).getBalanceAmount();
-			for(int inner = 0; inner<GameAdmin.board.getSpaces().size(); inner++) {
-				//if  a startup has a non-bank owner
-				if(GameAdmin.spaces.get(inner) instanceof StartupSpace && ((StartupSpace) GameAdmin.spaces.get(inner)).getPlayerOwner() != -1 ) {
-					//calculate value of all startups owned by players
+			for (int inner = 0; inner < GameAdmin.board.getSpaces().size(); inner++) {
+				// if a startup has a non-bank owner
+				if (GameAdmin.spaces.get(inner) instanceof StartupSpace
+						&& ((StartupSpace) GameAdmin.spaces.get(inner)).getPlayerOwner() != -1) {
+					// calculate value of all startups owned by players
 					if (((StartupSpace) GameAdmin.board.getSpaces().get(inner)).getPlayerOwner() == outter) {
-						playerPropVal += ((StartupSpace)GameAdmin.board.getSpaces().get(inner)).getPrice();
+						playerPropVal += ((StartupSpace) GameAdmin.board.getSpaces().get(inner)).getPrice();
 					}
-					
+
 				}
-				
+
 			}
 			totalPlayerValue = playerBal + playerPropVal;
 			playersVal.add(outter, totalPlayerValue);
 			GameAdmin.players.get(outter).setPlayerWorth(totalPlayerValue);
 			playerPropVal = 0;
 		}
-		
+
 		Collections.sort(playersVal);
 		Collections.reverse(playersVal);
-		
+
 		System.out.println("\n______________Winner/s______________");
-		
-		//Declare winner
-		if(playersVal.get(0) != GameAdmin.players.get(currentPlayer).getPlayerWorth()) {
-			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
-				if(playersVal.get(0) == GameAdmin.players.get(loop).getPlayerWorth() && GameAdmin.players.get(loop) != GameAdmin.players.get(currentPlayer)) {
-					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(), playersVal.get(0));
+
+		// Declare winner
+		if (playersVal.get(0) != GameAdmin.players.get(currentPlayer).getPlayerWorth()) {
+			for (int loop = 0; loop < GameAdmin.players.size(); loop++) {
+				if (playersVal.get(0) == GameAdmin.players.get(loop).getPlayerWorth()
+						&& GameAdmin.players.get(loop) != GameAdmin.players.get(currentPlayer)) {
+					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(),
+							playersVal.get(0));
 				}
 			}
-			
-		}else {
-			for(int loop = 0; loop < GameAdmin.players.size();loop++) {
-				if(playersVal.get(1) == GameAdmin.players.get(loop).getPlayerWorth() && GameAdmin.players.get(loop) != GameAdmin.players.get(currentPlayer)) {
-					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(), playersVal.get(1));
+
+		} else {
+			for (int loop = 0; loop < GameAdmin.players.size(); loop++) {
+				if (playersVal.get(1) == GameAdmin.players.get(loop).getPlayerWorth()
+						&& GameAdmin.players.get(loop) != GameAdmin.players.get(currentPlayer)) {
+					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(),
+							playersVal.get(1));
 				}
 			}
 		}
