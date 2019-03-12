@@ -195,7 +195,9 @@ public class TurnEngine {
 		// Check if player has landed on Runway or InvestNI and ignore
 		if (GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "Runway"
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
+			
 			menuList.set(0, 0);
+			checkForTakeOver();
 			viewsMenu();
 		} else {
 
