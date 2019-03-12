@@ -316,7 +316,7 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
-						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() <4) {
+						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
 					System.out.println(menuNumbers + ". " + s.getName());
@@ -332,7 +332,7 @@ public class TurnEngine {
 		hiresStaff(startupIndex.get(userInput - 1), getCurrentPlayer(), fieldCost);
 		// add line for spacing
 		System.out.println();
-		menuList.set(0, 0);
+//		menuList.set(0, 0);
 		System.out.println("What else would you like to do?");
 		viewsMenu();
 	}
@@ -348,7 +348,6 @@ public class TurnEngine {
 	 * @studentName 40009944
 	 */
 	public boolean checkIfPlayerCanDevelop(int playerOwner) {
-
 		boolean canDevelop = false;
 
 		// Populate Map with fields (can't be duplicate, nice!) with available fields.
@@ -388,7 +387,7 @@ public class TurnEngine {
 
 				}
 				canDevelop = true; // Yes! He can!
-			} else { 
+			} else {
 				for (Space s : GameAdmin.spaces) {
 					if (s instanceof StartupSpace) {
 						if (((StartupSpace) s).getSpaceField().equals(entry.getKey())) {
@@ -398,6 +397,22 @@ public class TurnEngine {
 				}
 			}
 			requiredCounter = 0;
+		}
+
+		// loop through all owned properties and if all of them have staff < 4 not true,
+		// canDevelop = false;
+		boolean foundone = false;
+		for (Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				// if you don't find one, set foundnone to false
+				if (((StartupSpace) s).getPlayerOwner() == playerOwner && ((StartupSpace) s).getStaff() < 4) {
+					foundone = true;
+				}
+			}
+		}
+
+		if (!foundone) {
+			canDevelop = false;
 		}
 
 		return canDevelop;
@@ -417,31 +432,32 @@ public class TurnEngine {
 		case 0:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
 			staffOnSpace = ((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
-			System.out.println(
-					"You have hired a Software Developer. You now have "+staffOnSpace+" member of staff.(" + spaceName + ")");
+			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
+					+ " member of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 1:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
 			staffOnSpace = ((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
-			System.out.println(
-					"You have hired a Software Developer. You now have "+staffOnSpace+" members of staff.(" + spaceName + ")");
+			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
+					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 2:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
 			staffOnSpace = ((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
-			System.out.println(
-					"You have hired a Software Developer. You now have "+staffOnSpace+" members of staff.(" + spaceName + ")");
+			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
+					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
 		case 3:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
 			staffOnSpace = ((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).getStaff();
-			System.out.println("You have hired a CTO. You now have the maximum number of staff("+staffOnSpace+").(" + spaceName + ")");
+			System.out.println("You have hired a CTO. You now have the maximum number of staff(" + staffOnSpace + ").("
+					+ spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("£" + fieldCost + " has been deducted from your account");
 			break;
