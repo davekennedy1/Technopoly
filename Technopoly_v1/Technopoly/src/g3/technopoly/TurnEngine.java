@@ -306,19 +306,33 @@ public class TurnEngine {
 	 * @studentno 40009944
 	 */
 	public void listOwnedAndCanDevelop() {
-
+		checkIfPlayerCanDevelop(getCurrentPlayer());
+		ArrayList<Integer> startupIndex = new ArrayList<Integer>();
+		int counter = 1;
+		
+		System.out.println("You own and can develop: \n");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
 						&& ((StartupSpace) s).getCanBeDeveloped() == true) {
-
-					System.out.println("You own and can develop: " + s.getName());
-					// Below would use a formatter.
-//					Messenger.printStartup(s.getSpaceName(), ((StartupSpace) s).getRent(),
-//							((StartupSpace) s).getStaff());
+					int startupPosition = GameAdmin.spaces.indexOf(s);
+					startupIndex.add(startupPosition);
+					System.out.println(counter + ". " +s.getName());
+					counter++;
 				}
 			}
 		}
+		
+		System.out.println("Select a startup:");
+		int userInput = UserInput.getNumber();
+		
+		while(userInput < 1 && userInput > startupIndex.size()) {
+			userInput = UserInput.getNumber();
+		}
+		
+		System.out.println("DEBUG: Available indexes: "+startupIndex.toString());
+		System.out.println("You selected index: " + startupIndex.get(userInput-1) );
+		
 	}
 
 	/**
