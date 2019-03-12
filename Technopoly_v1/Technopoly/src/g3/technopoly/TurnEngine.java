@@ -108,7 +108,7 @@ public class TurnEngine {
 	 * @throws Exception
 	 */
 	public void rollDice() throws Exception {
-
+		
 		int dice1 = Dice.throwDice();
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
@@ -197,7 +197,6 @@ public class TurnEngine {
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
 			
 			menuList.set(0, 0);
-			checkForTakeOver();
 			viewsMenu();
 		} else {
 
@@ -625,7 +624,7 @@ public class TurnEngine {
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
-			System.out.println("you made it here");
+			
 			switch (returnedInput) {
 			
 			case 1:
@@ -785,9 +784,8 @@ public class TurnEngine {
 				// if startup is owned && startup owner is not the current player
 				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
 					menuList.set(2, 1);
-				}else {
-					menuList.set(2, 0);
 				}
+				
 			}
 		}
 	}
