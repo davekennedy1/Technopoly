@@ -219,13 +219,7 @@ public class StartupSpace extends Space {
 	 * @param set the staff (int)
 	 */
 	public void setStaff(int staff) {
-		if((staff >= minStaff) && (staff <= maxStaff)) {
-			
-			this.staff += staff;
-			
-		}else {
-			throw new IllegalArgumentException("Invalid number of staff");
-		}
+		this.staff = staff;
 		
 	}
 	
