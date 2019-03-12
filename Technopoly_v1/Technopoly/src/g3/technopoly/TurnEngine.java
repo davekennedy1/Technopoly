@@ -113,13 +113,13 @@ public class TurnEngine {
 		int dice2 = Dice.throwDice();
 		int moveAmount = dice1 + dice2;
 
-		System.out.println("you were on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
-		System.out.println("You rolled a " + dice1 + " and a " + dice2 + " giving you " + moveAmount);
+		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount+" spaces.");
 
 		if (dice1 == dice2 && GameAdmin.game.getDoublesCounter() != 2) {
 			System.out.println("Because you rolled doubles, you get another turn after this one!");
-
+			System.out.println();
 			GameAdmin.game.setDoublesCounter(true);
 
 			movePlayer(moveAmount);
@@ -157,7 +157,7 @@ public class TurnEngine {
 		if ((this.currentPlayerSpace + moveAmount) < boardSpaces) {
 			this.currentPlayerSpace += moveAmount;
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			System.out.println("You landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
+			System.out.println("\nYou landed on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "!\n");
 			landedStartupSpace();
 		} else {
 			lapBoardBy = (this.currentPlayerSpace + moveAmount) - (boardSpaces);
@@ -248,7 +248,7 @@ public class TurnEngine {
 
 		// check player wants to purchase
 		System.out.println("Are you sure you want to purchase "
-				+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName());
+				+ ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName()+"?");
 
 		// call scanner and validation
 		String uInput = UserInput.userInputValidation();
