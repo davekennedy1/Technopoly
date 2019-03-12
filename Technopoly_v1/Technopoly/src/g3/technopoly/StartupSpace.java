@@ -27,7 +27,7 @@ public class StartupSpace extends Space {
 	
 	//instance vars
 	private boolean canBeDeveloped, isOwned;
-	private double price, rent, priceOfStaff1, priceOfStaff2, priceOfStaff3, priceOfStaff4;
+	private double price, rent, priceOfStaff;
 	private int playerOwner, staff;
 	private String spaceField;
 	private int fieldSetRequired;
@@ -50,13 +50,10 @@ public class StartupSpace extends Space {
 	 * @param staff
 	 * @param spaceField
 	 * @param fieldRequired
-	 * @param priceOfStaff1
-	 * @param priceOfStaff2
-	 * @param priceOfStaff3
-	 * @param priceOfStaff4
+	 * @param priceOfStaff
 	 */
 	public StartupSpace(String name, boolean canBeDeveloped, 
-			boolean isOwned, double price, double rent, int staff, String spaceField, int fieldSetRequired, double priceOfStaff1, double priceOfStaff2, double priceOfStaff3, double priceOfStaff4) {
+			boolean isOwned, double price, double rent, int staff, String spaceField, int fieldSetRequired, double priceOfStaff) {
 		super(name);
 		this.setCanBeDeveloped(canBeDeveloped);
 		this.setOwned(isOwned);
@@ -66,10 +63,8 @@ public class StartupSpace extends Space {
 		this.setStaff(staff);
 		this.setSpaceField(spaceField);
 		this.setFieldSpaceRequired(fieldSetRequired);
-		this.priceOfStaff1 = priceOfStaff1;
-		this.priceOfStaff2 = priceOfStaff2;
-		this.priceOfStaff3 = priceOfStaff3;
-		this.priceOfStaff4 = priceOfStaff4;
+		this.priceOfStaff = priceOfStaff;
+		
 	}
 	
 	/**
@@ -92,13 +87,10 @@ public class StartupSpace extends Space {
 	 * @param staff
 	 * @param spaceField
 	 * @param fieldRequired
-	 * @param priceOfStaff1
-	 * @param priceOfStaff2
-	 * @param priceOfStaff3
-	 * @param priceOfStaff4
+	 * @param priceOfStaff
 	 */
 	public StartupSpace(String name, int playerOwner, boolean canBeDeveloped, 
-			boolean isOwned, double price, double rent, int staff, String spaceField, int fieldSetRequired, double priceOfStaff1, double priceOfStaff2, double priceOfStaff3, double priceOfStaff4) {
+			boolean isOwned, double price, double rent, int staff, String spaceField, int fieldSetRequired, double priceOfStaff) {
 		super(name);
 		this.setCanBeDeveloped(canBeDeveloped);
 		this.setOwned(isOwned);
@@ -108,10 +100,7 @@ public class StartupSpace extends Space {
 		this.setStaff(staff);
 		this.setSpaceField(spaceField);
 		this.setFieldSpaceRequired(fieldSetRequired);
-		this.priceOfStaff1 = priceOfStaff1;
-		this.priceOfStaff2 = priceOfStaff2;
-		this.priceOfStaff3 = priceOfStaff3;
-		this.priceOfStaff4 = priceOfStaff4;
+		this.priceOfStaff = priceOfStaff;
 	}
 
 	//getters and setters
@@ -231,7 +220,9 @@ public class StartupSpace extends Space {
 	 */
 	public void setStaff(int staff) {
 		if((staff >= minStaff) && (staff <= maxStaff)) {
-			this.staff = staff;
+			
+			this.staff += staff;
+			
 		}else {
 			throw new IllegalArgumentException("Invalid number of staff");
 		}
@@ -278,67 +269,18 @@ public class StartupSpace extends Space {
 	 * Get the price of the first staff member for this starup
 	 * @return priceOfStaff1 (double)
 	 */
-	public double getPriceOfStaff1() {
-		return this.priceOfStaff1;
+	public double getPriceOfStaff() {
+		return this.priceOfStaff;
 	}
 
 	/**
-	 * Set the price of first staff member for this startup
+	 * Set the price of a staff member for this startup
 	 * @param priceOfStaff1 (double)
 	 */
-	public void setPriceOfStaff1(double priceOfStaff1) {
-		this.priceOfStaff1 = priceOfStaff1;
+	public void setPriceOfStaff(double priceOfStaff) {
+		this.priceOfStaff = priceOfStaff;
 	}
 	
-	
-	/**
-	 * Get the price of the second staff member for this starup
-	 * @return priceOfStaff2 (double)
-	 */
-	public double getPriceOfStaff2() {
-		return this.priceOfStaff2;
-	}
-
-	/**
-	 * Set the price of second staff member for this startup
-	 * @param priceOfStaff2 (double)
-	 */
-	public void setPriceOfStaff2(double priceOfStaff2) {
-		this.priceOfStaff2 = priceOfStaff2;
-	}
-	
-	/**
-	 * Get the price of the third staff member for this starup
-	 * @return priceOfStaff3 (double)
-	 */
-	public double getPriceOfStaff3() {
-		return this.priceOfStaff3;
-	}
-
-	/**
-	 * Set the price of third staff member for this startup
-	 * @param priceOfStaff3 (double)
-	 */
-	public void setPriceOfStaff3(double priceOfStaff3) {
-		this.priceOfStaff3 = priceOfStaff3;
-	}
-	
-	
-	/**
-	 * Get the price of the fourth staff member for this starup
-	 * @return priceOfStaff4 (double)
-	 */
-	public double getPriceOfStaff4() {
-		return this.priceOfStaff4;
-	}
-
-	/**
-	 * Set the price of fourth staff member for this startup
-	 * @param priceOfStaff4 (double)
-	 */
-	public void setPriceOfStaff4(double priceOfStaff4) {
-		this.priceOfStaff4 = priceOfStaff4;
-	}
 	
 	//other methods
 	/**
