@@ -43,7 +43,7 @@ public class GameAdmin {
 	public static void main(String[] args) throws Exception {
 		board.populateBoard();
 		System.out.println("Welcome to Technopoly!\n");
-		System.out.println("How many players will be playing?");
+		System.out.println("How many players will be playing?:");
 		promptNamesOfPlayers(UserInput.userInputPlayers());
 		//shufflePlayers();
 		startGame();
@@ -96,7 +96,7 @@ public class GameAdmin {
 		String playerName;
 		
 		for(int counter = 1; counter <= numberOfPlayers; counter++) { 
-			System.out.println("Enter name for player " + counter);
+			System.out.println("Enter name for player " + counter+":");
 			
 			playerName = UserInput.userInputNames();
 

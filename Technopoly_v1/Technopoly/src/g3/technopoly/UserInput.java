@@ -41,7 +41,7 @@ public class UserInput {
 		int players = 0;
 		do {
 			try {
-			System.out.println("Hint: Please choose between 2 - 4 players");
+			System.out.println("Hint: Please choose between 2 - 4 players.");
 			players = sc1.nextInt();
 			sc1.nextLine();
 			} catch (InputMismatchException e) {
@@ -81,7 +81,7 @@ public class UserInput {
 		
 		do {
 			try {
-			System.out.println("Hint: Empty names are not allowed");
+			System.out.println("Hint: Empty names are not allowed.");
 				userName = sc1.nextLine();
 			
 
@@ -167,7 +167,7 @@ public class UserInput {
 		
 		do {
 			try {
-				System.out.println("\n\nHint: Choose one of the options using the numbers on your keyboard");
+				System.out.println("\n\nHint: Choose one of the options using the numbers on your keyboard.");
 				userInput = sc1.nextInt();
 				sc1.nextLine(); 
 				
@@ -209,7 +209,7 @@ public class UserInput {
 		
 		do {
 			try {
-				System.out.println("Hint: Please input a number");
+				System.out.println("Hint: Please input a number.");
 				userInput = sc1.nextInt();
 				sc1.nextLine(); 
 				
