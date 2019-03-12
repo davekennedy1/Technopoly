@@ -623,9 +623,9 @@ public class TurnEngine {
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
-
+			System.out.println("you made it here");
 			switch (returnedInput) {
-
+			
 			case 1:
 				takesOverStartup();
 				break;
