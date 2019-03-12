@@ -124,9 +124,10 @@ public class TurnEngine {
 		}
 		
 		if (playerHasStartups) {
+			System.out.println();
 			listOwned();
 		} else {
-			System.out.println("You currently own 0 startups.");
+			
 		}
 		
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
@@ -216,6 +217,7 @@ public class TurnEngine {
 				|| GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() == "InvestNI") {
 			
 			menuList.set(0, 0);
+			
 			viewsMenu();
 		} else {
 
