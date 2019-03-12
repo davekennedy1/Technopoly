@@ -475,6 +475,7 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
+		checkForTakeOver();
 		if (checkIfPlayerCanDevelop(currentPlayer)) {
 			menuList.set(1, 1);
 		} else {
