@@ -746,9 +746,9 @@ public class TurnEngine {
 		// access content in array of given userinput
 		
 		int indexAccesor = userInput - 1;
-		System.out.println(indexAccesor);
+//		System.out.println(indexAccesor);
 		int indexOfStartupSpace = availableStartups.get(indexAccesor);
-		System.out.println(indexOfStartupSpace);
+//		System.out.println(indexOfStartupSpace);
 		String propertyName = GameAdmin.board.getSpaces().get(indexOfStartupSpace).getName();
 		
 		// 
