@@ -350,7 +350,13 @@ public class TurnEngine {
 		}
 		
 		int userInput = UserInput.userInputMenu(menuNumbers - 1);
-		System.out.println("Are you sure you would like to develop: "+GameAdmin.board.getSpaces().get(userInput).getName());
+		for(Integer i : startupIndex) {
+			System.out.println(GameAdmin.board.getSpaces().get(i).getName());
+		}
+		System.err.println(userInput);
+		
+		
+		System.out.println("Are you sure you would like to develop: "+GameAdmin.board.getSpaces().get(startupIndex.get(userInput-1)).getName());
 		String userChoice = UserInput.userInputValidation();
 		
 		if (userChoice.equalsIgnoreCase("Y")) {
