@@ -435,7 +435,7 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " member of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 		case 1:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -443,7 +443,7 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 		case 2:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -451,7 +451,7 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 		case 3:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -459,7 +459,7 @@ public class TurnEngine {
 			System.out.println("You have hired a CTO. You now have the maximum number of staff(" + staffOnSpace + ").("
 					+ spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("£" + fieldCost + " has been deducted from your account");
+			System.out.println("ï¿½" + fieldCost + " has been deducted from your account");
 			break;
 
 		default:
@@ -807,7 +807,7 @@ public class TurnEngine {
 			System.out
 					.println("You do not have insufficient funds to continue playing.  You've been declared bankrupt!");
 			GameAdmin.game.setGameInPlay(false);
-			// ADD scores here
+			declareWinner();
 		}
 
 	}
