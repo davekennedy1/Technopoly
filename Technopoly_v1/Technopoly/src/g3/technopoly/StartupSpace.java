@@ -30,7 +30,7 @@ public class StartupSpace extends Space {
 	private double price, rent, priceOfStaff;
 	private int playerOwner, staff;
 	private String spaceField;
-	private int fieldSetRequired;
+	private int fieldSetRequired; 
 	
 	//constructors
 	/**
