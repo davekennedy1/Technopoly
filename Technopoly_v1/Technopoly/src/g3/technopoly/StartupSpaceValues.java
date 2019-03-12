@@ -39,12 +39,9 @@ public enum StartupSpaceValues {
 	private final int CTO_price;
 	private final double priceToHireStaff;
 
-	public double getPriceToHireStaff() {
-		return priceToHireStaff;
-	}
-
 	private StartupSpaceValues(String spaceName, String spaceField, int setRequired, int price, int site_price,
-			int staff_1_price, int staff_2_price, int staff_3_price, int staff_4_price, int CTO_price, double priceToHireStaff) {
+			int staff_1_price, int staff_2_price, int staff_3_price, int staff_4_price, int CTO_price,
+			double priceToHireStaff) {
 		this.spaceName = spaceName;
 		this.spaceField = spaceField;
 		this.setRequired = setRequired;
@@ -98,4 +95,7 @@ public enum StartupSpaceValues {
 		return CTO_price;
 	}
 
+	public double getPriceToHireStaff() {
+		return priceToHireStaff;
+	}
 }
