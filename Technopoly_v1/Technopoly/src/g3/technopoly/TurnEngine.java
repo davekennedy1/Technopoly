@@ -335,6 +335,7 @@ public class TurnEngine {
 		System.out.println();
 //		menuList.set(0, 0);
 		System.out.println("What else would you like to do?");
+		menuList.set(1, 0);
 		viewsMenu();
 	}
 
@@ -414,6 +415,7 @@ public class TurnEngine {
 
 		if (!foundone) {
 			canDevelop = false;
+			menuList.set(1, 0);
 		}
 
 		return canDevelop;
@@ -461,6 +463,7 @@ public class TurnEngine {
 					+ spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("�" + fieldCost + " has been deducted from your account");
+			menuList.set(1,0);
 			break;
 
 		default:
