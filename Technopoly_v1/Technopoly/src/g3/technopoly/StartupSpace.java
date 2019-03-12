@@ -373,16 +373,16 @@ public class StartupSpace extends Space {
 			this.staff++;
 			switch(this.staff) {
 			case 1:
-				setPrice(licenceFee1Staff);
+				setRent(licenceFee1Staff);
 			break;
 			case 2:
-				setPrice(licenceFee2Staff);
+				setRent(licenceFee2Staff);
 			break;
 			case 3:
-				setPrice(licenceFee3Staff);
+				setRent(licenceFee3Staff);
 			break;
 			case 4:
-				setPrice(licenceFee4Staff);
+				setRent(licenceFee4Staff);
 			break; 
 			}
 		}else { 
