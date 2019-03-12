@@ -627,8 +627,7 @@ public class TurnEngine {
 			switch (returnedInput) {
 
 			case 1:
-				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
-				// call method here
+				takesOverStartup();
 				break;
 			case 2:
 				endTurn();
