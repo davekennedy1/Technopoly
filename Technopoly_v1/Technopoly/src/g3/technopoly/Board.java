@@ -30,7 +30,7 @@ public class Board {
 	 * Whatever is currently held in the StartupSpaceValues enum will be used first.
 	 * Action spaces need to be manually inserted into their correct location.
 	 * 
-	 */
+	 */ 
 	public void populateBoard() {
 
 		for (StartupSpaceValues space : StartupSpaceValues.values()) {
