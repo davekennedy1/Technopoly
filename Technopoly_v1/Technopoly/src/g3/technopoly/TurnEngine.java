@@ -499,8 +499,7 @@ public class TurnEngine {
 				listOwnedAndCanDevelop();
 				break;
 			case 3:
-				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
-				// call method here
+				takesOverStartup();
 				break;
 			case 4:
 				endTurn();
@@ -547,8 +546,7 @@ public class TurnEngine {
 				purchaseStartup();
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
-				// call method here
+				takesOverStartup();
 				break;
 			case 3:
 				endTurn();
@@ -590,8 +588,7 @@ public class TurnEngine {
 				listOwnedAndCanDevelop();
 				break;
 			case 2:
-				System.out.println("You have selected " + MenuOptions.TAKEOVER.getMenuOptions());
-				// call method here
+				takesOverStartup();
 				break;
 			case 3:
 				endTurn();
@@ -779,18 +776,18 @@ public class TurnEngine {
 	 * Startup cannot be owned by the current player.
 	 * @return boolean
 	 */
-	public boolean checkForTakeOver() {
+	public void checkForTakeOver() {
 
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				// if startup is owned && startup owner is not the current player
 				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
-					return true;
+					menuList.set(2, 1);
+				}else {
+					menuList.set(2, 0);
 				}
 			}
 		}
-		
-		return false;
 	}
 
 	/**
