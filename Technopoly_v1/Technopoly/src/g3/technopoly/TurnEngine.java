@@ -933,7 +933,7 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				// if startup is owned && startup owner is not the current player
-				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
+				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) && (((StartupSpace) s).getPrice() <= GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount())) {
 					menuList.set(2, 1);
 				}
 
