@@ -783,7 +783,7 @@ public class TurnEngine {
 		}
 		MessagePrinter.pushScreenContent();
 		MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
-		System.out.println("Takeover: Select one of the following startups:\n");
+		System.out.println("Takeover!: Select one of the following startups:\n");
 
 		// loop through the available takeover startups
 		int list = 1;
