@@ -41,13 +41,49 @@ public class GameAdmin {
 	 */
 	public static void main(String[] args) throws Exception {
 		board.populateBoard();
-		System.out.println("Welcome to Technopoly!\n");
-		System.out.println("How many players will be playing?:");
-		promptNamesOfPlayers(UserInput.userInputPlayers());
-		//shufflePlayers();
-		startGame();
+		
+		welcome();
 		
 			 
+	}
+	
+	public static void welcome() throws Exception {
+		System.out.println("Welcome to Technopoly!\n");
+		
+		int menu = startMenu();	
+		if(menu == 1) {
+			System.out.println("How many players will be playing?:");
+			promptNamesOfPlayers(UserInput.userInputPlayers());
+			//shufflePlayers();
+			startGame();
+		}else if(menu == 2){
+			printGameRules();
+			System.out.println("\n\n\n\n\n");
+			readyToStart();
+			
+		}
+	}
+	
+	public static int startMenu() throws Exception {
+		int promptUserMenu;
+		System.out.println("1: Start Game");
+		System.out.println("     -OR-");
+		System.out.println("2: View Rules");
+		return promptUserMenu = UserInput.userInputMenu(2);
+		
+	}
+	
+	public static void readyToStart() throws Exception {
+		System.out.println("         Ready to play?");
+		
+		String yOrn = UserInput.userInputValidation();
+		if(yOrn.equalsIgnoreCase("y")) {
+			System.out.println("How many players will be playing?:");
+			promptNamesOfPlayers(UserInput.userInputPlayers());
+			startGame();
+		}else {
+			readyToStart();
+		}
 	}
 	
 
@@ -113,7 +149,7 @@ public class GameAdmin {
 	 * Method to print the GameRules
 	 * @return
 	 */
-	public void printGameRules() {
+	public static void printGameRules() {
 		String gameRules;
 
 		// create a file object
@@ -140,6 +176,8 @@ public class GameAdmin {
 		}
 
 	}
+	
+	
 	
 	
 }
