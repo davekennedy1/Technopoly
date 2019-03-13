@@ -522,7 +522,7 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " member of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("£%,.0f has been deducted from your account\n", fieldCost);
 			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 1:
@@ -531,7 +531,7 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("£%,.0f has been deducted from your account\n", fieldCost);
 			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 2:
@@ -540,7 +540,7 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("£%,.0f has been deducted from your account\n", fieldCost);
 			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 3:
@@ -549,7 +549,7 @@ public class TurnEngine {
 			System.out.println("You have hired a CTO. You now have the maximum number of staff(" + staffOnSpace + ").("
 					+ spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("£%,.0f has been deducted from your account\n", fieldCost);
 			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			menuList.set(1, 0);
 			break;
@@ -936,7 +936,7 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				// if startup is owned && startup owner is not the current player
-				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) && (((StartupSpace) s).getPrice() <= GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount())) {
+				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
 					menuList.set(2, 1);
 				}
 
