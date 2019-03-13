@@ -431,7 +431,7 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
-					if (!Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
+					if (Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
 						
 					}
 				}
