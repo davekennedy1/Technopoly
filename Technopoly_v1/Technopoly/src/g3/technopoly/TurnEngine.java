@@ -846,6 +846,21 @@ public class TurnEngine {
 			}
 			viewsMenu();
 		} else {
+			boolean playerHasStartups = false;
+
+			// if current player owns any, call listOwned();
+			for (Space s : GameAdmin.spaces) {
+				if (s instanceof StartupSpace) {
+					if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
+						playerHasStartups = true;
+					}
+				}
+			}
+			MessagePrinter.pushScreenContent();
+			MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			if (playerHasStartups) {
+				listOwned();
+			}
 			viewsMenu();
 		}
 
