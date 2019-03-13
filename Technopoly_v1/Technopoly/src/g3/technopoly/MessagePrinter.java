@@ -28,9 +28,38 @@ public class MessagePrinter {
 		System.out.printf("\n%20s%-10s%-20s","____________________| ", "      M E N U       ", "|______________________\n");
 	}
 	
+	public static void printStartupWithStaff(String name, String field, int staff) {
+		System.out.printf("%-20s",name);
+		System.out.printf("%s%7s","- ",field);
+		System.out.printf("%18s"," (Current Staff: ");
+		System.out.print(staff);
+		System.out.print("/4)\n");
+		
+	}
+	
 	public static void main(String[] arg) {
-		printMenuTitle();
-		printName(1,"Ismael", 150000);
+		
+		printStartupWithStaff("Artisan Web", "WebDev", 1);
+		System.out.println();
+		printStartupWithStaff("Hal Robotics Web", "AI", 1);
+		System.out.println();
+		printStartupWithStaff("Cloud Migration 365", "WebDev", 1);
+		
+
+//		System.out.printf("%-20s","Artisan Web");
+//		System.out.printf("%2s","- WebDev");
+//		System.out.print(" (Current Staff:");
+//		System.out.print(1);
+//		System.out.print("/4)");
+//		
+//		
+//		System.out.println();
+//		
+//		System.out.printf("%-20s","Reflex Studios");
+//		System.out.printf("%2s","- WebDev");
+//		System.out.print(" (Current Staff:");
+//		System.out.print(1);
+//		System.out.print("/4)");
 	}
 	
 

@@ -200,8 +200,6 @@ public class TurnEngine {
 			}
 
 			GameAdmin.players.get(this.currentPlayer).setPositionInBoard(this.getCurrentPlayerSpace());
-			// System.out.println("You landed on " +
-			// GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + "\n");
 			landedStartupSpace();
 
 		}
@@ -340,7 +338,8 @@ public class TurnEngine {
 		checkIfPlayerCanDevelop(getCurrentPlayer());
 		ArrayList<Integer> startupIndex = new ArrayList<Integer>();
 		int menuNumbers = 1;
-
+		MessagePrinter.pushScreenContent();
+		MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		System.out.println("Select a startup to develop: \n");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
@@ -348,18 +347,21 @@ public class TurnEngine {
 						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
-					System.out.printf(menuNumbers + ". " + s.getName() + " - " + ((StartupSpace) s).getSpaceField()
-							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
-					System.out.println();
+					
+					System.out.print(menuNumbers + ". ");
+					MessagePrinter.printStartupWithStaff(s.getName(), ((StartupSpace) s).getSpaceField(), ((StartupSpace) s).getStaff());
+//					System.out.printf(menuNumbers + ". " + s.getName() + " - " + ((StartupSpace) s).getSpaceField()
+//							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
+//					System.out.println();
 					menuNumbers++;
 				}
 			}
 		}
 
 		int userInput = UserInput.userInputMenu(menuNumbers - 1);
-		for (Integer i : startupIndex) {
-			System.out.println(GameAdmin.board.getSpaces().get(i).getName());
-		}
+//		for (Integer i : startupIndex) {
+//			System.out.println(GameAdmin.board.getSpaces().get(i).getName());
+//		} THINK THIS IS DEBUG
 
 		System.out.println("Are you sure you would like to develop: "
 				+ GameAdmin.board.getSpaces().get(startupIndex.get(userInput - 1)).getName());
@@ -378,6 +380,8 @@ public class TurnEngine {
 			menuList.set(1, 0);
 			viewsMenu();
 		} else {
+			MessagePrinter.pushScreenContent();
+			MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			viewsMenu();
 		}
 	}
@@ -777,8 +781,9 @@ public class TurnEngine {
 				}
 			}
 		}
-
-		System.out.println("Select one of the following startups:\n");
+		MessagePrinter.pushScreenContent();
+		MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		System.out.println("Takeover: Select one of the following startups:\n");
 
 		// loop through the available takeover startups
 		int list = 1;
