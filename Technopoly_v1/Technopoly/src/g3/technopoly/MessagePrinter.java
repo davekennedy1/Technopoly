@@ -9,14 +9,15 @@ public class MessagePrinter {
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 	
-	public static void printName(int playerNumber, String name, double balance) {
+	public static void printName(String playerLocation, int playerNumber, String name, double balance) {
 		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.UK);
 		String numberAsString = numberFormat.format(balance);
 //		System.out.printf("%20s%s%-10s%-20s", "____________________| Player "+playerNumber+ ":",name,"|Balance: £"+numberAsString+" ____");
-		System.out.printf("%20s","____________________| Player ");
+		System.out.printf("%20s","___(ON: "+ playerLocation+")___");
+		System.out.print("| Player");
 		System.out.print((playerNumber+1)+": ");
 		System.out.printf("%-10s",name);
-		System.out.printf("%s", "|Balance: £ ");
+		System.out.printf("%s", " |Balance: £ ");
 		System.out.print(numberAsString);
 		System.out.print(" ___");
 		System.out.println("\n");
@@ -25,7 +26,7 @@ public class MessagePrinter {
 	}
 	
 	public static void printMenuTitle() {
-		System.out.printf("\n%20s%-10s%-20s","____________________| ", "      M E N U       ", "|______________________\n");
+		System.out.printf("\n%20s%-10s%-20s","____________________| ", "      M E N U       ", "|________________________\n");
 	}
 	
 	public static void printStartupWithStaff(String name, String field, int staff) {
@@ -39,27 +40,8 @@ public class MessagePrinter {
 	
 	public static void main(String[] arg) {
 		
-		printStartupWithStaff("Artisan Web", "WebDev", 1);
-		System.out.println();
-		printStartupWithStaff("Hal Robotics Web", "AI", 1);
-		System.out.println();
-		printStartupWithStaff("Cloud Migration 365", "WebDev", 1);
-		
-
-//		System.out.printf("%-20s","Artisan Web");
-//		System.out.printf("%2s","- WebDev");
-//		System.out.print(" (Current Staff:");
-//		System.out.print(1);
-//		System.out.print("/4)");
-//		
-//		
-//		System.out.println();
-//		
-//		System.out.printf("%-20s","Reflex Studios");
-//		System.out.printf("%2s","- WebDev");
-//		System.out.print(" (Current Staff:");
-//		System.out.print(1);
-//		System.out.print("/4)");
+	printName("InvestNI", 3, "Ismael", 1500000);
+	printMenuTitle();
 	}
 	
 

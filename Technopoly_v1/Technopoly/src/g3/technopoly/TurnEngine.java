@@ -129,7 +129,7 @@ public class TurnEngine {
 		} else {
 
 		}
-		MessagePrinter.printName(getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount + " spaces.\n");
@@ -282,7 +282,7 @@ public class TurnEngine {
 			// calculate the new balance
 			Bank.subtract(currentPlayer, propertyPrice);
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			// print out new balance and array list of players owned spaces
 			System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
@@ -299,7 +299,8 @@ public class TurnEngine {
 
 			// if player selects N return to the menu
 		} else if (uInput.equalsIgnoreCase("N")) {
-
+			MessagePrinter.pushScreenContent();
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			viewsMenu();
 
 		}
@@ -339,7 +340,7 @@ public class TurnEngine {
 		ArrayList<Integer> startupIndex = new ArrayList<Integer>();
 		int menuNumbers = 1;
 		MessagePrinter.pushScreenContent();
-		MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		System.out.println("Select a startup to develop: \n");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
@@ -381,7 +382,7 @@ public class TurnEngine {
 			viewsMenu();
 		} else {
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			viewsMenu();
 		}
 	}
@@ -782,7 +783,7 @@ public class TurnEngine {
 			}
 		}
 		MessagePrinter.pushScreenContent();
-		MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		System.out.println("Takeover: Select one of the following startups:\n");
 
 		// loop through the available takeover startups
@@ -837,7 +838,7 @@ public class TurnEngine {
 				Bank.subtract(getCurrentPlayer(), startupPrice);
 				Bank.add(startupOwnerIndex, startupPrice);
 				MessagePrinter.pushScreenContent();
-				MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+				MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 				System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() + ", your new balance is: �"
 						+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 				System.out.println();
@@ -862,7 +863,7 @@ public class TurnEngine {
 				}
 			}
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			if (playerHasStartups) {
 				listOwned();
 			}
