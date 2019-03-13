@@ -548,8 +548,17 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
+		boolean somethingToDevelop = false;
+		for(Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()) {
+					somethingToDevelop = true;
+				}
+			}
+		}
+		
 		checkForTakeOver();
-		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
+		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer()) && somethingToDevelop) {
 			menuList.set(1, 1);
 		} else {
 			menuList.set(1, 0);
