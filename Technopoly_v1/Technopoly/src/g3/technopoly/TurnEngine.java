@@ -508,6 +508,7 @@ public class TurnEngine {
 					+ " member of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("�" + fieldCost + " has been deducted from your account");
+			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 1:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -516,6 +517,7 @@ public class TurnEngine {
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("�" + fieldCost + " has been deducted from your account");
+			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 2:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -524,6 +526,7 @@ public class TurnEngine {
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("�" + fieldCost + " has been deducted from your account");
+			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 3:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -532,6 +535,7 @@ public class TurnEngine {
 					+ spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.println("�" + fieldCost + " has been deducted from your account");
+			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			menuList.set(1, 0);
 			break;
 
@@ -548,17 +552,17 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
-		boolean somethingToDevelop = false;
-		for(Space s : GameAdmin.spaces) {
-			if (s instanceof StartupSpace) {
-				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()) {
-					somethingToDevelop = true;
-				}
-			}
-		}
+//		boolean somethingToDevelop = false;
+//		for(Space s : GameAdmin.spaces) {
+//			if (s instanceof StartupSpace) {
+//				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()) {
+//					somethingToDevelop = true;
+//				}
+//			}
+//		}
 		
 		checkForTakeOver();
-		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer()) && somethingToDevelop) {
+		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
 		} else {
 			menuList.set(1, 0);
