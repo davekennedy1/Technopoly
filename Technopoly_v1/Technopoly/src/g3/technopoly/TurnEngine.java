@@ -559,7 +559,7 @@ public class TurnEngine {
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
 		} else {
-			menuList.set(1, 0);
+			menuList.set(1, 0); 
 		}
 
 		System.out.println("Please select one of the following options. ");
