@@ -402,6 +402,17 @@ public class TurnEngine {
 
 		// Populate Map with fields (can't be duplicate, nice!) with available fields.
 		Map<String, Integer> uniqueFields = new HashMap<>();
+		
+		
+		for (Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer()) {
+					if(!Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
+						
+					}
+				}
+			}
+		}
 
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
@@ -529,7 +540,7 @@ public class TurnEngine {
 		// hire staff and
 		// set the menu options as required
 		checkForTakeOver();
-		if (checkIfPlayerCanDevelop(currentPlayer)) {
+		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
 		} else {
 			menuList.set(1, 0);

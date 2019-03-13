@@ -13,20 +13,20 @@ public class MessagePrinter {
 		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.UK);
 		String numberAsString = numberFormat.format(balance);
 //		System.out.printf("%20s%s%-10s%-20s", "____________________| Player "+playerNumber+ ":",name,"|Balance: £"+numberAsString+" ____");
-		System.out.printf("%20s","___(ON: "+ playerLocation+")___");
+		System.out.printf("%20s","________(ON: "+ playerLocation+")________");
 		System.out.print("| Player");
 		System.out.print((playerNumber+1)+": ");
 		System.out.printf("%-10s",name);
 		System.out.printf("%s", " |Balance: £ ");
 		System.out.print(numberAsString);
-		System.out.print(" ___");
+		System.out.print(" _________");
 		System.out.println("\n");
 
 
 	}
 	
 	public static void printMenuTitle() {
-		System.out.printf("\n%20s%-10s%-20s","____________________| ", "      M E N U       ", "|________________________\n");
+		System.out.printf("\n%20s%-10s%-20s","_________________________| ", "      M E N U       ", "|________________________\n");
 	}
 	
 	public static void printStartupWithStaff(String name, String field, int staff) {
