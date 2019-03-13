@@ -349,7 +349,6 @@ public class TurnEngine {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
 						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
 					
-					if (Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
 						
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
@@ -360,7 +359,6 @@ public class TurnEngine {
 //							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
 //					System.out.println();
 					menuNumbers++;
-					}
 				}
 			}
 		}
@@ -548,23 +546,15 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
-		boolean somethingToDevelop = false;
-		for(Space s : GameAdmin.spaces) {
-			if (s instanceof StartupSpace) {
-				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()) {
-					somethingToDevelop = true;
-				}
-			}
-		}
+
 		
 		checkForTakeOver();
-		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer()) && somethingToDevelop) {
+		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
 		} else {
 			menuList.set(1, 0);
 		}
 
-//		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
 		System.out.println("Please select one of the following options. ");
 
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
