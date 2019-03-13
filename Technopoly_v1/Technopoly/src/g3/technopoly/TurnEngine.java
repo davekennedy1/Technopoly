@@ -349,7 +349,6 @@ public class TurnEngine {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
 						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
 					
-					if (Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
 						
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
@@ -360,7 +359,6 @@ public class TurnEngine {
 //							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
 //					System.out.println();
 					menuNumbers++;
-					}
 				}
 			}
 		}
@@ -552,6 +550,7 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
+<<<<<<< HEAD
 //		boolean somethingToDevelop = false;
 //		for(Space s : GameAdmin.spaces) {
 //			if (s instanceof StartupSpace) {
@@ -560,6 +559,9 @@ public class TurnEngine {
 //				}
 //			}
 //		}
+=======
+
+>>>>>>> branch 'master' of https://gitlab.eeecs.qub.ac.uk/csc7053-1819/csc7053-1819-g3.git
 		
 		checkForTakeOver();
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
@@ -568,7 +570,6 @@ public class TurnEngine {
 			menuList.set(1, 0);
 		}
 
-//		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
 		System.out.println("Please select one of the following options. ");
 
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
