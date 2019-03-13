@@ -282,7 +282,7 @@ public class TurnEngine {
 
 			// calculate the new balance
 			Bank.subtract(currentPlayer, propertyPrice);
-
+			pushScreenContent();
 			// print out new balance and array list of players owned spaces
 			System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
@@ -325,6 +325,10 @@ public class TurnEngine {
 			}
 		}
 		System.out.println();
+	}
+	
+	public void pushScreenContent() {
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 
 	/**
@@ -712,7 +716,7 @@ public class TurnEngine {
 		System.out.println("Are you sure you want to end your turn?");
 		if (UserInput.userInputValidation().equalsIgnoreCase("y")) {
 			// this will end the turn and give an extra line in the console
-			System.out.println("\n");
+			pushScreenContent();
 		} else {
 			viewsMenu();
 		}

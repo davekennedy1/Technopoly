@@ -125,6 +125,8 @@ public class GameAdmin {
 		for(Player p : GameAdmin.players) {
 			System.out.println(p.getName());
 		}
+		
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 	
 
