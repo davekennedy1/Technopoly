@@ -13,12 +13,12 @@ public class MessagePrinter {
 	public static void printName(String playerLocation, int playerNumber, String name, double balance) {
 		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.UK);
 		String numberAsString = numberFormat.format(balance);
-//		System.out.printf("%20s%s%-10s%-20s", "____________________| Player "+playerNumber+ ":",name,"|Balance: £"+numberAsString+" ____");
+//		System.out.printf("%20s%s%-10s%-20s", "____________________| Player "+playerNumber+ ":",name,"|Balance: ï¿½"+numberAsString+" ____");
 		System.out.printf("%20s", "________(ON: " + playerLocation + ")________");
 		System.out.print("| Player");
 		System.out.print((playerNumber + 1) + ": ");
 		System.out.printf("%-10s", name);
-		System.out.printf("%s", " |Balance: £ ");
+		System.out.printf("%s", " |Balance: Â£ ");
 		System.out.print(numberAsString);
 		System.out.print(" _________");
 		System.out.println("\n");
@@ -29,8 +29,9 @@ public class MessagePrinter {
 		System.out.printf("\n%5s%-10s%-5s", "______| ", "  M E N U   ", "|______\n");
 	}
 
-	public static void printStartupWithStaff(String name, String field, int staff) {
+	public static void printStartupWithStaff(String name, double price, String field, int staff) {
 		System.out.printf("%-20s", name);
+		System.out.printf("-  Â£%,.0f  ", price);
 		System.out.printf("%s%7s", "- ", field);
 		System.out.printf("%18s", " (Current Staff: ");
 		System.out.print(staff);

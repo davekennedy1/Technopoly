@@ -366,7 +366,7 @@ public class TurnEngine {
 					startupIndex.add(startupPosition);
 
 					System.out.print(menuNumbers + ". ");
-					MessagePrinter.printStartupWithStaff(s.getName(), ((StartupSpace) s).getSpaceField(),
+					MessagePrinter.printStartupWithStaff(s.getName(), ((StartupSpace) s).getPriceOfStaff(), ((StartupSpace) s).getSpaceField(),
 							((StartupSpace) s).getStaff());
 //					System.out.printf(menuNumbers + ". " + s.getName() + " - " + ((StartupSpace) s).getSpaceField()
 //							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
@@ -522,8 +522,8 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " member of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("�" + fieldCost + " has been deducted from your account");
-			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 1:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -531,8 +531,8 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("�" + fieldCost + " has been deducted from your account");
-			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 2:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -540,8 +540,8 @@ public class TurnEngine {
 			System.out.println("You have hired a Software Developer. You now have " + staffOnSpace
 					+ " members of staff.(" + spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("�" + fieldCost + " has been deducted from your account");
-			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			break;
 		case 3:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -549,8 +549,8 @@ public class TurnEngine {
 			System.out.println("You have hired a CTO. You now have the maximum number of staff(" + staffOnSpace + ").("
 					+ spaceName + ")");
 			Bank.subtract(playerNumber, fieldCost);
-			System.out.println("�" + fieldCost + " has been deducted from your account");
-			System.out.println("New Balance: £" + GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			System.out.printf("£%,.0f has been deducted from your account", fieldCost);
+			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			menuList.set(1, 0);
 			break;
 
@@ -838,10 +838,11 @@ public class TurnEngine {
 			String spaceName = GameAdmin.spaces.get(index).getName();
 			int startupOwnerIndex = ((StartupSpace) GameAdmin.spaces.get(index)).getPlayerOwner();
 			String startupOwnerName = GameAdmin.players.get(startupOwnerIndex).getName();
-			System.out
-					.println(list + ". " + spaceName + " �" + ((StartupSpace) GameAdmin.spaces.get(index)).getPrice()
-							+ " (Area: " + ((StartupSpace) GameAdmin.spaces.get(index)).getSpaceField() + " Owner: "
-							+ startupOwnerName + ").");
+//			System.out
+//					.println(list + ". " + spaceName + " £" + ((StartupSpace) GameAdmin.spaces.get(index)).getPrice()
+//							+ " (Area: " + ((StartupSpace) GameAdmin.spaces.get(index)).getSpaceField() + " Owner: "
+//							+ startupOwnerName + ").");
+			System.out.printf("%d. %s £%,.0f (Area: %s - Owner: %s).\n", list, spaceName, ((StartupSpace) GameAdmin.spaces.get(index)).getPrice(), ((StartupSpace) GameAdmin.spaces.get(index)).getSpaceField(), startupOwnerName);
 			list++;
 		}
 
@@ -870,7 +871,7 @@ public class TurnEngine {
 			// the owner of startup is sent a message to confirm he will allow the takeover
 			System.out.println(
 					"TAKEOVER! " + startupOwnerName + ", someone is attempting to take over " + propertyName + "!");
-			System.out.println("If you accept the deal, you would gain � " + startupPrice);
+			System.out.printf("If you accept the deal, you would gain £%,.0f\n" , startupPrice);
 			System.out.printf("Do you accept the offer? - ");
 
 			// owner response
@@ -887,11 +888,13 @@ public class TurnEngine {
 				MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(),
 						getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(),
 						GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
-				System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() + ", your new balance is: �"
-						+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+//				System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() + ", your new balance is: £"
+//						+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+				System.out.printf("%s, your new balance is: £%,.0f\n", GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount() );
 				System.out.println();
-				System.out.println(GameAdmin.players.get(startupOwnerIndex).getName() + ", your new balance is: �"
-						+ GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
+//				System.out.println(GameAdmin.players.get(startupOwnerIndex).getName() + ", your new balance is: £"
+//						+ GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
+				System.out.printf("%s, your new balance is: £%,.0f\n", GameAdmin.players.get(startupOwnerIndex).getName(), GameAdmin.players.get(startupOwnerIndex).getBalanceAmount());
 				System.out.println();
 				listOwned();
 
