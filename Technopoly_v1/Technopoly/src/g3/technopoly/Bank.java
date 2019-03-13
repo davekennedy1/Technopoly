@@ -22,11 +22,27 @@ public class Bank {
 	
 	public static boolean checkFunds(int playerNumber, double amount) {
 		boolean hasFunds;
-		if(GameAdmin.players.get(playerNumber).getBalanceAmount()>amount) {
+		if(GameAdmin.players.get(playerNumber).getBalanceAmount()>=amount) {
 			hasFunds = true;
 		}else {
 			hasFunds=false;
 		}
 		return hasFunds;
+	}
+	
+	public static boolean canAffordToHire(int playerNumber) {
+		
+		boolean canAfford = false;
+		
+		for(Space s : GameAdmin.spaces) {
+			if (s instanceof StartupSpace) {
+				if (checkFunds(playerNumber, ((StartupSpace) s).getPriceOfStaff())) {
+					canAfford = true;
+				}
+			}
+		}
+		
+		return canAfford;
+		
 	}
 }
