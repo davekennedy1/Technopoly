@@ -125,13 +125,11 @@ public class TurnEngine {
 			}
 		}
 
+		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		if (playerHasStartups) {
 			System.out.println();
 			listOwned();
-		} else {
-
-		}
-		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		} 
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount + " spaces.\n");
@@ -350,6 +348,9 @@ public class TurnEngine {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
 						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
+					
+					if (Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
+						
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
 					
@@ -359,6 +360,7 @@ public class TurnEngine {
 //							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
 //					System.out.println();
 					menuNumbers++;
+					}
 				}
 			}
 		}
@@ -377,6 +379,8 @@ public class TurnEngine {
 			// are you sure you want?
 			double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(userInput)).getPriceOfStaff();
 			// send input to hire staff
+			MessagePrinter.pushScreenContent();
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			hiresStaff(startupIndex.get(userInput - 1), getCurrentPlayer(), fieldCost);
 			// add line for spacing
 			System.out.println();
@@ -387,6 +391,7 @@ public class TurnEngine {
 		} else {
 			MessagePrinter.pushScreenContent();
 			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			listOwned();
 			viewsMenu();
 		}
 	}
