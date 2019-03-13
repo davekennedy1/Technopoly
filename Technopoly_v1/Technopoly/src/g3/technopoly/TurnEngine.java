@@ -129,7 +129,7 @@ public class TurnEngine {
 		} else {
 
 		}
-
+		MessagePrinter.printName(GameAdmin.players.get(getCurrentPlayer()).getName());
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount + " spaces.\n");
@@ -282,7 +282,7 @@ public class TurnEngine {
 
 			// calculate the new balance
 			Bank.subtract(currentPlayer, propertyPrice);
-			pushScreenContent();
+			MessagePrinter.pushScreenContent();
 			// print out new balance and array list of players owned spaces
 			System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
@@ -327,9 +327,6 @@ public class TurnEngine {
 		System.out.println();
 	}
 	
-	public void pushScreenContent() {
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-	}
 
 	/**
 	 * This method lists all spaces owned which can be developed.
@@ -532,11 +529,12 @@ public class TurnEngine {
 			menuList.set(1, 0);
 		}
 
-		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
+//		System.out.println("________________" + GameAdmin.players.get(currentPlayer).getName() + "__________________");
 		System.out.println("Please select one of the following options. ");
 
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions()
 					+ "\n 4. " + MenuOptions.END.getMenuOptions() + "\n 5. " + MenuOptions.TERMINATE.getMenuOptions());
 
@@ -563,7 +561,8 @@ public class TurnEngine {
 			}
 
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 0)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
@@ -586,7 +585,9 @@ public class TurnEngine {
 				break;
 			}
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 0) && (menuList.get(2) == 1)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
@@ -609,7 +610,9 @@ public class TurnEngine {
 				break;
 			}
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 0) && (menuList.get(2) == 0)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
@@ -628,7 +631,9 @@ public class TurnEngine {
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.HIRE.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+
+			System.out.printf("\n 1. " + MenuOptions.HIRE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
 					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
 
@@ -651,7 +656,9 @@ public class TurnEngine {
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 1) && (menuList.get(2) == 0)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.HIRE.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+
+			System.out.printf("\n 1. " + MenuOptions.HIRE.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
@@ -670,7 +677,9 @@ public class TurnEngine {
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 0) && (menuList.get(2) == 1)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.TAKEOVER.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+
+			System.out.printf("\n 1. " + MenuOptions.TAKEOVER.getMenuOptions()
 					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
@@ -689,7 +698,9 @@ public class TurnEngine {
 				break;
 			}
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 0) && (menuList.get(2) == 0)) {
-			System.out.printf("________________MENU__________________\n 1. " + MenuOptions.END.getMenuOptions()
+			MessagePrinter.printMenuTitle();
+
+			System.out.printf("\n 1. " + MenuOptions.END.getMenuOptions()
 					+ "\n 2. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			int returnedInput = UserInput.userInputMenu(2);
@@ -716,7 +727,7 @@ public class TurnEngine {
 		System.out.println("Are you sure you want to end your turn?");
 		if (UserInput.userInputValidation().equalsIgnoreCase("y")) {
 			// this will end the turn and give an extra line in the console
-			pushScreenContent();
+			MessagePrinter.pushScreenContent();
 		} else {
 			viewsMenu();
 		}
