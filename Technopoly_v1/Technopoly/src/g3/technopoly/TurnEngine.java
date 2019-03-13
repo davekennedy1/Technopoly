@@ -375,7 +375,7 @@ public class TurnEngine {
 		if (userChoice.equalsIgnoreCase("Y")) {
 
 			// are you sure you want?
-			double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(userInput)).getPriceOfStaff();
+			double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(startupIndex.get(userInput-1))).getPriceOfStaff();
 			// send input to hire staff
 			MessagePrinter.pushScreenContent();
 			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
@@ -550,19 +550,7 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
-<<<<<<< HEAD
-//		boolean somethingToDevelop = false;
-//		for(Space s : GameAdmin.spaces) {
-//			if (s instanceof StartupSpace) {
-//				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()) {
-//					somethingToDevelop = true;
-//				}
-//			}
-//		}
-=======
 
->>>>>>> branch 'master' of https://gitlab.eeecs.qub.ac.uk/csc7053-1819/csc7053-1819-g3.git
-		
 		checkForTakeOver();
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
