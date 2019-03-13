@@ -741,7 +741,7 @@ public class TurnEngine {
 	}
 
 	/**
-	 * Method to terminate the game and declare winner
+	 * Method to terminate the game and call the declareWinner method
 	 * 
 	 * @author Dave Kennedy
 	 * @studentno 13072064
