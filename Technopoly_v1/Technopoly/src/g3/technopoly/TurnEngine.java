@@ -550,20 +550,7 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
-<<<<<<< HEAD
 
-=======
-
-//		boolean somethingToDevelop = false;
-//		for(Space s : GameAdmin.spaces) {
-//			if (s instanceof StartupSpace) {
-//				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer() && ((StartupSpace) s).getCanBeDeveloped()) {
-//					somethingToDevelop = true;
-//				}
-//			}
-//		}
-		
->>>>>>> branch 'master' of https://gitlab.eeecs.qub.ac.uk/csc7053-1819/csc7053-1819-g3.git
 		checkForTakeOver();
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
