@@ -550,7 +550,11 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
-
+		if(GameAdmin.board.getSpaces().get(currentPlayerSpace) instanceof StartupSpace && ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).getPrice()< GameAdmin.players.get(currentPlayer).getBalanceAmount()&& ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).isOwned()==false) {
+			menuList.set(0,1);
+		}else {
+			menuList.set(0, 0);
+		}
 		checkForTakeOver();
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
@@ -650,6 +654,7 @@ public class TurnEngine {
 
 			case 1:
 				purchaseStartup();
+				menuList.set(0, 0);
 				break;
 			case 2:
 				endTurn();
