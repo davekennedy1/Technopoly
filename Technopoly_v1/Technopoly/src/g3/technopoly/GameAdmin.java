@@ -82,7 +82,7 @@ public class GameAdmin {
 			promptNamesOfPlayers(UserInput.userInputPlayers());
 			startGame();
 		}else {
-			readyToStart();
+			System.out.println("Goodbye!");
 		}
 	}
 	
