@@ -65,6 +65,7 @@ public class GameAdmin {
 	}
 	
 	public static int startMenu() throws Exception {
+		@SuppressWarnings("unused")
 		int promptUserMenu;
 		System.out.println("1: Start Game");
 		System.out.println("     -OR-");
