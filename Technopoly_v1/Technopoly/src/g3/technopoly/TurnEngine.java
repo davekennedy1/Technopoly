@@ -432,7 +432,7 @@ public class TurnEngine {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
 					if (!Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
-
+						
 					}
 				}
 			}
@@ -524,6 +524,7 @@ public class TurnEngine {
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.printf("£%,.0f has been deducted from your account\n", fieldCost);
 			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			menuList.set(1,0);
 			break;
 		case 1:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -533,6 +534,7 @@ public class TurnEngine {
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.printf("£%,.0f has been deducted from your account\n", fieldCost);
 			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			menuList.set(1,0);
 			break;
 		case 2:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -542,6 +544,7 @@ public class TurnEngine {
 			Bank.subtract(playerNumber, fieldCost);
 			System.out.printf("£%,.0f has been deducted from your account\n", fieldCost);
 			System.out.printf("New Balance: £%,.0f", GameAdmin.players.get(currentPlayer).getBalanceAmount());
+			menuList.set(1,0);
 			break;
 		case 3:
 			((StartupSpace) GameAdmin.board.getSpaces().get(startUpPosition)).increaseStaff();
@@ -936,7 +939,7 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				// if startup is owned && startup owner is not the current player
-				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer())) {
+				if (((StartupSpace) s).isOwned() && !(((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) && ((StartupSpace) s).getPrice() <= GameAdmin.players.get(currentPlayer).getBalanceAmount()) {
 					menuList.set(2, 1);
 				}
 
