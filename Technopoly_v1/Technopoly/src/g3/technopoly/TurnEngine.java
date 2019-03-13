@@ -942,7 +942,7 @@ public class TurnEngine {
 			viewsMenu();
 		} else {
 			System.out
-					.println("You do not have insufficient funds to continue playing.  You've been declared bankrupt!");
+					.println("You have insufficient funds to continue playing.  You've been declared bankrupt!");
 			GameAdmin.game.setGameInPlay(false);
 			declareWinner();
 		}
