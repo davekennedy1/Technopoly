@@ -101,6 +101,8 @@ public class TurnEngine {
 
 	// Methods
 	/**
+	 * @author David Kennedy
+	 * @studentNumber 13072064
 	 * Method to roll the dice and move the player Validation: check if doubles have
 	 * been rolled. Rolling doubles gives the current player another go. However
 	 * rolling doubles three times in a row results in a fine for the player.
@@ -162,6 +164,8 @@ public class TurnEngine {
 	}
 
 	/**
+	 * @author David Kennedy
+	 * @studentNumber 13072064
 	 * Method to move the player the amount of spaces required by passing an amount.
 	 * Validation: Check if the player has passed the InvestNI space and work out
 	 * the new space that the player has landed on.
