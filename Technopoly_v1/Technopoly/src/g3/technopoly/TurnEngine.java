@@ -129,7 +129,7 @@ public class TurnEngine {
 		} else {
 
 		}
-		MessagePrinter.printName(GameAdmin.players.get(getCurrentPlayer()).getName());
+		MessagePrinter.printName(getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount + " spaces.\n");
@@ -191,6 +191,7 @@ public class TurnEngine {
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
 				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
+				
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			} else {
 				System.out.printf("Because you passed InvestNI, you get £%,.0f\n", InvestNI.getInvestmentAmount());
@@ -283,6 +284,7 @@ public class TurnEngine {
 			// calculate the new balance
 			Bank.subtract(currentPlayer, propertyPrice);
 			MessagePrinter.pushScreenContent();
+			MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			// print out new balance and array list of players owned spaces
 			System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
@@ -358,7 +360,6 @@ public class TurnEngine {
 		for (Integer i : startupIndex) {
 			System.out.println(GameAdmin.board.getSpaces().get(i).getName());
 		}
-		System.err.println(userInput);
 
 		System.out.println("Are you sure you would like to develop: "
 				+ GameAdmin.board.getSpaces().get(startupIndex.get(userInput - 1)).getName());
@@ -830,6 +831,8 @@ public class TurnEngine {
 				// update balances
 				Bank.subtract(getCurrentPlayer(), startupPrice);
 				Bank.add(startupOwnerIndex, startupPrice);
+				MessagePrinter.pushScreenContent();
+				MessagePrinter.printName(getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 				System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() + ", your new balance is: �"
 						+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 				System.out.println();
