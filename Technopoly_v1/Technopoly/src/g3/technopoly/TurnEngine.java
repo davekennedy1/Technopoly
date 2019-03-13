@@ -360,7 +360,7 @@ public class TurnEngine {
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
-						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
+						&& ((StartupSpace) s).getCanBeDeveloped() == true && (((StartupSpace) s).getStaff() < 4) && (((StartupSpace) s).getPriceOfStaff() <= GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount())) {
 
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
