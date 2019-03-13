@@ -250,8 +250,14 @@ public class TurnEngine {
 				System.out.printf("%s is not owned. It costs £%,.0f\n\n",
 						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(),
 						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
-				menuList.set(0, 1);
-				viewsMenu();
+				if (Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayer())).getPrice())) {
+					
+					menuList.set(0, 1);
+					viewsMenu();
+				} else {
+					menuList.set(0, 0);
+					viewsMenu();
+				}
 			}
 		}
 
@@ -550,11 +556,11 @@ public class TurnEngine {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
-		if(GameAdmin.board.getSpaces().get(currentPlayerSpace) instanceof StartupSpace && ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).getPrice()< GameAdmin.players.get(currentPlayer).getBalanceAmount()&& ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).isOwned()==false) {
-			menuList.set(0,1);
-		}else {
-			menuList.set(0, 0);
-		}
+//		if(GameAdmin.board.getSpaces().get(currentPlayerSpace) instanceof StartupSpace && ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).getPrice()< GameAdmin.players.get(currentPlayer).getBalanceAmount()&& ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).isOwned()==false) {
+//			menuList.set(0,1);
+//		}else {
+//			menuList.set(0, 0);
+//		}
 		checkForTakeOver();
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
