@@ -934,6 +934,8 @@ public class TurnEngine {
 	}
 
 	/**
+	 * @author David Kennedy
+	 * @studentNo 13072064
 	 * Method to declare a winner. Winner is the player with the biggest cash
 	 * balance + total property value. The player that terminates the game cannot be
 	 * declared the winner
