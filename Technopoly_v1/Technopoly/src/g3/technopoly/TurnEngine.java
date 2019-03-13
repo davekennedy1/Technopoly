@@ -102,10 +102,10 @@ public class TurnEngine {
 	// Methods
 	/**
 	 * @author David Kennedy
-	 * @studentNumber 13072064
-	 * Method to roll the dice and move the player Validation: check if doubles have
-	 * been rolled. Rolling doubles gives the current player another go. However
-	 * rolling doubles three times in a row results in a fine for the player.
+	 * @studentNumber 13072064 Method to roll the dice and move the player
+	 *                Validation: check if doubles have been rolled. Rolling doubles
+	 *                gives the current player another go. However rolling doubles
+	 *                three times in a row results in a fine for the player.
 	 * 
 	 * @throws Exception
 	 */
@@ -125,11 +125,13 @@ public class TurnEngine {
 			}
 		}
 
-		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),
+				GameAdmin.players.get(getCurrentPlayer()).getName(),
+				GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		if (playerHasStartups) {
 			System.out.println();
 			listOwned();
-		} 
+		}
 		System.out.print("You are on " + GameAdmin.board.getSpaces().get(currentPlayerSpace).getName() + ". ");
 
 		System.out.println("You rolled a " + dice1 + " and a " + dice2 + ": moving you " + moveAmount + " spaces.\n");
@@ -163,10 +165,10 @@ public class TurnEngine {
 
 	/**
 	 * @author David Kennedy
-	 * @studentNumber 13072064
-	 * Method to move the player the amount of spaces required by passing an amount.
-	 * Validation: Check if the player has passed the InvestNI space and work out
-	 * the new space that the player has landed on.
+	 * @studentNumber 13072064 Method to move the player the amount of spaces
+	 *                required by passing an amount. Validation: Check if the player
+	 *                has passed the InvestNI space and work out the new space that
+	 *                the player has landed on.
 	 * 
 	 * @param moveAmount (int)
 	 */
@@ -193,7 +195,7 @@ public class TurnEngine {
 			if (this.currentPlayerSpace == 0) {
 				System.out.printf("You get £%,.0f\n", InvestNI.getInvestmentAmount());
 				((InvestNI) GameAdmin.board.getSpaces().get(0)).addInvestment(this.currentPlayer);
-				
+
 				System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(currentPlayer).getBalanceAmount());
 			} else {
 				System.out.printf("Because you passed InvestNI, you get £%,.0f\n", InvestNI.getInvestmentAmount());
@@ -250,8 +252,9 @@ public class TurnEngine {
 				System.out.printf("%s is not owned. It costs £%,.0f\n\n",
 						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getName(),
 						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayerSpace())).getPrice());
-				if (Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayer())).getPrice())) {
-					
+				if (Bank.checkFunds(getCurrentPlayer(),
+						((StartupSpace) GameAdmin.board.getSpaces().get(getCurrentPlayer())).getPrice())) {
+
 					menuList.set(0, 1);
 					viewsMenu();
 				} else {
@@ -290,7 +293,9 @@ public class TurnEngine {
 			// calculate the new balance
 			Bank.subtract(currentPlayer, propertyPrice);
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(),
+					getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(),
+					GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			// print out new balance and array list of players owned spaces
 			System.out.printf("New Balance: £%,.0f\n\n", GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 
@@ -308,7 +313,9 @@ public class TurnEngine {
 			// if player selects N return to the menu
 		} else if (uInput.equalsIgnoreCase("N")) {
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(),
+					getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(),
+					GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			viewsMenu();
 
 		}
@@ -335,7 +342,6 @@ public class TurnEngine {
 		}
 		System.out.println();
 	}
-	
 
 	/**
 	 * This method lists all spaces owned which can be developed.
@@ -348,19 +354,21 @@ public class TurnEngine {
 		ArrayList<Integer> startupIndex = new ArrayList<Integer>();
 		int menuNumbers = 1;
 		MessagePrinter.pushScreenContent();
-		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),
+				GameAdmin.players.get(getCurrentPlayer()).getName(),
+				GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		System.out.println("Select a startup to develop: \n");
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
 				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()
 						&& ((StartupSpace) s).getCanBeDeveloped() == true && ((StartupSpace) s).getStaff() < 4) {
-					
-						
+
 					int startupPosition = GameAdmin.spaces.indexOf(s);
 					startupIndex.add(startupPosition);
-					
+
 					System.out.print(menuNumbers + ". ");
-					MessagePrinter.printStartupWithStaff(s.getName(), ((StartupSpace) s).getSpaceField(), ((StartupSpace) s).getStaff());
+					MessagePrinter.printStartupWithStaff(s.getName(), ((StartupSpace) s).getSpaceField(),
+							((StartupSpace) s).getStaff());
 //					System.out.printf(menuNumbers + ". " + s.getName() + " - " + ((StartupSpace) s).getSpaceField()
 //							+ "%2s (Current Staff:" + ((StartupSpace) s).getStaff() + "/4)", " ");
 //					System.out.println();
@@ -381,10 +389,13 @@ public class TurnEngine {
 		if (userChoice.equalsIgnoreCase("Y")) {
 
 			// are you sure you want?
-			double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(startupIndex.get(userInput-1))).getPriceOfStaff();
+			double fieldCost = ((StartupSpace) GameAdmin.board.getSpaces().get(startupIndex.get(userInput - 1)))
+					.getPriceOfStaff();
 			// send input to hire staff
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(),
+					getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(),
+					GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			hiresStaff(startupIndex.get(userInput - 1), getCurrentPlayer(), fieldCost);
 			// add line for spacing
 			System.out.println();
@@ -394,7 +405,9 @@ public class TurnEngine {
 			viewsMenu();
 		} else {
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(),
+					getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(),
+					GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			listOwned();
 			viewsMenu();
 		}
@@ -415,13 +428,12 @@ public class TurnEngine {
 
 		// Populate Map with fields (can't be duplicate, nice!) with available fields.
 		Map<String, Integer> uniqueFields = new HashMap<>();
-		
-		
+
 		for (Space s : GameAdmin.spaces) {
 			if (s instanceof StartupSpace) {
-				if (((StartupSpace) s).getPlayerOwner()==getCurrentPlayer()) {
-					if(!Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
-						
+				if (((StartupSpace) s).getPlayerOwner() == getCurrentPlayer()) {
+					if (!Bank.checkFunds(getCurrentPlayer(), ((StartupSpace) s).getPriceOfStaff())) {
+
 					}
 				}
 			}
@@ -565,16 +577,16 @@ public class TurnEngine {
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
 		} else {
-			menuList.set(1, 0); 
+			menuList.set(1, 0);
 		}
 
 		System.out.println("Please select one of the following options. ");
 
 		if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			MessagePrinter.printMenuTitle();
-			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
-					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions()
-					+ "\n 4. " + MenuOptions.END.getMenuOptions() + "\n 5. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions() + "\n 2. "
+					+ MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 4. "
+					+ MenuOptions.END.getMenuOptions() + "\n 5. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(5);
@@ -600,9 +612,9 @@ public class TurnEngine {
 
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 1) && (menuList.get(2) == 0)) {
 			MessagePrinter.printMenuTitle();
-			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
-					+ "\n 2. " + MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
-					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions() + "\n 2. "
+					+ MenuOptions.HIRE.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions() + "\n 4. "
+					+ MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
@@ -625,9 +637,9 @@ public class TurnEngine {
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 0) && (menuList.get(2) == 1)) {
 			MessagePrinter.printMenuTitle();
 
-			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
-					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
-					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions() + "\n 2. "
+					+ MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions() + "\n 4. "
+					+ MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
@@ -650,8 +662,8 @@ public class TurnEngine {
 		} else if ((menuList.get(0) == 1) && (menuList.get(1) == 0) && (menuList.get(2) == 0)) {
 			MessagePrinter.printMenuTitle();
 
-			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions()
-					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf("\n 1. " + MenuOptions.PURCHASE.getMenuOptions() + "\n 2. "
+					+ MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
@@ -672,9 +684,9 @@ public class TurnEngine {
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 1) && (menuList.get(2) == 1)) {
 			MessagePrinter.printMenuTitle();
 
-			System.out.printf("\n 1. " + MenuOptions.HIRE.getMenuOptions()
-					+ "\n 2. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions()
-					+ "\n 4. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf("\n 1. " + MenuOptions.HIRE.getMenuOptions() + "\n 2. "
+					+ MenuOptions.TAKEOVER.getMenuOptions() + "\n 3. " + MenuOptions.END.getMenuOptions() + "\n 4. "
+					+ MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(4);
@@ -697,8 +709,8 @@ public class TurnEngine {
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 1) && (menuList.get(2) == 0)) {
 			MessagePrinter.printMenuTitle();
 
-			System.out.printf("\n 1. " + MenuOptions.HIRE.getMenuOptions()
-					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf("\n 1. " + MenuOptions.HIRE.getMenuOptions() + "\n 2. " + MenuOptions.END.getMenuOptions()
+					+ "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
@@ -718,8 +730,8 @@ public class TurnEngine {
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 0) && (menuList.get(2) == 1)) {
 			MessagePrinter.printMenuTitle();
 
-			System.out.printf("\n 1. " + MenuOptions.TAKEOVER.getMenuOptions()
-					+ "\n 2. " + MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf("\n 1. " + MenuOptions.TAKEOVER.getMenuOptions() + "\n 2. "
+					+ MenuOptions.END.getMenuOptions() + "\n 3. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			// System.out.println("\n \nPlease select one of the following options. ");
 			int returnedInput = UserInput.userInputMenu(3);
@@ -739,8 +751,8 @@ public class TurnEngine {
 		} else if ((menuList.get(0) == 0) && (menuList.get(1) == 0) && (menuList.get(2) == 0)) {
 			MessagePrinter.printMenuTitle();
 
-			System.out.printf("\n 1. " + MenuOptions.END.getMenuOptions()
-					+ "\n 2. " + MenuOptions.TERMINATE.getMenuOptions());
+			System.out.printf(
+					"\n 1. " + MenuOptions.END.getMenuOptions() + "\n 2. " + MenuOptions.TERMINATE.getMenuOptions());
 
 			int returnedInput = UserInput.userInputMenu(2);
 
@@ -816,7 +828,9 @@ public class TurnEngine {
 			}
 		}
 		MessagePrinter.pushScreenContent();
-		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+		MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),
+				GameAdmin.players.get(getCurrentPlayer()).getName(),
+				GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 		System.out.println("Takeover: Select one of the following startups:\n");
 
 		// loop through the available takeover startups
@@ -871,7 +885,9 @@ public class TurnEngine {
 				Bank.subtract(getCurrentPlayer(), startupPrice);
 				Bank.add(startupOwnerIndex, startupPrice);
 				MessagePrinter.pushScreenContent();
-				MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+				MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(),
+						getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(),
+						GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 				System.out.println(GameAdmin.players.get(getCurrentPlayer()).getName() + ", your new balance is: �"
 						+ GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 				System.out.println();
@@ -896,7 +912,9 @@ public class TurnEngine {
 				}
 			}
 			MessagePrinter.pushScreenContent();
-			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(), getCurrentPlayer(),GameAdmin.players.get(getCurrentPlayer()).getName(), GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
+			MessagePrinter.printName(GameAdmin.board.getSpaces().get(getCurrentPlayerSpace()).getName(),
+					getCurrentPlayer(), GameAdmin.players.get(getCurrentPlayer()).getName(),
+					GameAdmin.players.get(getCurrentPlayer()).getBalanceAmount());
 			if (playerHasStartups) {
 				listOwned();
 			}
@@ -954,8 +972,7 @@ public class TurnEngine {
 			System.out.println("Would you like to do anything else?");
 			viewsMenu();
 		} else {
-			System.out
-					.println("You have insufficient funds to continue playing.  You've been declared bankrupt!");
+			System.out.println("You have insufficient funds to continue playing.  You've been declared bankrupt!");
 			GameAdmin.game.setGameInPlay(false);
 			declareWinner();
 		}
@@ -964,10 +981,9 @@ public class TurnEngine {
 
 	/**
 	 * @author David Kennedy
-	 * @studentNo 13072064
-	 * Method to declare a winner. Winner is the player with the biggest cash
-	 * balance + total property value. The player that terminates the game cannot be
-	 * declared the winner
+	 * @studentNo 13072064 Method to declare a winner. Winner is the player with the
+	 *            biggest cash balance + total property value. The player that
+	 *            terminates the game cannot be declared the winner
 	 */
 	public void declareWinner() {
 		ArrayList<Double> playersVal = new ArrayList<Double>();
