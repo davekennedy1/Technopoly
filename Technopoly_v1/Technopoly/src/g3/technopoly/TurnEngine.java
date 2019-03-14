@@ -1032,7 +1032,7 @@ public class TurnEngine {
 			}
 
 		} else {
-			for (int loop = 0; loop < GameAdmin.players.size(); loop++) {
+			for (int loop = 0; loop < GameAdmin.players.size(); loop++) { 
 				if (playersVal.get(1) == GameAdmin.players.get(loop).getPlayerWorth()
 						&& GameAdmin.players.get(loop) != GameAdmin.players.get(currentPlayer)) {
 					System.out.printf("%s with a total worth of £%,.0f\n", GameAdmin.players.get(loop).getName(),
