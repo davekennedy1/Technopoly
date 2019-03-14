@@ -34,44 +34,7 @@ public class Player {
 
 	}
 
-//	/**
-//	 * Future proof of the game.
-//	 * Possible future iteration would include a quick game mode
-//	 * this would include a random number of spaces/startups being assigned to players
-//	 * at the start of the game 
-//	 * 
-//	 * @param playerNumber
-//	 * @param name
-//	 * @param positionInBoard
-//	 * @param balanceAmount
-//	 * @param ownedStartups
-//	 */
-//	public Player(int playerNumber, String name, int positionInBoard, int balanceAmount,
-//			ArrayList<Space> ownedStartups) {
-//		this.setPlayerNumber(playerNumber);
-//		this.setName(name);
-//		this.setPositionInBoard(positionInBoard);
-//		this.setBalanceAmount(balanceAmount);
-//		
-//	}
 
-	/**
-	 * CURRENT GAME ITERATION CONSTUCTOR - no startups owned at the start thus no
-	 * need for the space array list to be included
-	 * 
-	 * @param playerNumber >1 & <=4
-	 * @param name as per the game admin class
-	 * @param positionInBoard >=0 & <=11
-	 * @param balanceAmount 
-	 */
-
-//	public Player(int playerNumber, String name, int positionInBoard, double balanceAmount) {
-//		this.setPlayerNumber(playerNumber);
-//		this.setName(name);
-//		this.setPositionInBoard(positionInBoard);
-//		this.setBalanceAmount(balanceAmount);
-//
-//	}
 	/**
 	 * CONSTUCTOR WITH NO PLAYER NUMBER FOR USE IN GAME ADMIN
 	 * 
