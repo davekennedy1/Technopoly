@@ -5,7 +5,17 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Method to run everything that happens inside a players turn such as rolling dice,
+ * moving, purchasing a startup, taking over a startup, hiring staff, ending a turn,
+ * terminating a game, performing balance operations and declaring a winner.
+ * @author Dave Kennedy
+ * @author Ismael Floritt
+ * @author Barbara Murtland
+ * @author Colette Casey
+ * @author Tim Lewis
+ *
+ */
 public class TurnEngine {
 
 	// Instance vars
@@ -165,10 +175,11 @@ public class TurnEngine {
 
 	/**
 	 * @author David Kennedy
-	 * @studentNumber 13072064 Method to move the player the amount of spaces
-	 *                required by passing an amount. Validation: Check if the player
-	 *                has passed the InvestNI space and work out the new space that
-	 *                the player has landed on.
+	 * @studentNumber 13072064 
+	 * Method to move the player the amount of spaces
+	 *required by passing an amount. Validation: Check if the player
+	 *has passed the InvestNI space and work out the new space that
+	 *the player has landed on.
 	 * 
 	 * @param moveAmount (int)
 	 */
@@ -564,17 +575,14 @@ public class TurnEngine {
 
 	}
 
-////////////////////////////////VIEWS MENU METHOD ////////////////////////////////////////
 
+	/**
+	 * Method to display the menu to the player. It should only ever show options available.
+	 */
 	public void viewsMenu() {
 		// Before displaying the menu, check to see if the player has the ability to
 		// hire staff and
 		// set the menu options as required
-//		if(GameAdmin.board.getSpaces().get(currentPlayerSpace) instanceof StartupSpace && ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).getPrice()< GameAdmin.players.get(currentPlayer).getBalanceAmount()&& ((StartupSpace)GameAdmin.board.getSpaces().get(currentPlayerSpace)).isOwned()==false) {
-//			menuList.set(0,1);
-//		}else {
-//			menuList.set(0, 0);
-//		}
 		checkForTakeOver();
 		if (checkIfPlayerCanDevelop(currentPlayer) && Bank.canAffordToHire(getCurrentPlayer())) {
 			menuList.set(1, 1);
