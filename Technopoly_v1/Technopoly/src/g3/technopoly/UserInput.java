@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 
 /**
- *  UserInput class - Version 1
+ *  Method to deal with all user input from Y/N validation, player name input, player number
+ *  input and to deal with the users choice of menu options
  *  @author T.Lewis 
- *  Date: 4/3/19
+ * 
  */
 
 public class UserInput {
