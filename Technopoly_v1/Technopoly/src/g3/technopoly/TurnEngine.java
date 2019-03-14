@@ -145,7 +145,7 @@ public class TurnEngine {
 		} else if (dice1 == dice2 && GameAdmin.game.getDoublesCounter() == 2) {
 			System.out.println(
 					"Three doubles in a row! Well the good news is wealthy capitalists don't go to jail, they just get a slap on the wrist!");
-			System.out.println("You've been fined £" + TAX);
+			System.out.printf("You've been fined £%,.0f\n", TAX);
 			if (Bank.checkFunds(this.currentPlayer, TAX)) {
 				Bank.subtract(this.currentPlayer, TAX);
 				GameAdmin.game.setDoublesCounter(false);
@@ -455,7 +455,7 @@ public class TurnEngine {
 				if (s instanceof StartupSpace) {
 					// if they are owned by the same player
 					if ((((StartupSpace) s).getSpaceField().equals(entry.getKey()))
-							&& (((StartupSpace) s).getPlayerOwner() == playerOwner)) {
+							&& (((StartupSpace) s).getPlayerOwner() == playerOwner) && ((StartupSpace) s).getPriceOfStaff() <= GameAdmin.players.get(currentPlayer).getBalanceAmount()) {
 						requiredCounter++; // add 1 to counter.
 					}
 				}
