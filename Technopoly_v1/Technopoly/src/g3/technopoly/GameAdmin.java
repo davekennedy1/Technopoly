@@ -43,7 +43,11 @@ public class GameAdmin {
 		welcome();
 
 	}
-
+	
+	/**
+	 * Method to show welcome message and the start menu
+	 * @throws Exception
+	 */
 	public static void welcome() throws Exception {
 		System.out.println("Welcome to Technopoly!\n");
 
@@ -61,6 +65,11 @@ public class GameAdmin {
 		}
 	}
 
+	/**
+	 * Method to show start game or view rules options
+	 * @return (int)
+	 * @throws Exception
+	 */
 	public static int startMenu() throws Exception {
 		@SuppressWarnings("unused")
 		int promptUserMenu;
@@ -71,6 +80,10 @@ public class GameAdmin {
 
 	}
 
+	/**
+	 * Method to start the game or kill the program
+	 * @throws Exception
+	 */
 	public static void readyToStart() throws Exception {
 		System.out.println("         Ready to play?");
 
@@ -96,6 +109,10 @@ public class GameAdmin {
 		game.gameManager();
 	}
 
+	/**
+	 * Method to prompt the user for the names of the players
+	 * @param number (int)
+	 */
 	public static void promptNamesOfPlayers(int number) {
 
 		ArrayList<String> playerNames = new ArrayList<String>();
