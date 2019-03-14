@@ -28,6 +28,10 @@ public class InvestNI extends Space {
 		super(name);
 	}
 	
+	/**
+	 * Get the amount of investment
+	 * @return (double)
+	 */
 	public static double getInvestmentAmount() {
 		return INVESTMENTAMOUNT;
 	}
