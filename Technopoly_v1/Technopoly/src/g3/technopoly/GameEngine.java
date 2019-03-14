@@ -270,6 +270,12 @@ public class GameEngine {
 		}
 	}
 	
+	/**
+	 * Method to count rounds, keep count of how many doubles a player has thrown,
+	 * keep count of how many turns have happened, and keep calling the TurnEngine 
+	 * while the gameInPlay boolean is set to true.
+	 * @throws Exception
+	 */
 	public void gameManager() throws Exception {
 		do {
 			if(this.roundCountMessage) {
