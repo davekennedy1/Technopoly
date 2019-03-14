@@ -5,11 +5,21 @@ import java.util.Locale;
 
 public class MessagePrinter {
 
+	/**
+	 * Creates a blank canvas for the next set of outputs.
+	 */
 	public static void pushScreenContent() {
 		System.out.println(
 				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 
+	/**
+	 * Formats a given player's number, location, name and balance. 
+	 * @param playerLocation
+	 * @param playerNumber
+	 * @param name
+	 * @param balance
+	 */
 	public static void printName(String playerLocation, int playerNumber, String name, double balance) {
 		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.UK);
 		String numberAsString = numberFormat.format(balance);
@@ -25,10 +35,21 @@ public class MessagePrinter {
 
 	}
 
+	/**
+	 * Formats printing of the menu.
+	 * 
+	 */
 	public static void printMenuTitle() {
 		System.out.printf("\n%5s%-10s%-5s", "______| ", "  M E N U   ", "|______\n");
 	}
-
+	
+	/**
+	 * Formats a startup's name, price, field and staff count.
+	 * @param name
+	 * @param price
+	 * @param field
+	 * @param staff
+	 */
 	public static void printStartupWithStaff(String name, double price, String field, int staff) {
 		System.out.printf("%-20s", name);
 		System.out.printf("-  £%,.0f  ", price);
