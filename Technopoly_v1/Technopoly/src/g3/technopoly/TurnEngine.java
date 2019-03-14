@@ -455,7 +455,7 @@ public class TurnEngine {
 				if (s instanceof StartupSpace) {
 					// if they are owned by the same player
 					if ((((StartupSpace) s).getSpaceField().equals(entry.getKey()))
-							&& (((StartupSpace) s).getPlayerOwner() == playerOwner) && ((StartupSpace) s).getPriceOfStaff() <= GameAdmin.players.get(currentPlayer).getBalanceAmount()) {
+							&& (((StartupSpace) s).getPlayerOwner() == playerOwner) && ((StartupSpace) s).getPriceOfStaff() <= GameAdmin.players.get(currentPlayer).getBalanceAmount())  {
 						requiredCounter++; // add 1 to counter.
 					}
 				}
